@@ -9,12 +9,95 @@
     
     <style>
         :root {
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOSUBWEAR | Smooth Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
             --orange: #FF6600;
             --yellow: #FFD700;
             --black: #000000;
             --white: #FFFFFF;
-            --surface: #F8F9FA;
-            --border: #EEEEEE;
+        }
+
+        /* --- THE NEW NOTIFICATION STYLE --- */
+        #cart-toast {
+            position: fixed;
+            bottom: -100px; /* Hidden by default */
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--black);
+            color: var(--white);
+            padding: 15px 30px;
+            font-family: 'Orbitron';
+            font-size: 0.8rem;
+            border-top: 3px solid var(--orange);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #cart-toast.show {
+            bottom: 30px; /* Slides up into view */
+        }
+
+        /* Rest of your existing styles... */
+        body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; }
+        nav { position: fixed; top:0; width:100%; background: white; padding: 20px 5%; display: flex; justify-content: space-between; border-bottom: 2px solid var(--orange); z-index: 1000; }
+        .btn-black { background: black; color: white; border: none; padding: 10px 20px; cursor: pointer; font-family: 'Orbitron'; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div style="font-family:'Orbitron'; font-weight:900;">GOSUB<span style="color:var(--orange)">WEAR</span></div>
+        <div style="font-family:'Orbitron'; font-size: 0.9rem;">BAG (<span id="cartCount">0</span>)</div>
+    </nav>
+
+    <div id="cart-toast">
+        <i class="fas fa-check-circle" style="color:var(--orange)"></i>
+        ITEM ADDED TO BAG
+    </div>
+
+    <div style="padding: 150px 10%; text-align: center;">
+        <h1 style="font-family:'Orbitron'">PREMIUM COLLECTION</h1>
+        <div style="border: 1px solid #ddd; padding: 20px; display: inline-block; margin-top: 20px;">
+            <h3>Sultan Shalwar Kameez</h3>
+            <p>Rs. 8,500</p>
+            <button class="btn-black" onclick="addToCart()">ADD TO BAG</button>
+        </div>
+    </div>
+
+    <script>
+        let count = 0;
+        const toast = document.getElementById('cart-toast');
+        const countDisplay = document.getElementById('cartCount');
+
+        function addToCart() {
+            // 1. Update the number in the header
+            count++;
+            countDisplay.innerText = count;
+
+            // 2. Show the smooth notification (No Popup!)
+            toast.classList.add('show');
+
+            // 3. Hide the notification automatically after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -215,3 +298,4 @@
     </script>
 </body>
 </html>
+
