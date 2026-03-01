@@ -3,19 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOSUBWEAR | Global Multi-Category Brand</title>
+    <title>GOSUBWEAR | Global Elite Retail</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOSUBWEAR | Smooth Experience</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -24,278 +13,246 @@
             --yellow: #FFD700;
             --black: #000000;
             --white: #FFFFFF;
-        }
-
-        /* --- THE NEW NOTIFICATION STYLE --- */
-        #cart-toast {
-            position: fixed;
-            bottom: -100px; /* Hidden by default */
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--black);
-            color: var(--white);
-            padding: 15px 30px;
-            font-family: 'Orbitron';
-            font-size: 0.8rem;
-            border-top: 3px solid var(--orange);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        #cart-toast.show {
-            bottom: 30px; /* Slides up into view */
-        }
-
-        /* Rest of your existing styles... */
-        body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; }
-        nav { position: fixed; top:0; width:100%; background: white; padding: 20px 5%; display: flex; justify-content: space-between; border-bottom: 2px solid var(--orange); z-index: 1000; }
-        .btn-black { background: black; color: white; border: none; padding: 10px 20px; cursor: pointer; font-family: 'Orbitron'; }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <div style="font-family:'Orbitron'; font-weight:900;">GOSUB<span style="color:var(--orange)">WEAR</span></div>
-        <div style="font-family:'Orbitron'; font-size: 0.9rem;">BAG (<span id="cartCount">0</span>)</div>
-    </nav>
-
-    <div id="cart-toast">
-        <i class="fas fa-check-circle" style="color:var(--orange)"></i>
-        ITEM ADDED TO BAG
-    </div>
-
-    <div style="padding: 150px 10%; text-align: center;">
-        <h1 style="font-family:'Orbitron'">PREMIUM COLLECTION</h1>
-        <div style="border: 1px solid #ddd; padding: 20px; display: inline-block; margin-top: 20px;">
-            <h3>Sultan Shalwar Kameez</h3>
-            <p>Rs. 8,500</p>
-            <button class="btn-black" onclick="addToCart()">ADD TO BAG</button>
-        </div>
-    </div>
-
-    <script>
-        let count = 0;
-        const toast = document.getElementById('cart-toast');
-        const countDisplay = document.getElementById('cartCount');
-
-        function addToCart() {
-            // 1. Update the number in the header
-            count++;
-            countDisplay.innerText = count;
-
-            // 2. Show the smooth notification (No Popup!)
-            toast.classList.add('show');
-
-            // 3. Hide the notification automatically after 3 seconds
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-    </script>
-</body>
-</html>
+            --gray: #F9F9F9;
+            --border: #EEEEEE;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--white); color: var(--black); font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
 
-        /* --- MOTION ANIMATIONS --- */
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-text { animation: slideIn 1s ease-out forwards; }
-
         /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 5000;
-            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 2px solid var(--orange);
+            background: rgba(255,255,255,0.98); padding: 18px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 3px solid var(--orange); box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
-        .logo { font-family: 'Orbitron'; font-weight: 900; font-size: 1.8rem; color: var(--black); text-decoration: none; }
+        .logo { font-family: 'Orbitron'; font-weight: 900; font-size: 1.6rem; color: var(--black); text-decoration: none; cursor: pointer; }
         .logo span { color: var(--orange); }
-        .nav-links { display: flex; list-style: none; gap: 20px; }
+        
+        .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--black); font-weight: 800; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
         .nav-links a:hover { color: var(--orange); }
 
+        .header-socials { display: flex; gap: 15px; border-right: 1px solid var(--border); padding-right: 20px; margin-right: 20px; }
+        .header-socials i { color: var(--black); font-size: 1.1rem; transition: 0.3s; cursor: pointer; }
+        .header-socials i:hover { color: var(--orange); transform: translateY(-2px); }
+
+        /* --- NOTIFICATION SYSTEM (Replacement for Popup) --- */
+        #toast {
+            position: fixed; top: -100px; left: 50%; transform: translateX(-50%);
+            background: var(--black); color: var(--white); padding: 15px 40px;
+            font-family: 'Orbitron'; font-size: 0.8rem; z-index: 6000;
+            border-bottom: 4px solid var(--orange); transition: var(--transition);
+            display: flex; align-items: center; gap: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+        #toast.active { top: 20px; }
+
         /* --- PAGE SYSTEM --- */
-        .page { display: none; padding-top: 100px; min-height: 100vh; animation: fadeIn 0.5s ease; }
+        .page { display: none; padding-top: 100px; min-height: 100vh; animation: pageFade 0.6s ease; }
         .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes pageFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- HERO --- */
-        .hero { height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle, #fff 0%, #fff 70%, var(--yellow) 100%); }
-        .hero h1 { font-family: 'Orbitron'; font-size: 5rem; line-height: 0.8; margin-bottom: 20px; }
+        /* --- HERO & MOTION --- */
+        .hero { height: 75vh; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle, #fff 0%, var(--gray) 100%); position: relative; overflow: hidden; }
+        .hero h1 { font-family: 'Orbitron'; font-size: clamp(3rem, 10vw, 6rem); line-height: 0.8; margin-bottom: 25px; }
+        .floating-img { position: absolute; width: 200px; opacity: 0.1; animation: float 8s infinite ease-in-out; }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-40px) rotate(10deg); } }
 
-        /* --- SHOP & CATEGORIES --- */
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding: 50px 5%; }
-        .p-card { border: 1px solid var(--border); padding: 15px; position: relative; overflow: hidden; transition: 0.4s; }
-        .p-card:hover { border-color: var(--orange); box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
-        .p-img { height: 350px; background: var(--surface); margin-bottom: 15px; display: flex; align-items: center; justify-content: center; }
-        .p-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .p-card:hover img { transform: scale(1.1); }
+        /* --- SHOP GRID --- */
+        .section-title { text-align: center; font-family: 'Orbitron'; padding: 40px 0; font-size: 2rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding: 20px 5% 80px; }
+        .card { background: var(--white); border: 1px solid var(--border); padding: 15px; transition: var(--transition); position: relative; }
+        .card:hover { border-color: var(--orange); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .card img { width: 100%; height: 350px; object-fit: cover; margin-bottom: 15px; }
+        .card-cat { color: var(--orange); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
+        .card-title { font-size: 1.1rem; font-weight: 800; margin: 5px 0; }
+        .card-price { font-family: 'Orbitron'; font-weight: 900; color: var(--black); }
 
-        /* --- BUTTONS --- */
-        .btn { padding: 15px 40px; font-family: 'Orbitron'; font-weight: 900; border: none; cursor: pointer; transition: 0.3s; }
+        .btn { width: 100%; padding: 15px; margin-top: 15px; border: none; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; transition: 0.3s; font-size: 0.7rem; }
         .btn-black { background: var(--black); color: var(--white); }
         .btn-black:hover { background: var(--orange); }
 
         /* --- FOOTER --- */
-        footer { background: var(--black); color: var(--white); padding: 80px 5% 40px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 50px; }
-        .footer-col h4 { font-family: 'Orbitron'; color: var(--orange); margin-bottom: 20px; }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 12px; font-size: 0.85rem; color: #888; cursor: pointer; transition: 0.3s; }
+        footer { background: var(--black); color: var(--white); padding: 80px 5% 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 40px; }
+        .footer-col h4 { font-family: 'Orbitron'; color: var(--orange); margin-bottom: 25px; font-size: 0.9rem; }
+        .footer-col li { list-style: none; color: #888; margin-bottom: 12px; font-size: 0.85rem; cursor: pointer; transition: 0.3s; }
         .footer-col li:hover { color: var(--yellow); }
+
     </style>
 </head>
 <body>
 
+    <div id="toast">
+        <i class="fas fa-shopping-bag" style="color:var(--yellow)"></i>
+        <span>SECURED IN YOUR BAG</span>
+    </div>
+
     <nav>
-        <a onclick="navigate('home')" class="logo">GOSUB<span>WEAR</span></a>
-        <ul class="nav-links">
-            <li><a onclick="navigate('home')">Home</a></li>
-            <li><a onclick="navigate('shop')">Shop</a></li>
-            <li><a onclick="navigate('about')">About</a></li>
-            <li><a onclick="navigate('cart')">Cart (<span id="cartCount">0</span>)</a></li>
-        </ul>
-        <div style="display:flex; gap:15px; font-size:1.2rem;">
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-whatsapp" style="color:#25D366"></i>
+        <a onclick="showPage('home')" class="logo">GOSUB<span>WEAR</span></a>
+        <div style="display: flex; align-items: center;">
+            <div class="header-socials">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a onclick="showPage('home')">Home</a></li>
+                <li><a onclick="showPage('shop')">Shop</a></li>
+                <li><a onclick="showPage('cart')">Bag (<span id="bagCount">0</span>)</a></li>
+            </ul>
         </div>
     </nav>
 
     <div id="home" class="page active">
         <section class="hero">
-            <div class="animate-text">
-                <p style="letter-spacing:10px; font-weight:800; color:var(--orange)">WORLD'S BIGGEST FABRIC LAB</p>
-                <h1>ELITE<br>CRAFT</h1>
-                <button class="btn btn-black" onclick="navigate('shop')">VIEW CATALOG</button>
+            <i class="fas fa-bolt floating-img" style="top:20%; left:10%;"></i>
+            <i class="fas fa-tshirt floating-img" style="bottom:20%; right:10%; animation-delay: 2s;"></i>
+            <div>
+                <p style="letter-spacing: 12px; font-weight: 800; color: var(--orange); margin-bottom: 10px;">ESTABLISHED 2026</p>
+                <h1>THE APEX<br>COLLECTION</h1>
+                <button class="btn btn-black" style="width:auto; padding: 18px 50px; margin-top: 30px;" onclick="showPage('shop')">ENTER SHOP</button>
             </div>
         </section>
     </div>
 
     <div id="shop" class="page">
-        <h2 style="text-align:center; font-family:'Orbitron'; margin:40px 0;">GLOBAL COLLECTION</h2>
-        <div class="grid" id="productGrid"></div>
+        <h2 class="section-title">GLOBAL CATALOG</h2>
+        <div class="grid" id="productContainer">
+            </div>
     </div>
 
     <div id="about" class="page">
         <div style="padding: 100px 10%;">
-            <h2 style="font-family:'Orbitron'; font-size:3rem; margin-bottom:30px;">EXPLAINING THE <span style="color:var(--orange)">TECH</span></h2>
-            <p style="font-size:1.2rem; line-height:2; color:#555;">GosubWear isn't just a shop; it's a Takaful-compliant industrial ecosystem. We use molecular-level sublimation to ensure that every pixel on your garment is permanent. Our 7-day return policy is built on absolute trust.</p>
-            <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=1000" class="animate-float" style="width:100%; height:400px; object-fit:cover; margin-top:50px;">
+            <h2 style="font-family:'Orbitron'; font-size: 3rem; margin-bottom: 20px;">OUR <span style="color:var(--orange)">MANIFESTO</span></h2>
+            <p style="font-size: 1.2rem; line-height: 1.8; color: #444;">GosubWear is a fusion of Pakistani heritage and futuristic sublimation technology. We don't just sell clothes; we provide a canvas for your identity. Every item is produced under Takaful ethical standards, ensuring a blessing in every transaction.</p>
+            <div style="margin-top: 50px; background: var(--gray); padding: 40px; border-left: 10px solid var(--yellow);">
+                <h3 style="font-family:'Orbitron';">7-DAY PROMISE</h3>
+                <p>If our precision doesn't meet your standard, return it within 7 days. Your satisfaction is our command.</p>
+            </div>
         </div>
     </div>
 
-    <div id="privacy" class="page">
-        <div style="padding: 80px 10%;">
-            <h2 style="font-family:'Orbitron';">PRIVACY PROTOCOL</h2>
-            <p style="margin-top:20px;">Your data is encrypted using advanced security layers. We never share your biometric or payment details.</p>
-        </div>
-    </div>
-
-    <div id="returns" class="page">
-        <div style="padding: 80px 10%;">
-            <h2 style="font-family:'Orbitron';">7-DAY ELITE RETURN POLICY</h2>
-            <p style="margin-top:20px;">If the quality doesn't exceed your expectations, return it within 7 days. No questions asked. We believe in our craft.</p>
+    <div id="legal" class="page">
+        <div style="padding: 100px 10%;">
+            <h2 id="legalTitle" style="font-family:'Orbitron';">LEGAL PROTOCOL</h2>
+            <p id="legalContent" style="margin-top: 30px; line-height: 2; color: #666;"></p>
         </div>
     </div>
 
     <div id="cart" class="page">
-        <div style="padding: 80px 10%; text-align:center;">
+        <div style="padding: 100px 10%; text-align: center;">
+            <i class="fas fa-shopping-basket fa-4x" style="color:var(--border); margin-bottom: 20px;"></i>
             <h2 style="font-family:'Orbitron';">YOUR BAG</h2>
-            <p id="cartStatus" style="margin:20px 0;">Your bag is currently empty.</p>
-            <button class="btn btn-black" onclick="navigate('shop')">RETURN TO SHOP</button>
+            <p id="bagStatus" style="margin-top: 10px; color: #888;">Your bag is waiting for its first item.</p>
+            <button class="btn btn-black" style="width:auto; padding: 15px 40px; margin-top: 30px;" onclick="showPage('shop')">CONTINUE SHOPPING</button>
         </div>
     </div>
 
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <h4>BRAND</h4>
+                <a class="logo" style="color:white">GOSUB<span>WEAR</span></a>
+                <p style="margin-top: 20px; color: #666; font-size: 0.8rem;">World's leading destination for high-voltage sublimation and premium ethnic wear.</p>
+            </div>
+            <div class="footer-col">
+                <h4>COLLECTIONS</h4>
                 <ul>
-                    <li onclick="navigate('about')">Our Story</li>
-                    <li>Careers</li>
-                    <li>Sustainability</li>
+                    <li onclick="showPage('shop')">Gents Pakistani</li>
+                    <li onclick="showPage('shop')">Ladies Festive</li>
+                    <li onclick="showPage('shop')">Sublimation Lab</li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>LEGAL</h4>
+                <h4>POLICIES</h4>
                 <ul>
-                    <li onclick="navigate('privacy')">Privacy Policy</li>
-                    <li onclick="navigate('returns')">7-Day Returns</li>
-                    <li>Terms & Conditions</li>
+                    <li onclick="showLegal('Returns')">7-Day Returns</li>
+                    <li onclick="showLegal('Privacy')">Privacy Policy</li>
+                    <li onclick="showLegal('Terms')">Terms of Service</li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>HELP</h4>
+                <h4>COMMUNITY</h4>
                 <ul>
-                    <li>FAQs</li>
-                    <li>Size Guide</li>
-                    <li>Shipping Info</li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>CATALOG</h4>
-                <ul>
-                    <li>Gents Pakistani</li>
-                    <li>Ladies Collection</li>
-                    <li>Sublimation T-Shirts</li>
+                    <li onclick="showPage('about')">Our Mission</li>
+                    <li>Takaful Ethics</li>
+                    <li>FAQS</li>
                 </ul>
             </div>
         </div>
-        <div style="margin-top:80px; text-align:center; font-size:0.7rem; color:#444; font-family:'Orbitron';">
-            &copy; 2026 GOSUBWEAR // ENGINEERED BY AI
+        <div style="margin-top: 60px; border-top: 1px solid #222; padding-top: 20px; text-align: center; font-family: 'Orbitron'; font-size: 0.6rem; color: #444;">
+            &copy; 2026 GOSUBWEAR OMNI-RETAIL. NO FADE. NO COMPROMISE.
         </div>
     </footer>
 
     <script>
-        // High-Quality Product Data
+        // DATA: Product Catalog
         const products = [
-            { name: "Sultan Shalwar Kameez", price: "Rs. 8,500", cat: "Gents", img: "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?q=80&w=400" },
-            { name: "Silk Embroidered Suit", price: "Rs. 12,000", cat: "Ladies", img: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=400" },
-            { name: "Molecular Sub-Tee", price: "Rs. 2,800", cat: "T-Shirt", img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400" },
-            { name: "Heritage Waistcoat", price: "Rs. 5,500", cat: "Gents", img: "https://images.unsplash.com/photo-1617114919297-3c8ddb01f599?q=80&w=400" },
-            { name: "Neon Flux Jersey", price: "Rs. 3,200", cat: "T-Shirt", img: "https://images.unsplash.com/photo-1598033129183-c4f50c7176c8?q=80&w=400" },
-            { name: "Chiffon Festive Drape", price: "Rs. 18,000", cat: "Ladies", img: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=400" }
+            { name: "Sultan Luxe Kurta", price: "Rs. 8,500", cat: "Gents Pakistani", img: "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?q=80&w=400" },
+            { name: "Chiffon Royale Suit", price: "Rs. 14,000", cat: "Ladies Festive", img: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=400" },
+            { name: "Atomic Sub-Tee", price: "Rs. 2,500", cat: "Sublimation Lab", img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400" },
+            { name: "Heritage Waistcoat", price: "Rs. 5,000", cat: "Gents Pakistani", img: "https://images.unsplash.com/photo-1617114919297-3c8ddb01f599?q=80&w=400" },
+            { name: "Glitch Jersey 2.0", price: "Rs. 3,200", cat: "Sublimation Lab", img: "https://images.unsplash.com/photo-1598033129183-c4f50c7176c8?q=80&w=400" },
+            { name: "Lawn Daily Essential", price: "Rs. 4,800", cat: "Ladies Festive", img: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=400" }
         ];
 
-        // Page Router Logic
-        function navigate(pageId) {
+        // LOGIC: Page Router
+        function showPage(id) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
+            document.getElementById(id).classList.add('active');
             window.scrollTo(0, 0);
         }
 
-        // Shop Population
-        const grid = document.getElementById('productGrid');
+        // LOGIC: Legal Content Switcher
+        function showLegal(type) {
+            const title = document.getElementById('legalTitle');
+            const content = document.getElementById('legalContent');
+            showPage('legal');
+
+            if(type === 'Returns') {
+                title.innerText = "7-DAY RETURN POLICY";
+                content.innerText = "We offer a strict 7-day return policy for all items. If the product is damaged or does not match the description, you can return it for a full exchange or refund. Must be in original packaging.";
+            } else if(type === 'Privacy') {
+                title.innerText = "PRIVACY POLICY";
+                content.innerText = "Your data is secured using 256-bit encryption. We only use your information for shipping and internal order processing. We never sell your data to third parties.";
+            } else {
+                title.innerText = "TERMS & CONDITIONS";
+                content.innerText = "By using GosubWear, you agree to our ethical trade guidelines. All designs are intellectual property of GosubWear Labs. Orders are processed within 48 hours.";
+            }
+        }
+
+        // LOGIC: Cart & Notification (The "Non-Stopping" version)
+        let bagCount = 0;
+        function addToBag() {
+            bagCount++;
+            document.getElementById('bagCount').innerText = bagCount;
+            document.getElementById('bagStatus').innerText = "You have " + bagCount + " items in your bag.";
+            
+            // Trigger the Notification Bar (NO POPUP)
+            const toast = document.getElementById('toast');
+            toast.classList.add('active');
+            
+            // Automatically hide after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('active');
+            }, 3000);
+        }
+
+        // INIT: Build Shop
+        const container = document.getElementById('productContainer');
         products.forEach(p => {
-            grid.innerHTML += `
-                <div class="p-card animate-text">
-                    <div class="p-img"><img src="${p.img}"></div>
-                    <div style="font-size:0.7rem; color:var(--orange); font-weight:800;">${p.cat}</div>
-                    <h3 style="font-size:1rem; margin:5px 0;">${p.name}</h3>
-                    <div style="font-family:'Orbitron'; font-weight:900;">${p.price}</div>
-                    <button class="btn btn-black" onclick="addToCart()" style="width:100%; margin-top:15px; font-size:0.6rem;">ADD TO BAG</button>
+            container.innerHTML += `
+                <div class="card">
+                    <img src="${p.img}" alt="${p.name}">
+                    <div class="card-cat">${p.cat}</div>
+                    <div class="card-title">${p.name}</div>
+                    <div class="card-price">${p.price}</div>
+                    <button class="btn btn-black" onclick="addToBag()">ADD TO BAG</button>
                 </div>
             `;
         });
-
-        // Cart Logic
-        let count = 0;
-        function addToCart() {
-            count++;
-            document.getElementById('cartCount').innerText = count;
-            document.getElementById('cartStatus').innerText = "You have items waiting for checkout.";
-            alert("Added to Bag. Quality Secured.");
-        }
     </script>
 </body>
 </html>
-
