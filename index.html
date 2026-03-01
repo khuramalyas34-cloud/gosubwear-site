@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOSUBWEAR | Global Luxury Retail</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <title>GOSUBWEAR | Future Textile Innovation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Using FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
+        /* =========================================
+           CSS VARIABLES & RESET
+           ========================================= */
         :root {
             --orange: #FF6600;
             --yellow: #FFD700;
@@ -15,178 +21,393 @@
             --white: #FFFFFF;
             --gray: #F9F9F9;
             --border: #EEEEEE;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --text-dark: #111111;
+            --text-light: #666666;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--white); color: var(--black); font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
-
-        /* --- FIXED NAVIGATION --- */
-        nav {
-            position: fixed; top: 0; width: 100%; z-index: 9999;
-            background: rgba(255,255,255,0.98); padding: 15px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 3px solid var(--orange); backdrop-filter: blur(10px);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* NEW TEXT LOGO STYLE */
-        .text-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 1.8rem;
-            letter-spacing: -1px;
-            text-decoration: none;
-            color: var(--black);
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background-color: var(--orange);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #e55b00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
+        }
+
+        .btn-outline-dark {
+            border-color: var(--black);
+            background: transparent;
+            color: var(--black);
+        }
+
+        .btn-outline-dark:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .btn-outline-white {
+            border-color: var(--white);
+            color: var(--white);
+            background: transparent;
+        }
+
+        .btn-outline-white:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* =========================================
+           HEADER & NAV
+           ========================================= */
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-wrapper {
             display: flex;
+            justify-content: space-between;
             align-items: center;
         }
-        .text-logo span {
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        
+        .logo span { color: var(--orange); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
             color: var(--orange);
-            margin-left: 2px;
         }
-        .text-logo:after {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--yellow);
-            margin-left: 5px;
+
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .cart-icon-wrap {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--orange);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
         }
 
-        .nav-links { display: flex; list-style: none; gap: 25px; }
-        .nav-links li a { text-decoration: none; color: black; font-family: 'Orbitron'; font-size: 0.75rem; font-weight: 900; cursor: pointer; text-transform: uppercase; }
-        .nav-links li a:hover { color: var(--orange); }
-
-        /* --- PAGE SYSTEM --- */
-        .page { display: none; padding-top: 80px; min-height: 100vh; }
-        .page.active { display: block; animation: fadeIn 0.6s ease; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* --- SECTIONS --- */
-        .hero { height: 75vh; display: flex; align-items: center; padding: 0 10%; background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=1500'); background-size: cover; background-position: center; }
-        .hero-text h1 { font-family: 'Orbitron'; font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin-bottom: 20px; }
-        
-        /* CATEGORY MOSAIC */
-        .section-title { text-align: center; font-family: 'Orbitron'; padding: 60px 0 30px; letter-spacing: 5px; font-size: 1.2rem; }
-        .cat-mosaic { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; padding: 0 5%; }
-        .cat-item { position: relative; height: 400px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); }
-        .cat-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; filter: grayscale(100%); }
-        .cat-item:hover img { transform: scale(1.1); filter: grayscale(0%); }
-        .cat-overlay { position: absolute; bottom: 0; width: 100%; padding: 20px; background: linear-gradient(transparent, black); color: white; font-family: 'Orbitron'; font-weight: 900; }
-
-        /* PRODUCT CARDS */
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding: 40px 5%; }
-        .product-card { border: 1px solid var(--border); padding: 15px; transition: 0.3s; }
-        .product-card:hover { border-color: var(--orange); transform: translateY(-10px); }
-        .product-card img { width: 100%; height: 380px; object-fit: cover; }
-
-        .btn { padding: 15px 35px; font-family: 'Orbitron'; font-weight: 900; border: none; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
-        .btn-black { background: black; color: white; }
-        .btn-black:hover { background: var(--orange); }
-
-        footer { background: black; color: white; padding: 60px 10%; text-align: center; }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <div class="text-logo" onclick="showPage('home')">
-            GOSUB<span>WEAR</span>
-        </div>
-        <ul class="nav-links">
-            <li><a onclick="showPage('home')">Home</a></li>
-            <li><a onclick="showPage('shop')">Shop</a></li>
-            <li><a onclick="showPage('cart')">Bag (<span id="bagCount">0</span>)</a></li>
-        </ul>
-    </nav>
-
-    <div id="home" class="page active">
-        <section class="hero">
-            <div class="hero-text">
-                <p style="letter-spacing: 10px; font-weight: 800; color: var(--orange);">PREMIUM TEXTILE ENGINE</p>
-                <h1>LAB-GRADE<br><span>STITCHING.</span></h1>
-                <button class="btn btn-black" onclick="showPage('shop')">EXPLORE COLLECTION</button>
-            </div>
-        </section>
-
-        <h2 class="section-title">SHOP BY CATEGORY</h2>
-        <div class="cat-mosaic">
-            <div class="cat-item" onclick="showPage('shop')">
-                <img src="https://images.unsplash.com/photo-1594932224010-74f43a183416?q=80&w=400">
-                <div class="cat-overlay">GENTS WEAR</div>
-            </div>
-            <div class="cat-item" onclick="showPage('shop')">
-                <img src="https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?q=80&w=400">
-                <div class="cat-overlay">LADIES WEAR</div>
-            </div>
-            <div class="cat-item" onclick="showPage('shop')">
-                <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=400">
-                <div class="cat-overlay">SUBLIMATION LAB</div>
-            </div>
-        </div>
-        
-        <div style="padding: 100px 10%; text-align: center; background: var(--gray); margin-top: 60px;">
-            <h2 style="font-family:'Orbitron'; margin-bottom: 20px;">TAKAFUL ETHICAL TRADE</h2>
-            <p style="max-width: 700px; margin: 0 auto; color: #666; line-height: 1.8;">We believe in transparent pricing and fair labor. Every product from GosubWear follows Shariah-compliant business ethics, ensuring quality you can trust.</p>
-        </div>
-    </div>
-
-    <div id="shop" class="page">
-        <h2 class="section-title">OUR CATALOG</h2>
-        <div class="product-grid" id="mainShop"></div>
-    </div>
-
-    <div id="cart" class="page">
-        <div style="padding: 100px 10%; text-align: center;">
-            <h2 style="font-family:'Orbitron';">YOUR BAG</h2>
-            <p id="cartStatus" style="margin: 30px 0;">Your shopping bag is empty.</p>
-            <button class="btn btn-black" onclick="showPage('shop')">CONTINUE SHOPPING</button>
-        </div>
-    </div>
-
-    <footer>
-        <div class="text-logo" style="color:white; justify-content: center; margin-bottom: 20px;">
-            GOSUB<span>WEAR</span>
-        </div>
-        <p style="color: #444; font-size: 0.8rem;">&copy; 2026 GOSUBWEAR OMNI-RETAIL. NO FADE. NO LIMITS.</p>
-    </footer>
-
-    <script>
-        // Page Router Engine
-        function showPage(id) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            window.scrollTo(0, 0);
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
         }
 
-        // Product Logic
-        const products = [
-            { name: "Executive Kurta", price: "8,500", img: "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?q=80&w=400" },
-            { name: "Pro Sub-Jersey", price: "3,200", img: "https://images.unsplash.com/photo-1580087442629-1237f1ecfd14?q=80&w=400" },
-            { name: "Signature Shalwar", price: "5,500", img: "https://images.unsplash.com/photo-1617114919297-3c8ddb01f599?q=80&w=400" },
-            { name: "Luxe Lawn Suit", price: "12,000", img: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=400" }
-        ];
-
-        let bag = 0;
-        const shop = document.getElementById('mainShop');
-        products.forEach(p => {
-            shop.innerHTML += `
-                <div class="product-card">
-                    <img src="${p.img}">
-                    <h3 style="font-family:'Orbitron'; font-size:0.9rem; margin-top:15px;">${p.name}</h3>
-                    <p style="color:var(--orange); font-weight:900; margin:10px 0;">Rs. ${p.price}</p>
-                    <button class="btn btn-black" style="width:100%;" onclick="addToBag()">ADD TO BAG</button>
-                </div>
-            `;
-        });
-
-        function addToBag() {
-            bag++;
-            document.getElementById('bagCount').innerText = bag;
-            document.getElementById('cartStatus').innerText = "You have " + bag + " items in your bag.";
-            alert("Item added to bag!");
+        /* =========================================
+           PAGES LOGIC (SPA)
+           ========================================= */
+        .page-section {
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.5s ease;
+            padding-top: 20px;
+            padding-bottom: 80px;
         }
-    </script>
-</body>
-</html>
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =========================================
+           1. HOMEPAGE
+           ========================================= */
+        /* Hero */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: -72px; /* Offset header height */
+            padding-top: 72px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* Categories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .cat-card {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .cat-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .cat-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .cat-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, black);
+            padding: 2rem;
+            color: white;
+        }
+
+        /* Features */
+        .features {
+            background: var(--black);
+            color: var(--white);
+            padding: 4rem 0;
+            margin-top: 4rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .feature-item i {
+            font-size: 2.5rem;
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h4 { margin-bottom: 0.5rem; }
+        .feature-item p { font-size: 0.9rem; color: #aaa; }
+
+        /* Best Sellers */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-5px);
+            border-color: var(--orange);
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--yellow);
+            color: var(--black);
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 4px;
+            z-index: 2;
+        }
+
+        .product-img {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-actions {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+            padding: 10px;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .product-card:hover .product-actions {
+            bottom: 0;
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: var(--black);
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-btn:hover {
+            background: var(--orange);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-cat {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 5px
