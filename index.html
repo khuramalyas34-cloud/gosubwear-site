@@ -22,7 +22,11 @@
         body { background: var(--black); color: var(--white); font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
 
         /* --- AI Navigation --- */
-        nav {
+        nav  { <div class="header-socials">
+    <a href="https://instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://facebook.com/yourprofile" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://wa.me/yournumber" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
             position: fixed; top: 0; width: 100%; z-index: 5000;
             padding: 25px 5%; display: flex; justify-content: space-between; align-items: center;
             background: rgba(0,0,0,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
@@ -221,3 +225,4 @@
     </script>
 </body>
 </html>
+
