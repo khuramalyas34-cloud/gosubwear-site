@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOSUBWEAR | Premium Luxury Retail</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <title>GOSUBWEAR | Global Luxury Retail</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -24,11 +24,36 @@
         /* --- FIXED NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 9999;
-            background: rgba(255,255,255,0.98); padding: 10px 5%;
+            background: rgba(255,255,255,0.98); padding: 15px 5%;
             display: flex; justify-content: space-between; align-items: center;
             border-bottom: 3px solid var(--orange); backdrop-filter: blur(10px);
         }
-        .nav-logo img { height: 60px; cursor: pointer; transition: 0.3s; }
+
+        /* NEW TEXT LOGO STYLE */
+        .text-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+            text-decoration: none;
+            color: var(--black);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .text-logo span {
+            color: var(--orange);
+            margin-left: 2px;
+        }
+        .text-logo:after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--yellow);
+            margin-left: 5px;
+            border-radius: 50%;
+        }
+
         .nav-links { display: flex; list-style: none; gap: 25px; }
         .nav-links li a { text-decoration: none; color: black; font-family: 'Orbitron'; font-size: 0.75rem; font-weight: 900; cursor: pointer; text-transform: uppercase; }
         .nav-links li a:hover { color: var(--orange); }
@@ -38,51 +63,40 @@
         .page.active { display: block; animation: fadeIn 0.6s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* --- PREMIUM HOME SECTIONS --- */
-        .hero { height: 85vh; display: flex; align-items: center; padding: 0 10%; background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1500'); background-size: cover; background-position: center; }
-        .hero-text h1 { font-family: 'Orbitron'; font-size: clamp(2.5rem, 8vw, 6rem); line-height: 1; margin-bottom: 20px; }
-        .hero-text span { color: var(--orange); text-shadow: 2px 2px 0px var(--black); }
-
+        /* --- SECTIONS --- */
+        .hero { height: 75vh; display: flex; align-items: center; padding: 0 10%; background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=1500'); background-size: cover; background-position: center; }
+        .hero-text h1 { font-family: 'Orbitron'; font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin-bottom: 20px; }
+        
         /* CATEGORY MOSAIC */
-        .section-title { text-align: center; font-family: 'Orbitron'; padding: 60px 0 30px; letter-spacing: 5px; }
-        .cat-mosaic { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 0 5%; height: 500px; }
-        .cat-item { position: relative; overflow: hidden; cursor: pointer; border: 1px solid var(--border); }
+        .section-title { text-align: center; font-family: 'Orbitron'; padding: 60px 0 30px; letter-spacing: 5px; font-size: 1.2rem; }
+        .cat-mosaic { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; padding: 0 5%; }
+        .cat-item { position: relative; height: 400px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); }
         .cat-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; filter: grayscale(100%); }
         .cat-item:hover img { transform: scale(1.1); filter: grayscale(0%); }
-        .cat-overlay { position: absolute; bottom: 0; width: 100%; padding: 20px; background: linear-gradient(transparent, black); color: white; font-family: 'Orbitron'; font-weight: 900; font-size: 0.8rem; }
+        .cat-overlay { position: absolute; bottom: 0; width: 100%; padding: 20px; background: linear-gradient(transparent, black); color: white; font-family: 'Orbitron'; font-weight: 900; }
 
-        /* CATALOG SCROLLER */
-        .catalog-scroll { display: flex; overflow-x: auto; gap: 20px; padding: 20px 5%; scroll-snap-type: x mandatory; }
-        .catalog-scroll::-webkit-scrollbar { display: none; }
-        .catalog-item { min-width: 300px; height: 450px; background: var(--gray); position: relative; scroll-snap-align: start; flex-shrink: 0; }
-        .catalog-item img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* PREMIUM GLASS SECTION */
-        .glass-brand { margin: 80px 5%; padding: 80px; background: rgba(0,0,0,0.03); backdrop-filter: blur(5px); border: 1px solid var(--border); border-left: 10px solid var(--orange); display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
-        
-        /* SHOP CARDS */
+        /* PRODUCT CARDS */
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding: 40px 5%; }
-        .product-card { border: 1px solid var(--border); padding: 15px; transition: 0.3s; position: relative; }
+        .product-card { border: 1px solid var(--border); padding: 15px; transition: 0.3s; }
         .product-card:hover { border-color: var(--orange); transform: translateY(-10px); }
-        .product-card img { width: 100%; height: 380px; object-fit: cover; margin-bottom: 15px; }
+        .product-card img { width: 100%; height: 380px; object-fit: cover; }
 
-        /* BUTTONS */
         .btn { padding: 15px 35px; font-family: 'Orbitron'; font-weight: 900; border: none; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
         .btn-black { background: black; color: white; }
-        .btn-black:hover { background: var(--orange); box-shadow: 0 10px 20px rgba(255,102,0,0.3); }
+        .btn-black:hover { background: var(--orange); }
 
-        footer { background: black; color: white; padding: 80px 10% 40px; }
+        footer { background: black; color: white; padding: 60px 10%; text-align: center; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-logo" onclick="showPage('home')">
-            <img src="logo.png" alt="GOSUBWEAR">
+        <div class="text-logo" onclick="showPage('home')">
+            GOSUB<span>WEAR</span>
         </div>
         <ul class="nav-links">
             <li><a onclick="showPage('home')">Home</a></li>
-            <li><a onclick="showPage('shop')">Catalog</a></li>
+            <li><a onclick="showPage('shop')">Shop</a></li>
             <li><a onclick="showPage('cart')">Bag (<span id="bagCount">0</span>)</a></li>
         </ul>
     </nav>
@@ -90,102 +104,77 @@
     <div id="home" class="page active">
         <section class="hero">
             <div class="hero-text">
-                <p style="letter-spacing: 12px; font-weight: 800; color: var(--orange); margin-bottom: 10px;">EST. 2026</p>
-                <h1>THE APEX<br><span>COLLECTION</span></h1>
-                <button class="btn btn-black" onclick="showPage('shop')">EXPLORE NOW</button>
+                <p style="letter-spacing: 10px; font-weight: 800; color: var(--orange);">PREMIUM TEXTILE ENGINE</p>
+                <h1>LAB-GRADE<br><span>STITCHING.</span></h1>
+                <button class="btn btn-black" onclick="showPage('shop')">EXPLORE COLLECTION</button>
             </div>
         </section>
 
         <h2 class="section-title">SHOP BY CATEGORY</h2>
         <div class="cat-mosaic">
             <div class="cat-item" onclick="showPage('shop')">
-                <img src="https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?q=80&w=400">
-                <div class="cat-overlay">GENTS TRADITIONAL</div>
+                <img src="https://images.unsplash.com/photo-1594932224010-74f43a183416?q=80&w=400">
+                <div class="cat-overlay">GENTS WEAR</div>
             </div>
             <div class="cat-item" onclick="showPage('shop')">
-                <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=400">
-                <div class="cat-overlay">LADIES FESTIVE</div>
+                <img src="https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?q=80&w=400">
+                <div class="cat-overlay">LADIES WEAR</div>
             </div>
             <div class="cat-item" onclick="showPage('shop')">
-                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400">
+                <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=400">
                 <div class="cat-overlay">SUBLIMATION LAB</div>
             </div>
-            <div class="cat-item" onclick="showPage('shop')">
-                <img src="https://images.unsplash.com/photo-1617114919297-3c8ddb01f599?q=80&w=400">
-                <div class="cat-overlay">ACCESSORIES</div>
-            </div>
         </div>
-
-        <h2 class="section-title">SEASONAL CATALOG</h2>
-        <div class="catalog-scroll">
-            <div class="catalog-item"><img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=400"><div class="cat-overlay">VOL. 01</div></div>
-            <div class="catalog-item"><img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=400"><div class="cat-overlay">VOL. 02</div></div>
-            <div class="catalog-item"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=400"><div class="cat-overlay">VOL. 03</div></div>
-            <div class="catalog-item"><img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=400"><div class="cat-overlay">VOL. 04</div></div>
-        </div>
-
-        <div class="glass-brand">
-            <div>
-                <h2 style="font-family:'Orbitron'; font-size: 2.5rem; margin-bottom: 20px;">TAKAFUL<br>ETHICS.</h2>
-                <p style="color:#666; line-height: 1.8;">GosubWear operates under strict Shariah-compliant trade principles. We ensure fairness in every stitch, from the lab to your doorstep.</p>
-                <button class="btn btn-black" style="margin-top: 30px;" onclick="showPage('about')">OUR MISSION</button>
-            </div>
-            <div style="text-align: right; font-family: 'Orbitron'; font-size: 8rem; opacity: 0.05; user-select: none;">GSW</div>
+        
+        <div style="padding: 100px 10%; text-align: center; background: var(--gray); margin-top: 60px;">
+            <h2 style="font-family:'Orbitron'; margin-bottom: 20px;">TAKAFUL ETHICAL TRADE</h2>
+            <p style="max-width: 700px; margin: 0 auto; color: #666; line-height: 1.8;">We believe in transparent pricing and fair labor. Every product from GosubWear follows Shariah-compliant business ethics, ensuring quality you can trust.</p>
         </div>
     </div>
 
     <div id="shop" class="page">
-        <h2 class="section-title">FULL COLLECTION</h2>
+        <h2 class="section-title">OUR CATALOG</h2>
         <div class="product-grid" id="mainShop"></div>
     </div>
 
     <div id="cart" class="page">
         <div style="padding: 100px 10%; text-align: center;">
             <h2 style="font-family:'Orbitron';">YOUR BAG</h2>
-            <div id="cartContent" style="margin: 30px 0;">Empty. Add items from the catalog.</div>
-            <button class="btn btn-black" onclick="showPage('shop')">SHOP CATALOG</button>
+            <p id="cartStatus" style="margin: 30px 0;">Your shopping bag is empty.</p>
+            <button class="btn btn-black" onclick="showPage('shop')">CONTINUE SHOPPING</button>
         </div>
     </div>
 
     <footer>
-        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
-            <div>
-                <img src="logo.png" style="height:50px; margin-bottom: 20px;">
-                <p style="color:#555; font-size: 0.8rem;">Global Luxury & Technical Apparel.</p>
-            </div>
-            <div style="display: flex; gap: 50px;">
-                <ul style="list-style:none; line-height: 2;">
-                    <li style="color:var(--orange); font-family:'Orbitron'; font-size: 0.7rem;">LEGAL</li>
-                    <li onclick="showPage('about')" style="cursor:pointer; font-size: 0.8rem;">Privacy Policy</li>
-                    <li onclick="showPage('about')" style="cursor:pointer; font-size: 0.8rem;">7-Day Returns</li>
-                </ul>
-            </div>
+        <div class="text-logo" style="color:white; justify-content: center; margin-bottom: 20px;">
+            GOSUB<span>WEAR</span>
         </div>
+        <p style="color: #444; font-size: 0.8rem;">&copy; 2026 GOSUBWEAR OMNI-RETAIL. NO FADE. NO LIMITS.</p>
     </footer>
 
     <script>
-        // Page Router
+        // Page Router Engine
         function showPage(id) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             window.scrollTo(0, 0);
         }
 
-        // Shop Engine
+        // Product Logic
         const products = [
-            { name: "Apex Sub-Jersey", price: "3,500", img: "https://images.unsplash.com/photo-1580087442629-1237f1ecfd14?q=80&w=400" },
-            { name: "Royal Silk Kurta", price: "9,200", img: "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?q=80&w=400" },
-            { name: "Cyber-Print Tee", price: "2,400", img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400" },
-            { name: "Heritage Waistcoat", price: "5,800", img: "https://images.unsplash.com/photo-1617114919297-3c8ddb01f599?q=80&w=400" }
+            { name: "Executive Kurta", price: "8,500", img: "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?q=80&w=400" },
+            { name: "Pro Sub-Jersey", price: "3,200", img: "https://images.unsplash.com/photo-1580087442629-1237f1ecfd14?q=80&w=400" },
+            { name: "Signature Shalwar", price: "5,500", img: "https://images.unsplash.com/photo-1617114919297-3c8ddb01f599?q=80&w=400" },
+            { name: "Luxe Lawn Suit", price: "12,000", img: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=400" }
         ];
 
-        let bagCount = 0;
+        let bag = 0;
         const shop = document.getElementById('mainShop');
         products.forEach(p => {
             shop.innerHTML += `
                 <div class="product-card">
                     <img src="${p.img}">
-                    <h3 style="font-family:'Orbitron'; font-size:0.9rem;">${p.name}</h3>
+                    <h3 style="font-family:'Orbitron'; font-size:0.9rem; margin-top:15px;">${p.name}</h3>
                     <p style="color:var(--orange); font-weight:900; margin:10px 0;">Rs. ${p.price}</p>
                     <button class="btn btn-black" style="width:100%;" onclick="addToBag()">ADD TO BAG</button>
                 </div>
@@ -193,9 +182,10 @@
         });
 
         function addToBag() {
-            bagCount++;
-            document.getElementById('bagCount').innerText = bagCount;
-            alert("Added to Bag!");
+            bag++;
+            document.getElementById('bagCount').innerText = bag;
+            document.getElementById('cartStatus').innerText = "You have " + bag + " items in your bag.";
+            alert("Item added to bag!");
         }
     </script>
 </body>
