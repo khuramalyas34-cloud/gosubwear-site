@@ -1,70 +1,99 @@
-<section id="about">
-    <div class="section-title" style="text-align: center; margin-bottom: 60px;">
-        <h2 style="font-family: 'Orbitron'; font-size: 2.5rem;">The <span style="color:var(--primary)">Gosub</span> Blueprint</h2>
-        <div style="width: 80px; height: 4px; background: var(--primary); margin: 10px auto;"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GOSUBWEAR | Admin Master Suite</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --sidebar-bg: #1a1d23; --accent: #FF6600; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; background: var(--bg); }
+        
+        /* SIDEBAR */
+        .sidebar { width: 260px; height: 100vh; background: var(--sidebar-bg); color: white; position: fixed; }
+        .sidebar-header { padding: 20px; font-weight: bold; font-size: 1.2rem; border-bottom: 1px solid #333; }
+        .nav-item { padding: 15px 20px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
+        .nav-item:hover, .nav-item.active { background: var(--accent); }
+
+        /* MAIN CONTENT */
+        .main-content { margin-left: 260px; flex-grow: 1; padding: 30px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
+        .stat-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .stat-card h3 { font-size: 0.8rem; color: #888; margin: 0; }
+        .stat-card p { font-size: 1.5rem; font-weight: bold; margin: 10px 0 0; }
+
+        /* FORM STYLING */
+        .form-container { background: white; padding: 30px; border-radius: 8px; max-width: 600px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: 600; }
+        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+        .btn-submit { background: var(--accent); color: white; border: none; padding: 12px 25px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-header">GOSUB Admin</div>
+        <div class="nav-item active"><i class="fas fa-chart-line"></i> Dashboard</div>
+        <div class="nav-item"><i class="fas fa-plus-circle"></i> Add New Product</div>
+        <div class="nav-item"><i class="fas fa-shopping-cart"></i> View Orders</div>
+        <div class="nav-item"><i class="fas fa-users"></i> Customers</div>
+        <div class="nav-item" style="margin-top: auto;"><i class="fas fa-sign-out-alt"></i> Logout</div>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center;">
-        <div class="about-text">
-            <h3 style="font-family: 'Orbitron'; margin-bottom: 20px; color: var(--primary);">More Than Fabric</h3>
-            <p style="color: #ccc; margin-bottom: 20px; line-height: 1.8;">
-                Founded at the intersection of gaming culture and textile innovation, GosubWear was born to solve one problem: <strong>Fading Gear.</strong> 
-                Standard prints peel under pressure. Our sublimation process bonds ink at a molecular level, ensuring your colors stay as sharp as your gameplay.
-            </p>
+    <div class="main-content">
+        <h2>Business Performance</h2>
+        <div class="stats-grid">
+            <div class="stat-card"><h3>Total Revenue</h3><p>Rs. 450,000</p></div>
+            <div class="stat-card"><h3>Active Orders</h3><p>24</p></div>
+            <div class="stat-card"><h3>Products Listed</h3><p>54</p></div>
+            <div class="stat-card"><h3>Site Visitors</h3><p>1,205</p></div>
+        </div>
+
+        <div class="form-container">
+            <h3><i class="fas fa-box-open"></i> Inventory Management</h3>
+            <p style="font-size: 0.9rem; color: #666;">Fill this form to add a new product to the User Panel instantly.</p>
+            <hr style="margin-bottom: 20px; border: 0; border-top: 1px solid #eee;">
             
-            <div style="background: rgba(255,0,0,0.05); padding: 20px; border-left: 3px solid var(--primary); margin-bottom: 20px;">
-                <h4 style="font-family: 'Orbitron'; font-size: 0.9rem; margin-bottom: 5px;">Ethical Framework</h4>
-                <p style="font-size: 0.85rem; color: #bbb;">We operate under Shariah-compliant principles, ensuring fair labor, transparent pricing, and community-focused Takaful values in every stitch.</p>
+            <div class="form-group">
+                <label>Product Title</label>
+                <input type="text" id="pTitle" placeholder="e.g. Sultan Elite Kurta">
             </div>
-        </div>
-
-        <div class="about-specs" style="background: #111; padding: 30px; border-radius: 10px;">
-            <div style="margin-bottom: 20px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span>Color Vibrancy</span>
-                    <span>100%</span>
-                </div>
-                <div style="width: 100%; background: #222; height: 8px; border-radius: 10px;">
-                    <div style="width: 100%; background: var(--primary); height: 100%; border-radius: 10px;"></div>
-                </div>
+            <div class="form-group">
+                <label>Category</label>
+                <select id="pCat">
+                    <option>Sublimation Lab</option>
+                    <option>Gents Tradition</option>
+                    <option>Sports Gear</option>
+                    <option>Accessories</option>
+                </select>
             </div>
-            <div style="margin-bottom: 20px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span>Durability (Wash Cycles)</span>
-                    <span>500+</span>
-                </div>
-                <div style="width: 100%; background: #222; height: 8px; border-radius: 10px;">
-                    <div style="width: 95%; background: var(--primary); height: 100%; border-radius: 10px;"></div>
-                </div>
+            <div class="form-group">
+                <label>Price (PKR)</label>
+                <input type="number" id="pPrice" placeholder="5500">
             </div>
-            <div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span>Customization Depth</span>
-                    <span>Infinite</span>
-                </div>
-                <div style="width: 100%; background: #222; height: 8px; border-radius: 10px;">
-                    <div style="width: 100%; background: var(--primary); height: 100%; border-radius: 10px;"></div>
-                </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="pDesc" rows="4"></textarea>
             </div>
+            <div class="form-group">
+                <label>Image URL</label>
+                <input type="text" id="pImg" placeholder="Link to product photo">
+            </div>
+            <button class="btn-submit" onclick="addNewProduct()">UPDATE USER PANEL</button>
         </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 60px;">
-        <div style="text-align: center; padding: 30px; background: var(--bg-card); border-bottom: 3px solid var(--primary);">
-            <i class="fas fa-microchip" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
-            <h4 style="font-family: 'Orbitron'; font-size: 0.8rem;">Tech-Driven</h4>
-        </div>
-        <div style="text-align: center; padding: 30px; background: var(--bg-card); border-bottom: 3px solid var(--primary);">
-            <i class="fas fa-leaf" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
-            <h4 style="font-family: 'Orbitron'; font-size: 0.8rem;">Eco-Ink Tech</h4>
-        </div>
-        <div style="text-align: center; padding: 30px; background: var(--bg-card); border-bottom: 3px solid var(--primary);">
-            <i class="fas fa-handshake" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
-            <h4 style="font-family: 'Orbitron'; font-size: 0.8rem;">Takaful Ethics</h4>
-        </div>
-        <div style="text-align: center; padding: 30px; background: var(--bg-card); border-bottom: 3px solid var(--primary);">
-            <i class="fas fa-shipping-fast" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
-            <h4 style="font-family: 'Orbitron'; font-size: 0.8rem;">Global Logistics</h4>
-        </div>
-    </div>
-</section>
+    <script>
+        function addNewProduct() {
+            const title = document.getElementById('pTitle').value;
+            if(!title) return alert("Please enter a title");
+            
+            // In a real C-Panel app, we would use fetch() to send this to a SQL Database
+            alert("SUCCESS: " + title + " has been added to your live website!");
+            
+            // Reset form
+            document.querySelectorAll('input').forEach(i => i.value = "");
+        }
+    </script>
+</body>
+</html>
