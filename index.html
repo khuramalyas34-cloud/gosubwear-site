@@ -24,11 +24,10 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Arial', sans-serif; background-color: var(--bg-canvas); color: #111; }
 
-        /* HEADER SECTION */
         header { background: var(--amazon-dark); color: white; position: sticky; top: 0; z-index: 2000; }
         .nav-main { display: flex; align-items: center; padding: 5px 15px; height: 60px; gap: 10px; }
         
-        .logo-box { font-family: 'Orbitron'; font-size: 1.4rem; font-weight: 900; border: 1px solid transparent; padding: 5px; cursor: pointer; }
+        .logo-box { font-family: 'Orbitron'; font-size: 1.4rem; font-weight: 900; border: 1px solid transparent; padding: 5px; cursor: pointer; text-decoration: none; color: white; }
         .logo-box:hover { border: 1px solid white; }
         .logo-box span { color: var(--gosub-orange); }
 
@@ -39,22 +38,22 @@
         .cart-box { position: relative; display: flex; align-items: center; padding: 5px 10px; border: 1px solid transparent; cursor: pointer; text-decoration: none; color: white; }
         .cart-count { position: absolute; top: 2px; left: 22px; color: #f08804; font-weight: bold; font-size: 16px; }
 
-        /* WHITE MENU SECTION */
         .nav-sub { background: white; color: #333; display: flex; padding: 0 15px; border-bottom: 1px solid #ddd; }
         .nav-sub a { padding: 12px 15px; cursor: pointer; color: #333; text-decoration: none; font-size: 14px; border-bottom: 3px solid transparent; }
         .nav-sub a.active { border-bottom: 3px solid var(--text-link); font-weight: 600; color: var(--text-link); }
 
-        /* PRODUCT GRID */
         .container { max-width: 1500px; margin: 20px auto; padding: 0 20px; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
-        .p-card { background: white; padding: 20px; border-radius: 4px; border: 1px solid #eee; transition: 0.3s; }
-        .p-img { height: 180px; background: #f9f9f9; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 3rem; color: #ddd; }
+        .p-card { background: white; padding: 20px; border-radius: 4px; border: 1px solid #eee; transition: 0.3s; display: flex; flex-direction: column; }
+        .p-img-container { height: 200px; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 10px; background: #fff; }
+        .p-img-container img { max-height: 100%; max-width: 100%; object-fit: contain; }
         
-        /* YELLOW BUTTON */
-        .buy-btn { background: var(--amazon-yellow); border: 1px solid #FCD200; width: 100%; padding: 10px; border-radius: 20px; margin-top: 15px; font-weight: 600; cursor: pointer; }
+        .buy-btn { background: var(--amazon-yellow); border: 1px solid #FCD200; width: 100%; padding: 10px; border-radius: 20px; margin-top: auto; font-weight: 600; cursor: pointer; }
         .buy-btn:hover { background: var(--amazon-yellow-hover); }
 
-        /* FOOTER */
+        #checkoutPage { display: none; background: white; min-height: 60vh; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .checkout-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; }
+
         footer { background: var(--amazon-light); color: #DDD; padding: 40px 20px; text-align: center; margin-top: 50px; }
     </style>
 </head>
@@ -64,12 +63,12 @@
 
     <header>
         <div class="nav-main">
-            <div class="logo-box" onclick="location.reload()">GOSUB<span>WEAR</span></div>
+            <div class="logo-box" onclick="showPage('home')">GOSUB<span>WEAR</span></div>
             <div class="nav-search">
                 <input type="text" class="search-input" placeholder="Search GOSUBWEAR">
                 <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
-            <div class="cart-box">
+            <div class="cart-box" onclick="showPage('checkout')">
                 <span class="cart-count" id="cartCount">0</span>
                 <i class="fas fa-shopping-cart" style="font-size: 1.8rem;"></i>
             </div>
@@ -82,10 +81,20 @@
         </div>
     </header>
 
-    <main class="container">
+    <main id="homePage" class="container">
         <h2 id="catLabel" style="margin-bottom: 20px;">All Products (105)</h2>
         <div class="product-grid" id="productGrid"></div>
     </main>
+
+    <div id="checkoutPage" class="container">
+        <h2>Your Shopping Bag</h2>
+        <hr style="margin: 20px 0;">
+        <div id="cartItemsList"></div>
+        <div style="margin-top: 20px; text-align: right;">
+            <h3>Total: Rs. <span id="totalDisplay">0</span></h3>
+            <button class="buy-btn" style="width: 200px; margin-top: 20px;" onclick="alert('Order Placed!')">Checkout Now</button>
+        </div>
+    </div>
 
     <footer>
         <p>© 2026 GOSUBWEAR - Takaful Program Protected</p>
@@ -93,25 +102,24 @@
 
     <script>
         const categories = ["T-Shirts", "Kids Clothes", "Elite Gear"];
+        // Real Image URLs
+        const imgLinks = {
+            "T-Shirts": "http://googleusercontent.com/image_collection/image_retrieval/18361583509117132435_0",
+            "Kids Clothes": "http://googleusercontent.com/image_collection/image_retrieval/8812316806786778747_0",
+            "Elite Gear": "http://googleusercontent.com/image_collection/image_retrieval/7870946826171413373_0"
+        };
+        
         const products = [];
-        let cartCount = 0;
+        let cart = [];
 
-        // Sound Function
-        function playAddSound() {
-            const sound = document.getElementById('addSound');
-            sound.currentTime = 0; // Reset to start
-            sound.play().catch(e => console.log("Audio needs user interaction first."));
-        }
-
-        // Generate 105 products
         for(let i=1; i<=105; i++) {
             const cat = categories[i % categories.length];
             products.push({
                 id: i,
-                name: `${cat} Series v.${i}`,
+                name: `${cat} Premium Edition #${i}`,
                 category: cat,
                 price: 2500 + (i * 5),
-                icon: cat === "Kids Clothes" ? "fa-child" : "fa-tshirt"
+                image: imgLinks[cat]
             });
         }
 
@@ -119,27 +127,43 @@
             const grid = document.getElementById('productGrid');
             grid.innerHTML = list.map(p => `
                 <div class="p-card">
-                    <div class="p-img"><i class="fas ${p.icon}"></i></div>
-                    <div style="font-size:14px; margin:10px 0;">${p.name}</div>
-                    <div style="color:var(--price-red); font-weight:bold;">Rs. ${p.price}</div>
-                    <button class="buy-btn" onclick="addToBag()">Add to Bag</button>
+                    <div class="p-img-container"><img src="${p.image}" alt="${p.name}"></div>
+                    <div style="font-size:14px; margin:10px 0; color:var(--text-link); font-weight:500;">${p.name}</div>
+                    <div style="color:var(--price-red); font-weight:bold; font-size: 1.2rem; margin-bottom: 10px;">Rs. ${p.price}</div>
+                    <button class="buy-btn" onclick="addToBag(${p.id})">Add to Bag</button>
                 </div>
             `).join('');
         }
 
-        function addToBag() {
-            cartCount++;
-            document.getElementById('cartCount').innerText = cartCount;
-            playAddSound(); // Play the voice/sound
+        function addToBag(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            document.getElementById('cartCount').innerText = cart.length;
             
-            // Visual feedback
+            const sound = document.getElementById('addSound');
+            sound.currentTime = 0;
+            sound.play().catch(() => {});
+
             const btn = event.target;
             btn.innerText = "✓ Added";
-            btn.style.background = "#e7e9ec";
-            setTimeout(() => {
-                btn.innerText = "Add to Bag";
-                btn.style.background = "var(--amazon-yellow)";
-            }, 600);
+            setTimeout(() => { btn.innerText = "Add to Bag"; }, 600);
+        }
+
+        function showPage(page) {
+            if(page === 'checkout') {
+                document.getElementById('homePage').style.display = 'none';
+                document.getElementById('checkoutPage').style.display = 'block';
+                const list = document.getElementById('cartItemsList');
+                let total = 0;
+                list.innerHTML = cart.length ? cart.map(item => {
+                    total += item.price;
+                    return `<div class="checkout-item"><span>${item.name}</span><b>Rs. ${item.price}</b></div>`;
+                }).join('') : "<p>Your bag is empty.</p>";
+                document.getElementById('totalDisplay').innerText = total;
+            } else {
+                document.getElementById('homePage').style.display = 'block';
+                document.getElementById('checkoutPage').style.display = 'none';
+            }
         }
 
         function menuSelect(el, cat) {
@@ -148,6 +172,7 @@
             const filtered = cat === 'All' ? products : products.filter(p => p.category === cat);
             document.getElementById('catLabel').innerText = `${cat} (${filtered.length})`;
             renderProducts(filtered);
+            showPage('home');
         }
 
         renderProducts(products);
