@@ -12,7 +12,8 @@
         :root {
             --amazon-dark: #131921;
             --gosub-orange: #FF6600;
-            --action-yellow: #febd69;
+            --action-yellow: #FFD814; /* Updated to original Amazon Yellow */
+            --action-yellow-hover: #F7CA00;
             --bg-canvas: #eaeded;
             --text-link: #007185;
             --price-alert: #B12704;
@@ -23,65 +24,61 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--bg-canvas); color: #111; }
 
-        /* MAIN TOP HEADER */
         header { background: var(--amazon-dark); color: var(--white); position: sticky; top: 0; z-index: 2000; }
         .nav-main { display: flex; align-items: center; padding: 5px 20px; height: 60px; gap: 15px; }
-        
-        .logo-box { font-family: 'Orbitron'; font-size: 1.5rem; font-weight: 900; cursor: pointer; padding: 5px; border: 1px solid transparent; }
+        .logo-box { font-family: 'Orbitron'; font-size: 1.5rem; font-weight: 900; cursor: pointer; }
         .logo-box span { color: var(--gosub-orange); }
 
-        .nav-search { flex-grow: 1; display: flex; height: 40px; border-radius: 4px; overflow: hidden; border: 2px solid transparent; }
-        .nav-search:focus-within { border-color: var(--gosub-orange); }
-        .search-cat { background: #f3f3f3; border: none; padding: 0 15px; font-size: 12px; border-right: 1px solid #ccc; cursor: pointer; }
-        .search-input { flex-grow: 1; border: none; padding: 0 15px; outline: none; font-size: 14px; }
-        .search-btn { background: var(--action-yellow); width: 45px; border: none; cursor: pointer; font-size: 1.2rem; color: #333; }
+        .nav-search { flex-grow: 1; display: flex; height: 40px; border-radius: 4px; overflow: hidden; }
+        .search-cat { background: #f3f3f3; border: none; padding: 0 15px; font-size: 12px; border-right: 1px solid #ccc; }
+        .search-input { flex-grow: 1; border: none; padding: 0 15px; outline: none; }
+        .search-btn { background: #febd69; width: 45px; border: none; cursor: pointer; font-size: 1.2rem; }
 
-        /* --- NEW WHITE SUB-MENU DESIGN --- */
+        /* WHITE MENU SECTION */
         .nav-sub { 
-            background: var(--white); /* Changed from dark to white */
+            background: var(--white); 
             color: #333; 
             padding: 0 20px; 
             display: flex; 
             gap: 5px; 
             font-size: 14px; 
-            align-items: center;
             border-bottom: 1px solid var(--border-grey);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
+        .nav-sub a { padding: 12px 15px; cursor: pointer; text-decoration: none; color: #333; border-bottom: 3px solid transparent; }
+        .nav-sub a.active { border-bottom: 3px solid var(--text-link); font-weight: 600; color: var(--text-link); }
 
-        .nav-sub a { 
-            padding: 12px 15px; 
-            cursor: pointer; 
-            color: #333; 
-            text-decoration: none;
-            display: inline-block;
-            border-bottom: 3px solid transparent; /* Hidden border for click effect */
-            transition: all 0.2s ease;
-        }
-
-        .nav-sub a:hover { 
-            background: #f0f2f2;
-            color: var(--text-link);
-        }
-
-        /* ACTIVE BOX EFFECT: When clicked */
-        .nav-sub a.active { 
-            background: var(--white);
-            border-bottom: 3px solid var(--text-link); /* Blue bottom border like high-end sites */
-            font-weight: 600;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.1); /* Subtle inner box shadow */
-            color: var(--text-link);
-        }
-
-        /* PRODUCT GRID */
+        /* PRODUCT STYLES */
         .container { max-width: 1500px; margin: 20px auto; padding: 0 20px; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
-        .p-card { background: var(--white); padding: 20px; border-radius: 4px; border: 1px solid #eee; transition: 0.3s ease; }
-        .p-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .p-card { background: var(--white); padding: 20px; border-radius: 4px; border: 1px solid #eee; }
         
-        .p-img-area { height: 180px; background: #f9f9f9; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
-        .p-price { color: var(--price-alert); font-size: 1.5rem; font-weight: bold; margin-top: 10px; }
-        .buy-btn { background: var(--action-yellow); border: 1px solid #a88734; width: 100%; padding: 8px; border-radius: 20px; margin-top: 15px; font-weight: 600; cursor: pointer; }
+        /* UPDATED YELLOW BUTTON */
+        .buy-btn { 
+            background: var(--action-yellow); 
+            border: 1px solid #FCD200; 
+            box-shadow: 0 2px 5px rgba(213,217,217,.5);
+            width: 100%; 
+            padding: 8px; 
+            border-radius: 20px; 
+            margin-top: 15px; 
+            font-weight: 500; 
+            cursor: pointer; 
+        }
+        .buy-btn:hover { background: var(--action-yellow-hover); }
+
+        /* CHECKOUT PAGE OVERLAY */
+        #checkoutPage {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: white;
+            z-index: 3000;
+            padding: 40px;
+            overflow-y: auto;
+        }
+        .checkout-container { max-width: 800px; margin: 0 auto; }
+        .checkout-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .close-checkout { cursor: pointer; color: var(--text-link); font-weight: bold; margin-bottom: 20px; display: inline-block; }
 
         footer { background: var(--amazon-dark); color: #ddd; padding: 40px 20px; text-align: center; margin-top: 50px; }
     </style>
@@ -90,91 +87,114 @@
 
     <header>
         <div class="nav-main">
-            <div class="logo-box" onclick="filterCategory('All')">GOSUB<span>WEAR</span></div>
+            <div class="logo-box" onclick="showHome()">GOSUB<span>WEAR</span></div>
             <div class="nav-search">
-                <select class="search-cat" id="searchCat" onchange="filterCategory(this.value)">
-                    <option value="All">All Categories</option>
-                    <option value="T-Shirts">T-Shirts</option>
-                    <option value="Kids Clothes">Kids Clothes</option>
-                    <option value="Elite Gear">Elite Gear</option>
-                </select>
-                <input type="text" class="search-input" placeholder="Search across 105 products...">
+                <select class="search-cat"><option>All</option></select>
+                <input type="text" class="search-input" placeholder="Search GOSUBWEAR">
                 <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
-            <div style="font-size: 12px; padding: 10px;">Cart: <b id="cartCount">0</b></div>
+            <div class="nav-item" onclick="showCheckout()" style="cursor:pointer; padding: 10px;">
+                <i class="fas fa-shopping-cart"></i> Cart: <b id="cartCount">0</b>
+            </div>
         </div>
-
         <div class="nav-sub" id="mainMenu">
-            <a onclick="menuSelect(this, 'All')" class="active"><i class="fas fa-bars"></i> All</a>
+            <a onclick="menuSelect(this, 'All')" class="active">All</a>
             <a onclick="menuSelect(this, 'T-Shirts')">T-Shirts</a>
             <a onclick="menuSelect(this, 'Kids Clothes')">Kids Clothes</a>
             <a onclick="menuSelect(this, 'Elite Gear')">Elite Gear</a>
-            <a onclick="menuSelect(this, 'Deals')">Today's Deals</a>
         </div>
     </header>
 
-    <div class="container">
-        <h2 id="catLabel" style="margin-bottom: 20px; font-weight: 400;">All Products</h2>
+    <div id="homePage" class="container">
+        <h2 id="catLabel" style="margin-bottom:20px;">All Products (105)</h2>
         <div class="product-grid" id="productGrid"></div>
     </div>
 
+    <div id="checkoutPage">
+        <div class="checkout-container">
+            <span class="close-checkout" onclick="showHome()">← Back to Shopping</span>
+            <h1>Review Your Order</h1>
+            <div id="cartItems" style="margin-top: 20px;">
+                </div>
+            <div style="margin-top:30px; border-top: 2px solid #000; padding-top: 20px;">
+                <h3>Total Amount: Rs. <span id="totalPrice">0</span></h3>
+                <p style="color: green; font-size: 14px; margin-top: 5px;">Includes Shariah-Compliant Takaful Protection</p>
+                <button class="buy-btn" style="width: 200px; margin-top: 20px;" onclick="alert('Order Placed Successfully!')">Place Your Order</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        © 2026 GOSUBWEAR - Premium Sublimation Marketplace
+        <p>© 2026 GOSUBWEAR - Takaful Program Protected (Shariah Ke Mutabiq Beema)</p>
     </footer>
 
     <script>
         const categories = ["T-Shirts", "Kids Clothes", "Elite Gear"];
         const allProducts = [];
+        let cart = [];
 
         // Generate 105 Products
         for (let i = 1; i <= 105; i++) {
             const cat = categories[i % categories.length];
             allProducts.push({
                 id: i,
-                name: `${cat} Premium Series - Item ${i}`,
+                name: `${cat} High Performance - Edition ${i}`,
                 category: cat,
-                price: 1500 + (i * 10),
+                price: 2500 + (i * 20),
                 icon: cat === "Kids Clothes" ? "fa-child" : "fa-tshirt"
             });
-        }
-
-        // Function to handle the "CLICK BOX" effect on menu
-        function menuSelect(element, cat) {
-            // Remove 'active' class from all links
-            document.querySelectorAll('#mainMenu a').forEach(link => {
-                link.classList.remove('active');
-            });
-            // Add 'active' class to clicked link
-            element.classList.add('active');
-            
-            filterCategory(cat);
-        }
-
-        function filterCategory(cat) {
-            const filtered = cat === 'All' || cat === 'Deals' ? allProducts : allProducts.filter(p => p.category === cat);
-            document.getElementById('catLabel').innerText = `${cat} (${filtered.length})`;
-            displayProducts(filtered);
         }
 
         function displayProducts(products) {
             const grid = document.getElementById('productGrid');
             grid.innerHTML = products.map(p => `
                 <div class="p-card">
-                    <div class="p-img-area"><i class="fas ${p.icon}" style="font-size:3rem; color:#ddd;"></i></div>
-                    <div style="margin:10px 0; font-size:14px; color:var(--text-link);">${p.name}</div>
-                    <div class="p-price">Rs. ${p.price}</div>
-                    <button class="buy-btn" onclick="addOne()">Add to Cart</button>
+                    <div style="height:150px; background:#f9f9f9; display:flex; align-items:center; justify-content:center;">
+                        <i class="fas ${p.icon}" style="font-size:3rem; color:#ccc;"></i>
+                    </div>
+                    <div style="margin:10px 0; font-size:14px; color:var(--text-link); height:40px; overflow:hidden;">${p.name}</div>
+                    <div style="color:var(--price-alert); font-weight:bold;">Rs. ${p.price}</div>
+                    <button class="buy-btn" onclick="addToBag(${p.id})">Add to Bag</button>
                 </div>
             `).join('');
         }
 
-        let cart = 0;
-        function addOne() {
-            cart++;
-            document.getElementById('cartCount').innerText = cart;
+        function addToBag(id) {
+            const product = allProducts.find(p => p.id === id);
+            cart.push(product);
+            document.getElementById('cartCount').innerText = cart.length;
         }
 
-        // Load initially
+        function showCheckout() {
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('checkoutPage').style.display = 'block';
+            const cartDiv = document.getElementById('cartItems');
+            let total = 0;
+            
+            if(cart.length === 0) {
+                cartDiv.innerHTML = "<p>Your bag is empty.</p>";
+            } else {
+                cartDiv.innerHTML = cart.map(item => {
+                    total += item.price;
+                    return `<div class="checkout-item"><span>${item.name}</span><b>Rs. ${item.price}</b></div>`;
+                }).join('');
+            }
+            document.getElementById('totalPrice').innerText = total;
+        }
+
+        function showHome() {
+            document.getElementById('homePage').style.display = 'block';
+            document.getElementById('checkoutPage').style.display = 'none';
+        }
+
+        function menuSelect(el, cat) {
+            document.querySelectorAll('#mainMenu a').forEach(a => a.classList.remove('active'));
+            el.classList.add('active');
+            const filtered = cat === 'All' ? allProducts : allProducts.filter(p => p.category === cat);
+            document.getElementById('catLabel').innerText = `${cat} (${filtered.length})`;
+            displayProducts(filtered);
+        }
+
         displayProducts(allProducts);
     </script>
 </body>
