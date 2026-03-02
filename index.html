@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GOSUBWEAR | Metro-Style Clothing Deals</title>
+    <title>GOSUBWEAR | Delivery Details</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,15 +15,14 @@
             --gosub-orange: #FF6600;
             --amazon-yellow: #FFD814;
             --bg-canvas: #f4f4f4;
-            --price-red: #e41e26; /* Metro Red */
-            --old-price: #999;
+            --price-red: #e41e26;
             --metro-blue: #003b95;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { font-family: 'Arial', sans-serif; background-color: var(--bg-canvas); color: #333; }
 
-        /* HEADER (AMAZON STYLE) */
+        /* HEADER & NAV */
         header { background: var(--amazon-dark); color: white; position: sticky; top: 0; z-index: 2000; width: 100%; }
         .nav-main { display: flex; align-items: center; padding: 5px 10px; height: 60px; justify-content: space-between; }
         .logo-box { font-family: 'Orbitron'; font-size: 1.2rem; font-weight: 900; cursor: pointer; color: white; text-decoration: none; }
@@ -38,60 +37,36 @@
         .nav-sub a { padding: 12px 15px; color: #333; text-decoration: none; font-size: 13px; font-weight: 600; border-bottom: 3px solid transparent; }
         .nav-sub a.active { border-bottom: 3px solid var(--metro-blue); color: var(--metro-blue); }
 
-        /* METRO-STYLE PRODUCT GRID */
-        .container { width: 100%; max-width: 1400px; margin: 15px auto; padding: 0 10px; }
+        /* GRID & CARDS */
+        .container { width: 100%; max-width: 1200px; margin: 15px auto; padding: 0 10px; }
         .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        
         @media (min-width: 1024px) { .product-grid { grid-template-columns: repeat(5, 1fr); } }
 
-        .p-card { 
-            background: white; 
-            padding: 15px; 
-            border-radius: 8px; 
-            border: 1px solid #eee; 
-            display: flex; 
-            flex-direction: column; 
-            position: relative;
-            transition: 0.2s;
-        }
-        .p-card:hover { box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        
-        .promo-badge {
-            position: absolute; top: 10px; left: 10px;
-            background: var(--price-red); color: white;
-            font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;
-        }
-
-        .p-img-container { height: 160px; width: 100%; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+        .p-card { background: white; padding: 15px; border-radius: 8px; border: 1px solid #eee; display: flex; flex-direction: column; }
+        .p-img-container { height: 160px; width: 100%; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; background: #fff; }
         .p-img-container img { max-height: 100%; max-width: 100%; object-fit: contain; }
+        .p-title { font-size: 12px; font-weight: 400; color: #444; margin-bottom: 8px; height: 32px; overflow: hidden; }
+        .current-price { color: var(--price-red); font-weight: 700; font-size: 1.1rem; }
+        .buy-btn { background: var(--amazon-yellow); border: 1px solid #FCD200; width: 100%; padding: 10px; border-radius: 4px; font-weight: 600; font-size: 13px; cursor: pointer; margin-top: auto; }
+
+        /* CHECKOUT FORM STYLING */
+        #checkoutPage { display: none; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .checkout-layout { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        @media (min-width: 768px) { .checkout-layout { grid-template-columns: 1.5fr 1fr; } }
         
-        .p-title { font-size: 13px; font-weight: 400; color: #444; margin-bottom: 8px; line-height: 1.3; height: 34px; overflow: hidden; }
+        .form-section h3 { margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+        .input-group input, .input-group select, .input-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
         
-        .price-container { margin-bottom: 10px; }
-        .current-price { color: var(--price-red); font-weight: 700; font-size: 1.1rem; display: block; }
-        .old-price { color: var(--old-price); text-decoration: line-through; font-size: 12px; }
+        .order-summary { background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #eee; }
+        .summary-item { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
+        .total-row { border-top: 2px solid #ddd; padding-top: 15px; margin-top: 15px; font-weight: bold; font-size: 18px; }
 
-        .buy-btn { 
-            background: var(--amazon-yellow); 
-            border: 1px solid #FCD200; 
-            width: 100%; 
-            padding: 10px; 
-            border-radius: 4px; /* More square like Metro */
-            font-weight: 600; 
-            font-size: 13px; 
-            cursor: pointer; 
-            margin-top: auto;
-        }
-
-        /* CHECKOUT PAGE */
-        #checkoutPage { display: none; background: white; padding: 20px; min-height: 70vh; }
-
-        /* FOOTER (RESTORED AMAZON STYLE) */
-        .back-to-top { background: #37475a; color: white; text-align: center; padding: 15px; font-size: 13px; cursor: pointer; }
-        footer { background: var(--amazon-light); color: #DDD; }
-        .footer-top { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); padding: 40px 20px; gap: 20px; }
-        .footer-col a { display: block; color: #DDD; text-decoration: none; font-size: 13px; margin-bottom: 8px; }
-        .footer-bottom { background: var(--amazon-dark); padding: 40px 20px; text-align: center; font-size: 12px; }
+        /* FOOTER */
+        footer { background: var(--amazon-light); color: #DDD; margin-top: 50px; }
+        .footer-top { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); padding: 40px 20px; }
+        .footer-bottom { background: var(--amazon-dark); padding: 30px; text-align: center; font-size: 12px; }
     </style>
 </head>
 <body>
@@ -102,7 +77,7 @@
         <div class="nav-main">
             <div class="logo-box" onclick="showPage('home')">GOSUB<span>WEAR</span></div>
             <div class="nav-search">
-                <input type="text" class="search-input" placeholder="Search for clothing deals...">
+                <input type="text" class="search-input" placeholder="Search products...">
                 <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
             <div class="cart-box" onclick="showPage('checkout')">
@@ -114,39 +89,75 @@
             <a onclick="menuSelect(this, 'All')" class="active">PROMOTIONS</a>
             <a onclick="menuSelect(this, 'T-Shirts')">T-SHIRTS</a>
             <a onclick="menuSelect(this, 'Kids Clothes')">KIDS WEAR</a>
-            <a onclick="menuSelect(this, 'Elite Gear')">ELITE PERFORMANCE</a>
+            <a onclick="menuSelect(this, 'Elite Gear')">ELITE GEAR</a>
         </nav>
     </header>
 
     <main id="homePage" class="container">
-        <div style="background: white; padding: 10px; margin-bottom: 15px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
-            <h4 id="catLabel">Metro Post Clothing (105 Products)</h4>
-            <span style="font-size: 12px; color: #666;">Filter <i class="fas fa-filter"></i></span>
-        </div>
+        <h4 id="catLabel" style="margin-bottom: 15px;">All Promotions (105)</h4>
         <div class="product-grid" id="productGrid"></div>
     </main>
 
     <div id="checkoutPage" class="container">
-        <h3>Your Saved Cart</h3>
-        <hr style="margin: 15px 0;">
-        <div id="cartItemsList"></div>
-        <div style="margin-top: 20px; text-align: right;">
-            <h4>Total: Rs. <span id="totalDisplay">0</span></h4>
-            <p style="color: green; font-size: 11px;">Shariah Compliant Takaful Protection Applied.</p>
-            <button class="buy-btn" style="width: 200px; height: 50px; font-size: 16px; margin-top: 15px;" onclick="alert('Order Successful!')">Order Now</button>
+        <div class="checkout-layout">
+            
+            <div class="form-section">
+                <h3>1. Delivery Address</h3>
+                <form id="deliveryForm">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" id="custName" placeholder="e.g. Ahmed Ali" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Mobile Number</label>
+                        <input type="tel" id="custPhone" placeholder="03xx-xxxxxxx" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Full Address</label>
+                        <textarea id="custAddress" rows="3" placeholder="House No, Street, Area Name..." required></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>City</label>
+                        <select id="custCity">
+                            <option>Lahore</option>
+                            <option>Karachi</option>
+                            <option>Islamabad</option>
+                            <option>Faisalabad</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    
+                    <h3 style="margin-top:30px;">2. Payment Method</h3>
+                    <div class="input-group" style="background: #fff8e1; padding: 15px; border: 1px solid #ffe082;">
+                        <input type="radio" name="pay" id="cod" checked style="width:auto; margin-right:10px;">
+                        <label style="display:inline;" for="cod">Cash on Delivery (COD)</label>
+                        <p style="font-size:11px; color:#666; margin-left:25px;">Pay when you receive the parcel.</p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <div id="cartItemsList"></div>
+                <div class="total-row">
+                    <span>Total:</span>
+                    <span>Rs. <span id="totalDisplay">0</span></span>
+                </div>
+                <p style="color: green; font-size: 11px; margin: 15px 0;">✓ Takaful Plan 5 (Shariah Compliant) Applied</p>
+                <button class="buy-btn" style="height:50px; font-size:16px;" onclick="placeOrder()">PLACE ORDER NOW</button>
+                <button class="buy-btn" style="background:#eee; border:1px solid #ccc; margin-top:10px;" onclick="showPage('home')">Back to Shop</button>
+            </div>
+
         </div>
     </div>
 
-    <div class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">Back to top</div>
     <footer>
         <div class="footer-top">
-            <div class="footer-col"><h4>Get to Know Us</h4><a href="#">About Us</a><a href="#">Takaful Plan</a></div>
-            <div class="footer-col"><h4>Make Money</h4><a href="#">Sell on GOSUB</a><a href="#">Affiliates</a></div>
-            <div class="footer-col"><h4>Payment</h4><a href="#">Reload Balance</a><a href="#">Store Location</a></div>
-            <div class="footer-col"><h4>Help</h4><a href="#">Your Account</a><a href="#">Help Center</a></div>
+            <div class="footer-col"><h4>Get to Know Us</h4><a href="#">About</a><a href="#">Careers</a></div>
+            <div class="footer-col"><h4>Let Us Help You</h4><a href="#">Your Account</a><a href="#">Takaful Program</a></div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026, GOSUBWEAR.com - Inspired by Metro Online Style</p>
+            <p>© 2026 GOSUBWEAR | Shariah Compliant Marketplace</p>
         </div>
     </footer>
 
@@ -162,27 +173,15 @@
 
         for(let i=1; i<=105; i++) {
             const cat = categories[i % categories.length];
-            const basePrice = 2000 + (i * 10);
-            products.push({ 
-                id: i, 
-                name: `GOSUB ${cat} - Premium Sublimation Model ${i}`, 
-                category: cat, 
-                price: basePrice, 
-                oldPrice: basePrice + 500,
-                image: imgLinks[cat] 
-            });
+            products.push({ id: i, name: `GOSUB ${cat} Model ${i}`, category: cat, price: 2000 + (i * 10), image: imgLinks[cat] });
         }
 
         function renderProducts(list) {
             document.getElementById('productGrid').innerHTML = list.map(p => `
                 <div class="p-card">
-                    <span class="promo-badge">SALE</span>
                     <div class="p-img-container"><img src="${p.image}" alt="${p.name}"></div>
                     <div class="p-title">${p.name}</div>
-                    <div class="price-container">
-                        <span class="current-price">Rs. ${p.price.toLocaleString()}</span>
-                        <span class="old-price">Rs. ${p.oldPrice.toLocaleString()}</span>
-                    </div>
+                    <div class="current-price">Rs. ${p.price.toLocaleString()}</div>
                     <button class="buy-btn" onclick="addToBag(${p.id})">Add to Bag</button>
                 </div>
             `).join('');
@@ -194,32 +193,47 @@
             document.getElementById('addSound').play().catch(()=>{});
             const btn = event.target;
             btn.innerText = "✓ Added";
-            btn.style.background = "#fff";
-            setTimeout(() => { btn.innerText = "Add to Bag"; btn.style.background = "var(--amazon-yellow)"; }, 600);
+            setTimeout(() => { btn.innerText = "Add to Bag"; }, 600);
         }
 
         function showPage(page) {
+            window.scrollTo(0,0);
             if(page === 'checkout') {
                 document.getElementById('homePage').style.display = 'none';
                 document.getElementById('checkoutPage').style.display = 'block';
                 let total = 0;
                 document.getElementById('cartItemsList').innerHTML = cart.map(item => {
                     total += item.price;
-                    return `<div style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #eee;"><span>${item.name}</span><b>Rs. ${item.price.toLocaleString()}</b></div>`;
-                }).join('') || "Your bag is empty.";
+                    return `<div class="summary-item"><span>${item.name}</span><b>Rs. ${item.price.toLocaleString()}</b></div>`;
+                }).join('') || "Bag is empty";
                 document.getElementById('totalDisplay').innerText = total.toLocaleString();
             } else {
                 document.getElementById('homePage').style.display = 'block';
                 document.getElementById('checkoutPage').style.display = 'none';
             }
-            window.scrollTo(0,0);
+        }
+
+        function placeOrder() {
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const addr = document.getElementById('custAddress').value;
+
+            if(!name || !phone || !addr) {
+                alert("Please fill in your Delivery Details (Name, Phone, and Address)!");
+                return;
+            }
+
+            alert(`Order Placed Successfully!\n\nDeliver to: ${name}\nPhone: ${phone}\nAddress: ${addr}\n\nThank you for shopping with GOSUBWEAR!`);
+            cart = [];
+            document.getElementById('cartCount').innerText = "0";
+            showPage('home');
         }
 
         function menuSelect(el, cat) {
             document.querySelectorAll('#mainMenu a').forEach(a => a.classList.remove('active'));
             el.classList.add('active');
             const filtered = cat === 'All' ? products : products.filter(p => p.category === cat);
-            document.getElementById('catLabel').innerText = `${cat} Selection (${filtered.length} Products)`;
+            document.getElementById('catLabel').innerText = `${cat} (${filtered.length})`;
             renderProducts(filtered);
             showPage('home');
         }
