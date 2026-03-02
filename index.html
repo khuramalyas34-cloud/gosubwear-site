@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GOSUBWEAR | Mobile Premium Shop</title>
+    <title>GOSUBWEAR | Premium Shop</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,49 +24,52 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { font-family: 'Arial', sans-serif; background-color: var(--bg-canvas); color: #111; overflow-x: hidden; }
 
+        /* HEADER */
         header { background: var(--amazon-dark); color: white; position: sticky; top: 0; z-index: 2000; width: 100%; }
         .nav-main { display: flex; align-items: center; padding: 5px 10px; height: 60px; justify-content: space-between; }
         .logo-box { font-family: 'Orbitron'; font-size: 1.2rem; font-weight: 900; cursor: pointer; color: white; text-decoration: none; }
         .logo-box span { color: var(--gosub-orange); }
-
         .nav-search { flex-grow: 1; display: flex; height: 35px; margin: 0 8px; border-radius: 4px; overflow: hidden; }
         .search-input { flex-grow: 1; border: none; padding: 0 8px; outline: none; font-size: 14px; width: 50px; }
         .search-btn { background: #febd69; width: 40px; border: none; cursor: pointer; color: #333; }
-
         .cart-box { position: relative; padding: 5px; cursor: pointer; }
-        .cart-count { 
-            position: absolute; top: -2px; right: -2px; 
-            background: var(--gosub-orange); color: white; 
-            font-weight: bold; font-size: 11px; 
-            min-width: 18px; height: 18px; 
-            border-radius: 50%; display: flex; 
-            align-items: center; justify-content: center; 
-        }
+        .cart-count { position: absolute; top: -2px; right: -2px; background: var(--gosub-orange); color: white; font-weight: bold; font-size: 11px; min-width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-        .nav-sub { background: white; display: flex; overflow-x: auto; white-space: nowrap; border-bottom: 1px solid #ddd; -webkit-overflow-scrolling: touch; }
-        .nav-sub::-webkit-scrollbar { display: none; }
+        .nav-sub { background: white; display: flex; overflow-x: auto; white-space: nowrap; border-bottom: 1px solid #ddd; }
         .nav-sub a { padding: 12px 15px; color: #333; text-decoration: none; font-size: 13px; display: inline-block; border-bottom: 3px solid transparent; }
         .nav-sub a.active { border-bottom: 3px solid var(--text-link); color: var(--text-link); font-weight: 600; }
 
+        /* GRID */
         .container { width: 100%; max-width: 1500px; margin: 10px auto; padding: 0 10px; }
         .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-
-        @media (min-width: 768px) { .product-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (min-width: 1024px) { .product-grid { grid-template-columns: repeat(5, 1fr); } }
 
         .p-card { background: white; padding: 10px; border-radius: 4px; border: 1px solid #eee; display: flex; flex-direction: column; }
         .p-img-container { height: 160px; width: 100%; display: flex; align-items: center; justify-content: center; background: #fff; overflow: hidden; }
         .p-img-container img { max-height: 100%; max-width: 100%; object-fit: contain; }
-        
         .p-title { font-size: 12px; margin: 8px 0; color: var(--text-link); height: 32px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
         .p-price { color: var(--price-red); font-weight: bold; font-size: 1rem; margin-bottom: 8px; }
-
         .buy-btn { background: var(--amazon-yellow); border: 1px solid #FCD200; width: 100%; padding: 8px; border-radius: 20px; font-weight: 600; font-size: 12px; cursor: pointer; }
 
-        #checkoutPage { display: none; background: white; padding: 15px; min-height: 80vh; }
-        .checkout-item { display: flex; justify-content: space-between; font-size: 13px; padding: 10px 0; border-bottom: 1px solid #eee; }
+        /* FULL AMAZON FOOTER STYLING */
+        .back-to-top { background: #37475a; color: white; text-align: center; padding: 15px; font-size: 13px; cursor: pointer; }
+        footer { background: var(--amazon-light); color: #DDD; }
+        .footer-top { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); padding: 40px 20px; gap: 20px; border-bottom: 1px solid #3a4553; }
+        .footer-col h4 { color: white; margin-bottom: 15px; font-size: 16px; }
+        .footer-col a { display: block; color: #DDD; text-decoration: none; font-size: 13px; margin-bottom: 8px; }
+        .footer-col a:hover { text-decoration: underline; }
+        
+        .footer-mid { padding: 30px 0; text-align: center; display: flex; justify-content: center; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .footer-logo { font-family: 'Orbitron'; font-weight: 900; font-size: 1.2rem; color: white; }
+        .footer-lang-box { border: 1px solid #848688; padding: 6px 12px; border-radius: 3px; font-size: 12px; display: flex; align-items: center; gap: 8px; }
 
-        footer { background: var(--amazon-light); color: #DDD; padding: 30px 15px; text-align: center; font-size: 12px; }
+        .footer-bottom { background: var(--amazon-dark); padding: 40px 20px; }
+        .footer-services { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 20px; text-align: left; }
+        .service-item h5 { color: white; font-size: 11px; margin-bottom: 2px; }
+        .service-item p { font-size: 10px; color: #999; line-height: 1.2; }
+        .copy-links { text-align: center; margin-top: 30px; font-size: 12px; color: #ccc; }
+
+        #checkoutPage { display: none; background: white; padding: 15px; min-height: 80vh; }
     </style>
 </head>
 <body>
@@ -98,46 +101,77 @@
         <div class="product-grid" id="productGrid"></div>
     </main>
 
-    <div id="checkoutPage">
+    <div id="checkoutPage" class="container">
         <h3>Your Shopping Bag</h3>
-        <div id="cartItemsList" style="margin: 15px 0;"></div>
-        <div style="border-top: 1px solid #333; padding-top: 15px;">
+        <div id="cartItemsList" style="margin: 20px 0;"></div>
+        <div style="border-top: 2px solid #333; padding-top: 20px;">
             <h4>Total: Rs. <span id="totalDisplay">0</span></h4>
-            <button class="buy-btn" style="height: 45px; margin-top: 10px;" onclick="alert('Order Placed!')">Place Order</button>
+            <p style="color: green; font-size: 12px;">Protected by Takaful Program (Shariah Compliance)</p>
+            <button class="buy-btn" style="height: 45px; margin-top: 15px;" onclick="alert('Order Placed!')">Place Order</button>
         </div>
     </div>
 
+    <div class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">Back to top</div>
     <footer>
-        <p>© 2026 GOSUBWEAR - Takaful Protected (Plan 5)</p>
+        <div class="footer-top">
+            <div class="footer-col">
+                <h4>Get to Know Us</h4>
+                <a href="#">Careers</a><a href="#">Blog</a><a href="#">About GOSUBWEAR</a><a href="#">Investor Relations</a>
+            </div>
+            <div class="footer-col">
+                <h4>Make Money with Us</h4>
+                <a href="#">Sell on GOSUB</a><a href="#">Become an Affiliate</a><a href="#">Advertise Your Products</a><a href="#">Host a GOSUB Hub</a>
+            </div>
+            <div class="footer-col">
+                <h4>Payment Products</h4>
+                <a href="#">GOSUB Business Card</a><a href="#">Shop with Points</a><a href="#">Reload Your Balance</a>
+            </div>
+            <div class="footer-col">
+                <h4>Let Us Help You</h4>
+                <a href="#">Your Account</a><a href="#">Your Orders</a><a href="#">Takaful Program (Plan 5)</a><a href="#">Help Center</a>
+            </div>
+        </div>
+
+        <div class="footer-mid">
+            <div class="footer-logo">GOSUB<span>WEAR</span></div>
+            <div class="footer-lang-box"><i class="fas fa-globe"></i> English</div>
+            <div class="footer-lang-box">PKR Pakistani Rupee</div>
+            <div class="footer-lang-box">Pakistan</div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-services">
+                <div class="service-item"><h5>GOSUB Music</h5><p>Stream millions of songs</p></div>
+                <div class="service-item"><h5>GOSUB Ads</h5><p>Reach customers locally</p></div>
+                <div class="service-item"><h5>6pm</h5><p>Score deals on brands</p></div>
+                <div class="service-item"><h5>AbeBooks</h5><p>Books, art & collectibles</p></div>
+                <div class="service-item"><h5>IMDb</h5><p>Movies, TV & Celebrities</p></div>
+                <div class="service-item"><h5>Ring</h5><p>Smart Home Security</p></div>
+            </div>
+            <div class="copy-links">
+                <p>Conditions of Use | Privacy Notice | Your Ads Privacy Choices</p>
+                <p style="margin-top:10px;">© 2026, GOSUBWEAR.com, Inc. or its affiliates</p>
+            </div>
+        </div>
     </footer>
 
     <script>
         const categories = ["T-Shirts", "Kids Clothes", "Elite Gear"];
-        
-        // FIXED PERMANENT IMAGE LINKS
         const imgLinks = {
             "T-Shirts": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=400&q=80",
             "Kids Clothes": "https://images.unsplash.com/photo-1519270832152-49da98cccf46?auto=format&fit=crop&w=400&q=80",
             "Elite Gear": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=400&q=80"
         };
-        
         const products = [];
         let cart = [];
 
         for(let i=1; i<=105; i++) {
             const cat = categories[i % categories.length];
-            products.push({
-                id: i,
-                name: `${cat} Premium Edition #${i}`,
-                category: cat,
-                price: 2400 + (i * 8),
-                image: imgLinks[cat]
-            });
+            products.push({ id: i, name: `${cat} Premium Edition #${i}`, category: cat, price: 2400 + (i * 8), image: imgLinks[cat] });
         }
 
         function renderProducts(list) {
-            const grid = document.getElementById('productGrid');
-            grid.innerHTML = list.map(p => `
+            document.getElementById('productGrid').innerHTML = list.map(p => `
                 <div class="p-card">
                     <div class="p-img-container"><img src="${p.image}" alt="${p.name}"></div>
                     <div class="p-title">${p.name}</div>
@@ -148,8 +182,7 @@
         }
 
         function addToBag(id) {
-            const product = products.find(p => p.id === id);
-            cart.push(product);
+            cart.push(products.find(p => p.id === id));
             document.getElementById('cartCount').innerText = cart.length;
             document.getElementById('addSound').play().catch(()=>{});
             const btn = event.target;
@@ -164,7 +197,7 @@
                 let total = 0;
                 document.getElementById('cartItemsList').innerHTML = cart.map(item => {
                     total += item.price;
-                    return `<div class="checkout-item"><span>${item.name}</span><b>Rs. ${item.price}</b></div>`;
+                    return `<div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee;"><span>${item.name}</span><b>Rs. ${item.price}</b></div>`;
                 }).join('') || "Bag is empty";
                 document.getElementById('totalDisplay').innerText = total;
             } else {
