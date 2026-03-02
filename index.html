@@ -3,213 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOSUBWEAR | 2026 Collection</title>
+    <title>GOSUBWEAR | Premium Innovation</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@300;400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Outfit:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
             --amazon-blue: #131921;
-            --amazon-light: #232f3e;
             --gosub-orange: #FF6600;
-            --bg-gray: #eaeded;
+            --bg-gray: #f0f2f2;
             --white: #ffffff;
-            --price-red: #B12704;
+            --text: #111;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-gray); color: #111; overflow-x: hidden; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-gray); color: var(--text); }
 
-        /* HEADER */
+        /* HEADER & NAVIGATION */
         header { background: var(--amazon-blue); color: white; position: sticky; top: 0; z-index: 1000; }
-        .nav-top { display: flex; align-items: center; padding: 10px 20px; gap: 15px; max-width: 1500px; margin: 0 auto; }
-        .logo { font-family: 'Orbitron'; font-size: 1.4rem; font-weight: 900; cursor: pointer; color: white; }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-family: 'Orbitron'; font-size: 1.5rem; cursor: pointer; }
         .logo span { color: var(--gosub-orange); }
-        .search-bar { flex-grow: 1; display: flex; }
-        .search-bar input { width: 100%; padding: 10px; border: none; border-radius: 4px 0 0 4px; }
-        .search-btn { background: var(--gosub-orange); border: none; padding: 10px 15px; border-radius: 0 4px 4px 0; color: white; cursor: pointer; }
 
-        .cart-trigger { position: relative; cursor: pointer; display: flex; align-items: center; gap: 5px; }
-        .cart-count { background: var(--gosub-orange); position: absolute; top: -10px; right: 25px; padding: 2px 6px; border-radius: 50%; font-size: 0.7rem; }
+        /* CATEGORY FILTER BAR */
+        .filter-bar { background: #232f3e; padding: 10px 20px; display: flex; gap: 15px; overflow-x: auto; white-space: nowrap; }
+        .filter-btn { background: transparent; border: 1px solid #555; color: white; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; transition: 0.3s; }
+        .filter-btn.active { background: var(--gosub-orange); border-color: var(--gosub-orange); }
 
         /* PRODUCT GRID */
-        .container { max-width: 1500px; margin: 20px auto; padding: 0 20px; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; }
-        .a-card { background: white; padding: 15px; border-radius: 4px; display: flex; flex-direction: column; transition: 0.2s; }
-        .a-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .img-wrap { height: 200px; margin-bottom: 10px; text-align: center; }
-        .img-wrap img { height: 100%; max-width: 100%; object-fit: contain; }
-        .p-title { font-size: 0.9rem; font-weight: 500; height: 40px; overflow: hidden; margin-bottom: 5px; }
-        .stars { color: #ffa41c; font-size: 0.8rem; }
-        .price { color: var(--price-red); font-weight: bold; font-size: 1.1rem; margin: 5px 0; }
-        .add-btn { background: #ffd814; border: 1px solid #fcd200; border-radius: 20px; padding: 6px; cursor: pointer; font-size: 0.8rem; }
-        .add-btn:hover { background: #f7ca00; }
+        .main-content { max-width: 1400px; margin: 20px auto; padding: 0 20px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
+        
+        .product-card { background: white; border-radius: 8px; padding: 15px; display: flex; flex-direction: column; position: relative; transition: 0.3s; border: 1px solid transparent; }
+        .product-card:hover { border-color: var(--gosub-orange); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+        .badge { position: absolute; top: 10px; left: 10px; background: #e67e22; color: white; font-size: 0.6rem; padding: 2px 8px; border-radius: 3px; font-weight: bold; }
+        
+        .img-box { height: 180px; text-align: center; margin-bottom: 10px; cursor: pointer; }
+        .img-box img { height: 100%; max-width: 100%; object-fit: contain; }
 
-        /* SUCCESS TOAST (Replaces Pop-up) */
-        #toast { visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 4px; padding: 16px; position: fixed; z-index: 2000; bottom: 30px; left: 50%; transform: translateX(-50%); }
-        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+        .price-tag { color: #B12704; font-size: 1.2rem; font-weight: bold; margin: 5px 0; }
+        .add-to-cart-btn { background: #ffd814; border: 1px solid #fcd200; border-radius: 4px; padding: 8px; cursor: pointer; width: 100%; font-size: 0.85rem; font-weight: 600; }
 
-        /* PAGE SECTIONS */
-        .page-section { display: none; padding: 40px 0; animation: fadeIn 0.4s; }
-        .page-section.active { display: block; }
+        /* QUICK VIEW MODAL */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); align-items: center; justify-content: center; }
+        .modal-content { background: white; width: 90%; max-width: 800px; padding: 30px; border-radius: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; position: relative; }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; }
 
-        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
-        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+        /* NOTIFICATION TOAST */
+        #notification { visibility: hidden; min-width: 250px; background: #333; color: white; text-align: center; border-radius: 5px; padding: 15px; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3000; }
+        #notification.show { visibility: visible; animation: slideUp 0.5s forwards; }
 
-        footer { background: var(--amazon-blue); color: #ccc; padding: 40px 0; margin-top: 50px; text-align: center; font-size: 0.8rem; }
+        @keyframes slideUp { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+
+        /* FOOTER */
+        footer { background: var(--amazon-blue); color: #888; padding: 50px 20px; text-align: center; margin-top: 50px; }
+        .footer-links a { color: #ccc; margin: 0 10px; text-decoration: none; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="nav-top">
-            <div class="logo" onclick="showPage('home')">GOSUB<span>WEAR</span></div>
-            <div class="search-bar">
-                <input type="text" placeholder="Search 23+ Premium Products...">
-                <button class="search-btn"><i class="fas fa-search"></i></button>
+        <div class="nav-container">
+            <div class="logo" onclick="showSection('home')">GOSUB<span>WEAR</span></div>
+            <div style="cursor:pointer;" onclick="showSection('cart')">
+                <i class="fas fa-shopping-bag" style="font-size:1.5rem;"></i>
+                <span id="cartTotal" style="background:var(--gosub-orange); padding:2px 7px; border-radius:50%; font-size:0.7rem; vertical-align:top; margin-left:-8px;">0</span>
             </div>
-            <div class="cart-trigger" onclick="showPage('cart')">
-                <span class="cart-count" id="cartCount">0</span>
-                <i class="fas fa-shopping-cart" style="font-size:1.4rem;"></i>
-                <span>Cart</span>
-            </div>
+        </div>
+        <div class="filter-bar" id="categoryLinks">
+            <button class="filter-btn active" onclick="filterProducts('All')">All Products</button>
+            <button class="filter-btn" onclick="filterProducts('Sublimation')">Sublimation Lab</button>
+            <button class="filter-btn" onclick="filterProducts('Tradition')">Gents Tradition</button>
+            <button class="filter-btn" onclick="filterProducts('Accessories')">Accessories</button>
         </div>
     </header>
 
-    <main class="container">
-        <section id="home" class="page-section active">
-            <h2 style="margin-bottom:20px;">Featured <span>Collection</span></h2>
-            <div class="product-grid" id="mainGrid"></div>
+    <main class="main-content">
+        <section id="home" class="page-section">
+            <h2 style="margin-bottom:20px; font-family:'Outfit';">2026 Innovation <span style="font-weight:300; font-size:0.9rem; color:#666;">(23 items)</span></h2>
+            <div class="product-grid" id="productDisplay"></div>
         </section>
 
-        <section id="cart" class="page-section">
-            <div style="background:white; padding:30px; border-radius:4px;">
-                <h1>Shopping Cart</h1>
-                <hr style="margin:20px 0; border:0; border-top:1px solid #ddd;">
-                <div id="cartItems">Your bag is empty.</div>
-                <div id="checkoutArea" style="display:none; margin-top:30px; max-width: 500px;">
-                    <h3>Delivery Details</h3>
-                    <input type="text" id="cName" placeholder="Full Name" style="width:100%; padding:12px; margin:10px 0;">
-                    <textarea id="cAddr" placeholder="Complete Address" style="width:100%; padding:12px; margin:10px 0;"></textarea>
-                    <button class="add-btn" style="width:100%; padding:15px; font-weight:bold;" onclick="placeOrder()">CONFIRM VIA WHATSAPP</button>
+        <section id="cart" class="page-section" style="display:none;">
+            <div style="background:white; padding:30px; border-radius:8px;">
+                <h1>Your Bag</h1>
+                <div id="cartBody" style="margin:20px 0;"></div>
+                <div id="checkoutForm" style="display:none; border-top:2px solid #eee; padding-top:20px;">
+                    <h3>Shipping Address (Pakistan)</h3>
+                    <input type="text" id="custName" placeholder="Full Name" style="width:100%; padding:12px; margin:10px 0; border:1px solid #ddd;">
+                    <textarea id="custAddr" placeholder="Street Address, City, Phone" style="width:100%; padding:12px; margin:10px 0; border:1px solid #ddd; height:80px;"></textarea>
+                    <button class="add-to-cart-btn" style="height:50px; font-size:1rem; background:var(--gosub-orange); color:white; border:none;" onclick="whatsappOrder()">CHECKOUT ON WHATSAPP</button>
                 </div>
-            </div>
-        </section>
-
-        <section id="privacy" class="page-section">
-            <div style="background:white; padding:40px;">
-                <h1>Privacy Policy</h1>
-                <p>We respect your privacy. GOSUBWEAR collects name and address only for WhatsApp order fulfillment. We use Shariah-compliant (Takaful) principles in our operations.</p>
             </div>
         </section>
     </main>
 
-    <div id="toast">Item added to your bag!</div>
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalImg" style="text-align:center;"></div>
+            <div>
+                <h2 id="modalTitle" style="font-family:'Orbitron';"></h2>
+                <p id="modalDesc" style="margin:15px 0; color:#666; font-size:0.9rem;"></p>
+                <div class="price-tag" id="modalPrice"></div>
+                <p style="font-size:0.8rem; color:green; margin-bottom:20px;">✓ In Stock - Ready to Ship</p>
+                <button class="add-to-cart-btn" id="modalAddBtn" style="padding:15px;">ADD TO BAG</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification">Product added to bag!</div>
 
     <footer>
-        <div style="margin-bottom:20px;">
-            <a onclick="showPage('home')" style="cursor:pointer; margin:0 10px;">Home</a> | 
-            <a onclick="showPage('privacy')" style="cursor:pointer; margin:0 10px;">Privacy Policy</a> |
-            <a href="https://wa.me/+923270616136" style="margin:0 10px;">Contact Support</a>
+        <div class="footer-links">
+            <a href="#">About Us</a> | <a href="#">Takaful Policy</a> | <a href="#">Returns</a> | <a href="#">Terms</a>
         </div>
-        &copy; 2026 GOSUBWEAR. NO FADE. NO LIMITS.
+        <p style="margin-top:20px; opacity:0.5;">&copy; 2026 GOSUBWEAR | Textile Innovation Lab</p>
     </footer>
 
     <script>
-        // Array of 23+ Products
         const products = [
-            {id: 1, name: "Sultan Elite Kurta - Navy", price: 8500, img: "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?w=400"},
-            {id: 2, name: "Molecular Sub-Tee", price: 2800, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400"},
-            {id: 3, name: "Glitch-Mode Jersey", price: 3200, img: "https://images.unsplash.com/photo-1598033129183-c4f50c7176c8?w=400"},
-            {id: 4, name: "Signature Waistcoat", price: 6500, img: "https://images.unsplash.com/photo-1617114919297-3c8ddb01f599?w=400"},
-            {id: 5, name: "Pro-Fit Gym Tee", price: 1950, img: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=400"},
-            {id: 6, name: "Traditional Latha White", price: 7200, img: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?w=400"},
-            {id: 7, name: "Stealth Black Polo", price: 2400, img: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=400"},
-            {id: 8, name: "Sublimated Gaming Hood", price: 4500, img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400"},
-            {id: 9, name: "Urban Cargo Joggers", price: 3800, img: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=400"},
-            {id: 10, name: "Premium Cufflinks Set", price: 1500, img: "https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?w=400"},
-            {id: 11, name: "Cotton Blend Shalwar", price: 2200, img: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400"},
-            {id: 12, name: "Aero-Mesh Vest", price: 1200, img: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400"},
-            {id: 13, name: "Luxe Pashmina Shawl", price: 12500, img: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=400"},
-            {id: 14, name: "Tech-Dry Socks (3pk)", price: 950, img: "https://images.unsplash.com/photo-1582966232435-95e52a46664d?w=400"},
-            {id: 15, name: "Royal Sherwani - Custom", price: 25000, img: "https://images.unsplash.com/photo-1598411037711-082b6030c4a1?w=400"},
-            {id: 16, name: "Performance Base Layer", price: 2100, img: "https://images.unsplash.com/photo-1516726817505-f5ed825624d8?w=400"},
-            {id: 17, name: "Sublimated Cap", price: 1200, img: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400"},
-            {id: 18, name: "Daily Cotton Kurta", price: 4500, img: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400"},
-            {id: 19, name: "Sport Windbreaker", price: 5800, img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400"},
-            {id: 20, name: "Indigo Denim Shirt", price: 3400, img: "https://images.unsplash.com/photo-1588484628445-ee539463bd4a?w=400"},
-            {id: 21, name: "Classic Leather Belt", price: 2900, img: "https://images.unsplash.com/photo-1624222247344-550fb80ee03a?w=400"},
-            {id: 22, name: "V-Neck Inner Wear", price: 850, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400"},
-            {id: 23, name: "Designer Pocket Square", price: 750, img: "https://images.unsplash.com/photo-1514327605112-b887c0e61c0a?w=400"}
+            {id: 1, cat: 'Tradition', name: "Sultan Elite Kurta", price: 8500, img: "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?w=400", desc: "Premium stitched Latha with signature embroidery on cuffs.", badge: 'Best Seller'},
+            {id: 2, cat: 'Sublimation', name: "Molecular Sub-Tee", price: 2800, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400", desc: "No-fade tech fabric with atomic digital print."},
+            {id: 3, cat: 'Sublimation', name: "Glitch-Mode Jersey", price: 3200, img: "https://images.unsplash.com/photo-1598033129183-c4f50c7176c8?w=400", desc: "Breathable mesh ideal for e-sports and high-intensity training."},
+            {id: 4, cat: 'Tradition', name: "Signature Waistcoat", price: 6500, img: "https://images.unsplash.com/photo-1617114919297-3c8ddb01f599?w=400", desc: "Hand-finished wool blend waistcoat for formal events."},
+            {id: 5, cat: 'Sublimation', name: "Pro-Fit Gym Tee", price: 1950, img: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=400", desc: "Moisture-wicking fabric with 4-way stretch."},
+            {id: 6, cat: 'Tradition', name: "Latha White Classic", price: 7200, img: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?w=400", desc: "Super-fine Egyptian cotton for ultimate summer comfort."},
+            {id: 7, cat: 'Sublimation', name: "Black Polo Tech", price: 2400, img: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=400", desc: "Subtle collar detailing with hybrid performance fabric."},
+            {id: 8, cat: 'Sublimation', name: "Gaming Hoodie v2", price: 4500, img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400", desc: "Heavyweight fleece with vibrant sleeve sublimation.", badge: 'Trending'},
+            {id: 9, cat: 'Accessories', name: "Urban Cargo Joggers", price: 3800, img: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=400", desc: "Multi-pocket utility pants with tapered fit."},
+            {id: 10, cat: 'Accessories', name: "Elite Cufflinks", price: 1500, img: "https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?w=400", desc: "Stainless steel laser-cut cufflinks with GOSUB logo."},
+            {id: 11, cat: 'Tradition', name: "Cream Cotton Shalwar", price: 2200, img: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400", desc: "Standard fit durable daily wear shalwar."},
+            {id: 12, cat: 'Sublimation', name: "Aero-Mesh Vest", price: 1200, img: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400", desc: "Ultra-lightweight cooling vest for athletes."},
+            {id: 13, cat: 'Tradition', name: "Luxe Pashmina", price: 12500, img: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=400", desc: "Hand-woven shawl from high-altitude wool blend."},
+            {id: 14, cat: 'Accessories', name: "Performance Socks", price: 950, img: "https://images.unsplash.com/photo-1582966232435-95e52a46664d?w=400", desc: "Arch support and cushioned heel for running."},
+            {id: 15, cat: 'Tradition', name: "Royal Sherwani", price: 25000, img: "https://images.unsplash.com/photo-1598411037711-082b6030c4a1?w=400", desc: "Intricate tilla work on jamawar fabric.", badge: 'Exclusive'},
+            {id: 16, cat: 'Sublimation', name: "Base Layer Pro", price: 2100, img: "https://images.unsplash.com/photo-1516726817505-f5ed825624d8?w=400", desc: "Compression fit for muscle recovery."},
+            {id: 17, cat: 'Accessories', name: "Sublimated Cap", price: 1200, img: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400", desc: "Adjustable snapback with no-fade graphics."},
+            {id: 18, cat: 'Tradition', name: "Daily Kurta Blue", price: 4500, img: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400", desc: "Wash-and-wear fabric for easy maintenance."},
+            {id: 19, cat: 'Sublimation', name: "Windbreaker Gear", price: 5800, img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400", desc: "Water-resistant outer shell with sublimation liner."},
+            {id: 20, cat: 'Accessories', name: "Indigo Denim Shirt", price: 3400, img: "https://images.unsplash.com/photo-1588484628445-ee539463bd4a?w=400", desc: "Classic casual denim with modern tailoring."},
+            {id: 21, cat: 'Accessories', name: "Leather Belt Pro", price: 2900, img: "https://images.unsplash.com/photo-1624222247344-550fb80ee03a?w=400", desc: "Full-grain genuine leather with brushed steel buckle."},
+            {id: 22, cat: 'Accessories', name: "V-Neck Inner", price: 850, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400", desc: "Soft combed cotton for layering."},
+            {id: 23, cat: 'Accessories', name: "Pocket Square", price: 750, img: "https://images.unsplash.com/photo-1514327605112-b887c0e61c0a?w=400", desc: "Digital silk print pocket accessory."}
         ];
 
         let cart = [];
 
-        function renderProducts() {
-            const grid = document.getElementById('mainGrid');
-            grid.innerHTML = products.map(p => `
-                <div class="a-card">
-                    <div class="img-wrap"><img src="${p.img}" alt="${p.name}"></div>
-                    <div class="p-title">${p.name}</div>
-                    <div class="stars">★★★★★ <span style="color:#007185; font-size:0.7rem;">(42)</span></div>
-                    <div class="price">Rs. ${p.price}</div>
-                    <button class="add-btn" onclick="addToCart(${p.id})">Add to Bag</button>
+        function render(items) {
+            const display = document.getElementById('productDisplay');
+            display.innerHTML = items.map(p => `
+                <div class="product-card">
+                    ${p.badge ? `<div class="badge">${p.badge}</div>` : ''}
+                    <div class="img-box" onclick="openQuickView(${p.id})">
+                        <img src="${p.img}">
+                    </div>
+                    <div style="font-size:0.85rem; height:40px; overflow:hidden; font-weight:600;">${p.name}</div>
+                    <div class="price-tag">Rs. ${p.price}</div>
+                    <button class="add-to-cart-btn" onclick="addToCart(${p.id})">Add to Bag</button>
                 </div>
             `).join('');
         }
 
+        function filterProducts(category) {
+            // Update UI buttons
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if(category === 'All') return render(products);
+            const filtered = products.filter(p => p.cat === category);
+            render(filtered);
+        }
+
+        function openQuickView(id) {
+            const p = products.find(x => x.id === id);
+            document.getElementById('modalTitle').innerText = p.name;
+            document.getElementById('modalPrice').innerText = `Rs. ${p.price}`;
+            document.getElementById('modalDesc').innerText = p.desc;
+            document.getElementById('modalImg').innerHTML = `<img src="${p.img}" style="max-height:300px;">`;
+            document.getElementById('modalAddBtn').onclick = () => { addToCart(p.id); closeModal(); };
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function closeModal() { document.getElementById('productModal').style.display = 'none'; }
+
         function addToCart(id) {
             const p = products.find(x => x.id === id);
             cart.push(p);
-            updateCart();
-            showToast();
+            document.getElementById('cartTotal').innerText = cart.length;
+            showNotification();
+            updateCartUI();
         }
 
-        function updateCart() {
-            document.getElementById('cartCount').innerText = cart.length;
-            const list = document.getElementById('cartItems');
-            const area = document.getElementById('checkoutArea');
-            
+        function showNotification() {
+            const n = document.getElementById('notification');
+            n.className = "show";
+            setTimeout(() => { n.className = ""; }, 2500);
+        }
+
+        function updateCartUI() {
+            const body = document.getElementById('cartBody');
+            const form = document.getElementById('checkoutForm');
             if(cart.length === 0) {
-                list.innerHTML = "Your bag is empty.";
-                area.style.display = 'none';
+                body.innerHTML = "<p>Your bag is empty.</p>";
+                form.style.display = 'none';
             } else {
                 let total = cart.reduce((s, i) => s + i.price, 0);
-                list.innerHTML = cart.map(i => `
-                    <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #f0f0f0;">
+                body.innerHTML = cart.map((i, index) => `
+                    <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
                         <span>${i.name}</span>
                         <b>Rs. ${i.price}</b>
                     </div>
-                `).join('') + `<h2 style="text-align:right; margin-top:10px;">Total: Rs. ${total}</h2>`;
-                area.style.display = 'block';
+                `).join('') + `<h3>Subtotal: Rs. ${total}</h3>`;
+                form.style.display = 'block';
             }
         }
 
-        function showToast() {
-            const x = document.getElementById("toast");
-            x.className = "show";
-            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-        }
-
-        function showPage(id) {
-            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
+        function showSection(id) {
+            document.querySelectorAll('.page-section').forEach(s => s.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
             window.scrollTo(0,0);
         }
 
-        function placeOrder() {
-            const n = document.getElementById('cName').value;
-            const a = document.getElementById('cAddr').value;
-            if(!n || !a) return alert("Please fill shipping details");
-            
-            let msg = `*NEW ORDER GOSUBWEAR*%0A*Customer:* ${n}%0A*Address:* ${a}%0A%0A*Items:*%0A`;
+        function whatsappOrder() {
+            const n = document.getElementById('custName').value;
+            const a = document.getElementById('custAddr').value;
+            if(!n || !a) return alert("Missing delivery info!");
+            let msg = `*GOSUBWEAR ORDER*%0A*Name:* ${n}%0A*Address:* ${a}%0A%0A*Items:*%0A`;
             cart.forEach(i => msg += `- ${i.name}%0A`);
             window.open(`https://wa.me/+923270616136?text=${msg}`);
         }
 
-        renderProducts();
+        render(products);
     </script>
 </body>
 </html>
