@@ -16,180 +16,176 @@
             --action-yellow: #febd69;
             --bg-canvas: #eaeded;
             --text-link: #007185;
-            --price-red: #B12704;
+            --price-alert: #B12704;
+            --white: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-canvas); color: #111; overflow-x: hidden; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-canvas); color: #111; }
 
-        /* --- UPDATED HEADER (MATCHING IMAGE) --- */
-        header { background: var(--amazon-dark); color: white; position: sticky; top: 0; z-index: 2000; }
-        .nav-main { display: flex; align-items: center; padding: 5px 15px; height: 60px; gap: 10px; }
+        header { background: var(--amazon-dark); color: var(--white); position: sticky; top: 0; z-index: 2000; }
+        .nav-main { display: flex; align-items: center; padding: 5px 20px; height: 60px; gap: 15px; }
         
-        .logo-box { font-family: 'Orbitron'; font-size: 1.4rem; font-weight: 900; border: 1px solid transparent; padding: 5px; cursor: pointer; }
-        .logo-box:hover { border: 1px solid white; }
+        .logo-box { font-family: 'Orbitron'; font-size: 1.5rem; font-weight: 900; cursor: pointer; padding: 5px; border: 1px solid transparent; }
+        .logo-box:hover { border: 1px solid var(--white); }
         .logo-box span { color: var(--gosub-orange); }
 
-        .nav-loc { border: 1px solid transparent; padding: 5px 8px; font-size: 12px; cursor: pointer; }
-        .nav-loc:hover { border: 1px solid white; }
-        .nav-loc i { font-size: 16px; margin-right: 3px; }
-        .nav-loc b { display: block; font-size: 14px; margin-top: 2px; }
+        .nav-search { flex-grow: 1; display: flex; height: 40px; border-radius: 4px; overflow: hidden; }
+        .search-cat { background: #f3f3f3; border: none; padding: 0 15px; font-size: 12px; border-right: 1px solid #ccc; cursor: pointer; }
+        .search-input { flex-grow: 1; border: none; padding: 0 15px; outline: none; font-size: 14px; }
+        .search-btn { background: var(--action-yellow); width: 45px; border: none; cursor: pointer; font-size: 1.2rem; color: #333; }
 
-        .nav-search { flex-grow: 1; display: flex; height: 40px; margin: 0 10px; border-radius: 4px; overflow: hidden; }
-        .search-cat { background: #f3f3f3; color: #555; border: none; padding: 0 10px; border-right: 1px solid #ccc; font-size: 12px; cursor: pointer; }
-        .search-input { flex-grow: 1; border: none; padding: 0 10px; outline: none; }
-        .search-btn { background: var(--action-yellow); width: 45px; border: none; cursor: pointer; color: #333; font-size: 1.2rem; }
-        .search-btn:hover { background: #f3a847; }
-
-        .nav-right { display: flex; align-items: center; gap: 5px; }
-        .nav-item { border: 1px solid transparent; padding: 5px 8px; font-size: 12px; cursor: pointer; line-height: 1.2; }
-        .nav-item:hover { border: 1px solid white; }
+        .nav-item { font-size: 12px; padding: 8px; border: 1px solid transparent; cursor: pointer; line-height: 1.2; }
+        .nav-item:hover { border: 1px solid var(--white); }
         .nav-item b { display: block; font-size: 14px; }
 
-        .cart-box { position: relative; display: flex; align-items: center; padding: 5px 10px; border: 1px solid transparent; cursor: pointer; }
-        .cart-box:hover { border: 1px solid white; }
-        .cart-count { position: absolute; top: 2px; left: 22px; color: #f08804; font-weight: bold; font-size: 16px; }
+        .nav-sub { background: var(--amazon-light); color: var(--white); padding: 8px 20px; display: flex; gap: 20px; font-size: 14px; align-items: center; }
+        .nav-sub a { cursor: pointer; color: white; text-decoration: none; }
+        .nav-sub a:hover { border: 1px solid white; padding: 2px 5px; margin: -3px -6px; }
 
-        .nav-sub { background: var(--amazon-light); color: white; display: flex; padding: 8px 15px; gap: 15px; font-size: 14px; }
-        .nav-sub a { padding: 5px; border: 1px solid transparent; }
-        .nav-sub a:hover { border: 1px solid white; }
-
-        /* --- CONTENT AREA --- */
-        .container { max-width: 1500px; margin: 20px auto; padding: 0 20px; min-height: 400px; }
+        .container { max-width: 1500px; margin: 20px auto; padding: 0 20px; }
+        .category-header { margin-bottom: 20px; font-size: 1.2rem; font-weight: 600; color: #555; }
+        
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
-        .p-card { background: white; padding: 15px; border-radius: 4px; cursor: pointer; transition: 0.3s; }
-        .p-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .p-img { height: 200px; background: #f8f8f8; display: flex; align-items: center; justify-content: center; border-radius: 4px; overflow: hidden; }
-        .p-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .p-title { color: var(--text-link); font-size: 14px; margin: 10px 0; height: 40px; overflow: hidden; }
-        .p-price { color: var(--price-red); font-size: 1.4rem; font-weight: bold; }
-        .add-btn { background: var(--action-yellow); border: 1px solid #a88734; width: 100%; padding: 8px; border-radius: 20px; margin-top: 10px; cursor: pointer; font-weight: 600; }
-        .add-btn:hover { background: #f7ca00; }
+        .p-card { background: var(--white); padding: 20px; border-radius: 4px; transition: 0.3s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
+        .p-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
+        
+        .p-img-area { height: 180px; background: #f9f9f9; display: flex; align-items: center; justify-content: center; border-radius: 4px; margin-bottom: 10px; }
+        .p-title { color: var(--text-link); font-size: 14px; font-weight: 500; margin: 10px 0; height: 40px; overflow: hidden; }
+        .p-price { color: var(--price-alert); font-size: 1.5rem; font-weight: bold; margin-top: auto; }
+        
+        .buy-btn { background: var(--action-yellow); border: 1px solid #a88734; width: 100%; padding: 8px; border-radius: 20px; margin-top: 15px; font-weight: 600; cursor: pointer; }
+        .buy-btn:hover { background: #f7ca00; }
 
-        /* --- UPDATED FOOTER (MATCHING IMAGE) --- */
-        .back-top { background: #37475a; color: white; text-align: center; padding: 15px; font-size: 13px; cursor: pointer; margin-top: 40px; }
-        .back-top:hover { background: #485769; }
-
-        footer { background: var(--amazon-light); color: #DDD; }
-        .f-cols { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); padding: 40px 20px; gap: 20px; }
-        .f-col h4 { color: white; margin-bottom: 15px; font-size: 16px; }
-        .f-col li { list-style: none; font-size: 13px; margin-bottom: 8px; cursor: pointer; }
+        footer { background: var(--amazon-light); color: #ddd; margin-top: 50px; }
+        .f-top-links { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); padding: 40px 0; }
+        .f-col h4 { color: var(--white); margin-bottom: 15px; }
+        .f-col ul { list-style: none; }
+        .f-col li { font-size: 13px; margin-bottom: 8px; cursor: pointer; }
         .f-col li:hover { text-decoration: underline; }
-
-        .f-mid { border-top: 1px solid #3a4553; padding: 30px; display: flex; justify-content: center; gap: 30px; align-items: center; }
-        .f-bottom { background: var(--amazon-dark); padding: 40px 20px; }
-        .f-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; font-size: 11px; }
-        .f-item b { display: block; color: white; margin-bottom: 2px; }
-        .copyright { text-align: center; font-size: 12px; color: #999; margin-top: 30px; }
-
-        .hidden { display: none !important; }
+        .f-bottom { background: var(--amazon-dark); padding: 30px; text-align: center; font-size: 12px; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="nav-main">
-            <div class="logo-box" onclick="location.reload()">GOSUB<span>WEAR</span></div>
-            <div class="nav-loc"><i class="fas fa-map-marker-alt"></i> Deliver to <b>Pakistan</b></div>
+            <div class="logo-box" onclick="filterCategory('All')">GOSUB<span>WEAR</span></div>
+            <div class="nav-item"><i class="fas fa-map-marker-alt"></i> Deliver to <b>Pakistan</b></div>
+            
             <div class="nav-search">
-                <button class="search-cat">All <i class="fas fa-caret-down"></i></button>
-                <input type="text" class="search-input" placeholder="Search GOSUBWEAR">
+                <select class="search-cat" id="searchCat" onchange="filterCategory(this.value)">
+                    <option value="All">All Categories</option>
+                    <option value="T-Shirts">T-Shirts</option>
+                    <option value="Kids Clothes">Kids Clothes</option>
+                    <option value="Elite Gear">Elite Gear</option>
+                </select>
+                <input type="text" class="search-input" placeholder="Search GOSUBWEAR 105+ products...">
                 <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
-            <div class="nav-right">
-                <div class="nav-item">Hello, Sign in <b>Account & Lists <i class="fas fa-caret-down"></i></b></div>
-                <div class="nav-item">Returns <b>& Orders</b></div>
-                <div class="cart-box" id="cartTrigger">
-                    <span class="cart-count" id="cartCount">0</span>
-                    <i class="fas fa-shopping-cart" style="font-size: 1.8rem;"></i>
-                    <b style="align-self: flex-end; margin-left: 5px;">Cart</b>
-                </div>
+
+            <div class="nav-item">Hello, Sign in <b>Account & Lists</b></div>
+            <div class="nav-item">Returns <b>& Orders</b></div>
+            <div class="nav-item" style="display:flex; align-items:center;">
+                <i class="fas fa-shopping-cart" style="font-size:1.8rem;"></i>
+                <b style="margin-left:5px;">Cart (<span id="cartCount">0</span>)</b>
             </div>
         </div>
         <div class="nav-sub">
-            <a href="#"><i class="fas fa-bars"></i> All</a>
-            <a href="#">Today's Deals</a>
-            <a href="#">Customer Service</a>
-            <a href="#">Registry</a>
-            <a href="#">Gift Cards</a>
-            <a href="#">Sell</a>
+            <a onclick="filterCategory('All')"><i class="fas fa-bars"></i> All</a>
+            <a onclick="filterCategory('T-Shirts')">T-Shirts</a>
+            <a onclick="filterCategory('Kids Clothes')">Kids Clothes</a>
+            <a onclick="filterCategory('Elite Gear')">Elite Performance Gear</a>
+            <a>Today's Deals</a>
+            <a>Customer Service</a>
         </div>
     </header>
 
-    <main class="container">
-        <div class="product-grid" id="mainGrid"></div>
-    </main>
-
-    <div class="back-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">Back to top</div>
+    <div class="container">
+        <div class="category-header" id="catLabel">Showing: All Products (105)</div>
+        <div class="product-grid" id="productGrid">
+            </div>
+    </div>
 
     <footer>
-        <div class="f-cols">
-            <div class="f-col"><h4>Get to Know Us</h4><ul><li>Careers</li><li>Blog</li><li>About GOSUBWEAR</li></ul></div>
-            <div class="f-col"><h4>Make Money with Us</h4><ul><li>Sell on GOSUB</li><li>Become an Affiliate</li><li>Advertise</li></ul></div>
-            <div class="f-col"><h4>GOSUB Payment</h4><ul><li>Business Card</li><li>Shop with Points</li><li>Reload Balance</li></ul></div>
-            <div class="f-col"><h4>Let Us Help You</h4><ul><li>Your Account</li><li>Your Orders</li><li>Help Center</li></ul></div>
-        </div>
-        <div class="f-mid">
-            <div class="logo-box">GOSUB<span>WEAR</span></div>
-            <span style="border:1px solid #848688; padding:5px 10px; border-radius:3px; font-size:12px;"><i class="fas fa-globe"></i> English</span>
-            <span style="border:1px solid #848688; padding:5px 10px; border-radius:3px; font-size:12px;">PKR - Pakistani Rupee</span>
+        <div class="f-top-links">
+            <div class="f-col"><h4>Get to Know Us</h4><ul><li>About GOSUBWEAR</li><li>Takaful Program</li><li>Sustainability</li></ul></div>
+            <div class="f-col"><h4>Make Money</h4><ul><li>Sell on GOSUB</li><li>Affiliate Program</li><li>Advertise</li></ul></div>
+            <div class="f-col"><h4>Payment</h4><ul><li>GOSUB Business Card</li><li>Shop with Points</li><li>Reload Balance</li></ul></div>
+            <div class="f-col"><h4>Let Us Help</h4><ul><li>Your Account</li><li>Shipping Rates</li><li>Help Center</li></ul></div>
         </div>
         <div class="f-bottom">
-            <div class="f-grid">
-                <div class="f-item"><b>GOSUB Music</b>Stream millions of songs</div>
-                <div class="f-item"><b>GOSUB Ads</b>Reach customers everywhere</div>
-                <div class="f-item"><b>6pm</b>Score deals on brands</div>
-                <div class="f-item"><b>AbeBooks</b>Books & Collectibles</div>
-                <div class="f-item"><b>Sell on GOSUB</b>Start Selling Account</div>
-                <div class="f-item"><b>Veeqo</b>Shipping Software</div>
-            </div>
-            <div class="copyright">
-                Conditions of Use | Privacy Notice | Your Ads Privacy Choices <br>
-                © 2026, GOSUBWEAR.com, Inc. or its affiliates
-            </div>
+            <p>Conditions of Use | Privacy Notice | Your Ads Privacy Choices</p>
+            <p style="margin-top:10px;">© 2026, GOSUBWEAR Enterprise - High Performance Sublimation</p>
         </div>
     </footer>
 
     <script>
-        const products = [];
-        for(let i=1; i<=12; i++) {
-            products.push({
+        const categories = ["T-Shirts", "Kids Clothes", "Elite Gear"];
+        const allProducts = [];
+
+        // Generate 105 Products
+        for (let i = 1; i <= 105; i++) {
+            const category = categories[i % categories.length];
+            let namePrefix = "";
+            let icon = "fa-tshirt";
+
+            if (category === "T-Shirts") {
+                namePrefix = "Cotton Comfort Tee";
+                icon = "fa-tshirt";
+            } else if (category === "Kids Clothes") {
+                namePrefix = "Junior Active Wear";
+                icon = "fa-baby-carriage";
+            } else {
+                namePrefix = "Elite Sublimation Pro";
+                icon = "fa-vest";
+            }
+
+            allProducts.push({
                 id: i,
-                name: `Premium Sublimation Performance Gear v.${i}`,
-                price: 2450 + (i * 100),
-                img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500"
+                name: `${namePrefix} - Series ${i}`,
+                category: category,
+                price: 1200 + (i * 15),
+                rating: (Math.random() * (5 - 3.8) + 3.8).toFixed(1),
+                reviews: Math.floor(Math.random() * 5000),
+                icon: icon
             });
         }
 
-        let cart = [];
-
-        function renderProducts() {
-            const grid = document.getElementById('mainGrid');
+        function displayProducts(products) {
+            const grid = document.getElementById('productGrid');
             grid.innerHTML = products.map(p => `
                 <div class="p-card">
-                    <div class="p-img"><img src="${p.img}"></div>
+                    <div class="p-img-area">
+                        <i class="fas ${p.icon}" style="font-size:4rem; color:#eee;"></i>
+                    </div>
                     <div class="p-title">${p.name}</div>
-                    <div style="color:#ffa41c; font-size:12px; margin-bottom:5px;">★★★★★ 4,205</div>
-                    <div class="p-price">Rs. ${p.price}</div>
-                    <button class="add-btn" onclick="addToCart(${p.id})">Add to Cart</button>
+                    <div style="color:#ffa41c; font-size:12px;">
+                        ${'★'.repeat(Math.floor(p.rating))}${'☆'.repeat(5-Math.floor(p.rating))} 
+                        <span style="color:var(--text-link);">${p.reviews.toLocaleString()}</span>
+                    </div>
+                    <div class="p-price">Rs. ${p.price.toLocaleString()}</div>
+                    <button class="buy-btn" onclick="addToCart()">Add to Cart</button>
                 </div>
             `).join('');
         }
 
-        function addToCart(id) {
-            const p = products.find(x => x.id === id);
-            cart.push(p);
-            
-            // UI Update: No alert used here anymore
-            document.getElementById('cartCount').innerText = cart.length;
-            
-            // Subtle visual feedback: Cart icon "shakes" or changes color briefly
-            const cartIcon = document.querySelector('.fa-shopping-cart');
-            cartIcon.style.color = '#FF6600';
-            setTimeout(() => { cartIcon.style.color = 'white'; }, 500);
+        function filterCategory(cat) {
+            const filtered = cat === 'All' ? allProducts : allProducts.filter(p => p.category === cat);
+            document.getElementById('catLabel').innerText = `Showing: ${cat} (${filtered.length} products)`;
+            displayProducts(filtered);
+            // Sync search dropdown
+            document.getElementById('searchCat').value = cat;
         }
 
-        renderProducts();
+        let count = 0;
+        function addToCart() {
+            count++;
+            document.getElementById('cartCount').innerText = count;
+        }
+
+        // Initial Load
+        displayProducts(allProducts);
     </script>
 </body>
 </html>
