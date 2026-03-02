@@ -3,188 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOSUBWEAR | Prime Innovation</title>
+    <title>GOSUBWEAR | Shop 54+ Innovative Products</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Outfit:wght@300;400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --nav-black: #131921;
-            --sub-nav: #232f3e;
-            --logo-orange: #FF6600;
-            --logo-silver: #e0e0e0;
-            --bg-body: #eaeded;
-            --white: #ffffff;
+            --nav-dark: #131921;
+            --nav-light: #232f3e;
+            --brand-orange: #FF6600; /* From your Logo */
+            --brand-yellow: #FFB800;
+            --bg-gray: #eaeded;
+            --link-blue: #007185;
+            --price-red: #B12704;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-body); color: #111; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-gray); color: #111; }
+        a { text-decoration: none; color: inherit; cursor: pointer; }
 
-        /* EXACT AMAZON HEADER CLONE */
-        header { background-color: var(--nav-black); color: white; width: 100%; position: sticky; top: 0; z-index: 2000; }
+        /* AMAZON HEADER CLONE */
+        header { background: var(--nav-dark); color: white; position: sticky; top: 0; z-index: 2000; }
+        .nav-main { display: flex; align-items: center; padding: 5px 15px; height: 60px; gap: 10px; }
         
-        .header-main { display: flex; align-items: center; padding: 5px 15px; gap: 10px; height: 60px; }
+        .logo-box { border: 1px solid transparent; padding: 5px; display: flex; align-items: center; }
+        .logo-box:hover { border: 1px solid white; }
+        .logo-text { font-family: 'Orbitron'; font-size: 1.4rem; font-weight: 900; }
+        .logo-text span { color: var(--brand-orange); }
 
-        /* Logo Area */
-        .header-logo { border: 1px solid transparent; padding: 5px 8px; cursor: pointer; display: flex; align-items: center; }
-        .header-logo:hover { border: 1px solid white; border-radius: 2px; }
-        .logo-text { font-family: 'Orbitron'; font-size: 1.4rem; font-weight: 900; color: var(--logo-silver); letter-spacing: -1px; }
-        .logo-text span { color: var(--logo-orange); }
+        .nav-loc { border: 1px solid transparent; padding: 5px 8px; font-size: 12px; }
+        .nav-loc:hover { border: 1px solid white; }
+        .nav-loc span { display: block; font-weight: bold; font-size: 14px; }
 
-        /* Location Area */
-        .nav-location { display: flex; align-items: center; padding: 5px 8px; border: 1px solid transparent; cursor: pointer; }
-        .nav-location:hover { border: 1px solid white; }
-        .loc-icon { margin-right: 5px; font-size: 1.1rem; margin-top: 10px; }
-        .loc-text { font-size: 12px; line-height: 14px; }
-        .loc-text span { display: block; font-weight: bold; font-size: 14px; }
+        .nav-search { flex-grow: 1; display: flex; height: 40px; margin: 0 10px; }
+        .search-cat { background: #f3f3f3; border: none; padding: 0 15px; border-radius: 4px 0 0 4px; border-right: 1px solid #ccc; font-size: 12px; }
+        .search-input { flex-grow: 1; border: none; padding: 0 10px; outline: none; }
+        .search-btn { background: var(--brand-orange); width: 45px; border: none; border-radius: 0 4px 4px 0; cursor: pointer; font-size: 1.2rem; }
 
-        /* SEARCH BOX CLONE */
-        .header-search { flex-grow: 1; display: flex; height: 40px; margin: 0 10px; position: relative; }
-        .search-cat { background: #f3f3f3; color: #555; border: none; padding: 0 12px; border-radius: 4px 0 0 4px; border-right: 1px solid #ccc; font-size: 12px; cursor: pointer; }
-        .header-search input { flex-grow: 1; border: none; padding: 0 10px; font-size: 15px; outline: none; }
-        .search-icon-btn { background: var(--logo-orange); width: 45px; display: flex; align-items: center; justify-content: center; border-radius: 0 4px 4px 0; cursor: pointer; color: black; font-size: 1.2rem; }
-        .search-icon-btn:hover { background: #e65c00; }
-
-        /* NAV RIGHTS (ACCOUNT/RETURNS/CART) */
         .nav-right { display: flex; align-items: center; gap: 5px; }
-        .nav-link { border: 1px solid transparent; padding: 5px 8px; cursor: pointer; font-size: 12px; }
-        .nav-link:hover { border: 1px solid white; }
-        .nav-link span { display: block; font-weight: bold; font-size: 14px; }
+        .nav-item { border: 1px solid transparent; padding: 5px 8px; font-size: 12px; }
+        .nav-item:hover { border: 1px solid white; }
+        .nav-item span { display: block; font-weight: bold; font-size: 14px; }
 
-        .cart-box { display: flex; align-items: center; position: relative; padding: 5px 8px; border: 1px solid transparent; cursor: pointer; }
+        .cart-box { position: relative; display: flex; align-items: center; padding: 5px 10px; border: 1px solid transparent; }
         .cart-box:hover { border: 1px solid white; }
-        .cart-icon { font-size: 1.8rem; }
-        .cart-num { position: absolute; top: 2px; left: 22px; color: var(--logo-orange); font-weight: bold; font-size: 16px; width: 18px; text-align: center; }
+        .cart-count { position: absolute; top: 2px; left: 22px; color: var(--brand-orange); font-weight: bold; font-size: 16px; }
 
-        /* SUB-NAVBAR */
-        .sub-nav { background-color: var(--sub-nav); display: flex; align-items: center; padding: 5px 15px; gap: 15px; height: 39px; color: white; font-size: 14px; }
-        .sub-nav a { border: 1px solid transparent; padding: 5px 8px; cursor: pointer; white-space: nowrap; }
-        .sub-nav a:hover { border: 1px solid white; }
-        .sub-nav i { margin-right: 5px; }
+        /* SUB NAV */
+        .nav-sub { background: var(--nav-light); color: white; display: flex; padding: 8px 15px; gap: 20px; font-size: 14px; overflow-x: auto; }
+        .nav-sub a:hover { border: 1px solid white; padding: 0 5px; margin: 0 -6px; }
 
-        /* MAIN CONTENT AREA */
-        .container { max-width: 1500px; margin: 0 auto; padding: 20px; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
-        
-        /* CARD STYLING */
-        .a-card { background: white; padding: 20px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
-        .a-card h3 { font-size: 1rem; margin-bottom: 10px; color: #0F1111; height: 45px; overflow: hidden; }
-        .a-card .img-box { height: 200px; text-align: center; margin-bottom: 10px; }
-        .a-card img { height: 100%; max-width: 100%; object-fit: contain; }
-        .a-card .price { font-size: 1.4rem; font-weight: bold; color: #B12704; margin: 10px 0; }
-        .buy-btn { background: #ffd814; border: 1px solid #fcd200; border-radius: 20px; padding: 8px; cursor: pointer; font-weight: 500; font-size: 0.85rem; }
-        .buy-btn:hover { background: #f7ca00; }
+        /* CATEGORY SELECTOR BAR */
+        .cat-bar { background: white; padding: 15px; display: flex; justify-content: center; gap: 10px; border-bottom: 1px solid #ddd; }
+        .cat-btn { background: #f0f2f2; border: 1px solid #d5d9d9; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: 500; }
+        .cat-btn.active { background: var(--brand-orange); color: white; border-color: var(--brand-orange); }
+
+        /* PRODUCT GRID */
+        .main-container { max-width: 1500px; margin: 20px auto; padding: 0 20px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+        .p-card { background: white; padding: 20px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); display: flex; flex-direction: column; transition: 0.2s; }
+        .p-card:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .p-img { height: 180px; text-align: center; margin-bottom: 15px; }
+        .p-img img { height: 100%; max-width: 100%; object-fit: contain; }
+        .p-title { font-size: 0.95rem; font-weight: 500; height: 42px; overflow: hidden; color: var(--link-blue); margin-bottom: 5px; }
+        .p-price { font-size: 1.4rem; font-weight: bold; color: var(--price-red); margin: 5px 0; }
+        .add-btn { background: #ffd814; border: 1px solid #fcd200; border-radius: 20px; padding: 8px; cursor: pointer; font-size: 13px; margin-top: auto; }
+
+        /* FOOTER CLONE */
+        .back-top { background: #37475a; color: white; text-align: center; padding: 15px; cursor: pointer; }
+        footer { background: #232f3e; color: white; padding-top: 40px; }
+        .f-links { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); padding-bottom: 40px; }
+        .f-col h4 { margin-bottom: 15px; }
+        .f-col ul { list-style: none; }
+        .f-col ul li { font-size: 13px; margin-bottom: 8px; color: #DDD; }
+        .f-col a:hover { text-decoration: underline; }
+
+        .f-bottom { background: #131a22; padding: 40px 20px; text-align: center; }
+        .f-grid { max-width: 1000px; margin: 0 auto 30px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 15px; text-align: left; }
+        .f-item { font-size: 11px; color: #999; }
+        .f-item b { color: #DDD; display: block; font-size: 12px; }
 
         /* PAGES */
-        .page-section { display: none; padding: 40px 0; }
-        .page-section.active { display: block; }
-
-        footer { background: var(--nav-black); color: #ccc; padding: 40px; text-align: center; margin-top: 50px; font-size: 0.85rem; }
+        .page { display: none; }
+        .page.active { display: block; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="header-main">
-            <div class="header-logo" onclick="showSection('home')">
+        <div class="nav-main">
+            <a class="logo-box" onclick="showPage('home')">
                 <div class="logo-text">GOSUB<span>WEAR</span></div>
-            </div>
-
-            <div class="nav-location">
-                <i class="fas fa-map-marker-alt loc-icon"></i>
-                <div class="loc-text">Deliver to<span>Pakistan</span></div>
-            </div>
-
-            <div class="header-search">
+            </a>
+            <div class="nav-loc">Deliver to<span>Pakistan</span></div>
+            <div class="nav-search">
                 <button class="search-cat">All <i class="fas fa-caret-down"></i></button>
-                <input type="text" placeholder="Search GOSUBWEAR Innovation...">
-                <div class="search-icon-btn">
-                    <i class="fas fa-search"></i>
-                </div>
+                <input type="text" class="search-input" placeholder="Search 54+ GOSUBWEAR Products...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
-
             <div class="nav-right">
-                <div class="nav-link">EN <i class="fas fa-caret-down" style="font-size: 10px; color: gray;"></i></div>
-                <div class="nav-link">Hello, Sign in<span>Account & Lists <i class="fas fa-caret-down" style="font-size: 10px; color: gray;"></i></span></div>
-                <div class="nav-link">Returns<span>& Orders</span></div>
-                
-                <div class="cart-box" onclick="showSection('cart')">
-                    <span class="cart-num" id="cartCount">0</span>
-                    <i class="fas fa-shopping-cart cart-icon"></i>
-                    <span style="font-weight: bold; align-self: flex-end; margin-bottom: 5px;">Cart</span>
-                </div>
+                <div class="nav-item">PK<span>Language</span></div>
+                <div class="nav-item">Hello, Sign in<span>Account & Lists</span></div>
+                <div class="nav-item">Returns<span>& Orders</span></div>
+                <a class="cart-box" onclick="showPage('cart')">
+                    <span class="cart-count" id="cartCount">0</span>
+                    <i class="fas fa-shopping-cart" style="font-size: 1.8rem;"></i>
+                    <span style="font-weight:bold; align-self:flex-end; margin-left:5px;">Cart</span>
+                </a>
             </div>
         </div>
-
-        <div class="sub-nav">
-            <a onclick="showSection('home')"><i class="fas fa-bars"></i> All</a>
-            <a onclick="showSection('home')">Today's Deals</a>
-            <a onclick="showSection('home')">Sublimation Lab</a>
-            <a onclick="showSection('home')">Tradition Gear</a>
-            <a onclick="showSection('faq')">Customer Service</a>
-            <a onclick="showSection('privacy')">Registry</a>
-            <a onclick="showSection('home')">Sell</a>
+        <div class="nav-sub">
+            <a onclick="filter('All')"><i class="fas fa-bars"></i> All</a>
+            <a onclick="filter('Sublimation')">Sublimation</a>
+            <a onclick="filter('Tradition')">Gents Tradition</a>
+            <a onclick="filter('Accessories')">Accessories</a>
+            <a onclick="filter('Sports')">Sports Gear</a>
+            <a onclick="filter('Kids')">Kids Collection</a>
+            <a onclick="filter('Sale')">Clearance Sale</a>
         </div>
     </header>
 
-    <main class="container">
-        <section id="home" class="page-section active">
-            <h2 style="margin-bottom:20px;">Premium Selection</h2>
-            <div class="product-grid" id="productContainer"></div>
+    <div class="cat-bar" id="catBar">
+        <button class="cat-btn active" onclick="filter('All')">All 54 Items</button>
+        <button class="cat-btn" onclick="filter('Sublimation')">Sublimation Lab</button>
+        <button class="cat-btn" onclick="filter('Tradition')">Gents Tradition</button>
+        <button class="cat-btn" onclick="filter('Sports')">Sports Performance</button>
+    </div>
+
+    <main class="main-container">
+        <section id="home" class="page active">
+            <div class="product-grid" id="productGrid"></div>
         </section>
 
-        <section id="cart" class="page-section">
+        <section id="cart" class="page">
             <div style="background:white; padding:30px; border-radius:4px;">
                 <h1>Shopping Cart</h1>
                 <hr style="margin:20px 0;">
-                <div id="cartItems">Bag is empty.</div>
-                <div id="checkoutForm" style="display:none; margin-top:30px;">
-                    <h3>Delivery Confirmation</h3>
-                    <input type="text" id="custName" placeholder="Full Name" style="width:100%; padding:12px; margin:10px 0; border:1px solid #ddd;">
-                    <textarea id="custAddr" placeholder="Complete Address (House, Street, City)" style="width:100%; padding:12px; margin:10px 0; border:1px solid #ddd;"></textarea>
-                    <button class="buy-btn" style="width:100%; padding:15px; font-size:1rem;" onclick="whatsappOrder()">PLACE YOUR ORDER (WHATSAPP)</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq" class="page-section">
-            <div style="background:white; padding:40px;">
-                <h1>Help & Customer Service</h1>
-                <p style="margin-top:20px;">At GOSUBWEAR, we follow Shariah-compliant business ethics. Your satisfaction is our priority.</p>
-                <div style="margin-top:20px;">
-                    <h4>Delivery Time:</h4>
-                    <p>3-5 working days across Pakistan.</p>
+                <div id="cartItems">No items yet.</div>
+                <div id="checkoutForm" style="display:none; margin-top:30px; max-width:400px;">
+                    <h3>Delivery Info</h3>
+                    <input type="text" id="custName" placeholder="Name" style="width:100%; padding:10px; margin:10px 0;">
+                    <textarea id="custAddr" placeholder="Address" style="width:100%; padding:10px; margin:10px 0;"></textarea>
+                    <button class="add-btn" style="width:100%; background:var(--brand-orange); color:white; border:none;" onclick="sendOrder()">Confirm via WhatsApp</button>
                 </div>
             </div>
         </section>
     </main>
 
+    <div class="back-top" onclick="window.scrollTo(0,0)">Back to top</div>
     <footer>
-        <p>&copy; 2026 GOSUBWEAR. Crafted with Performance. Worn with Pride.</p>
+        <div class="f-links">
+            <div class="f-col"><h4>Get to Know Us</h4><ul><li><a href="#">About GOSUBWEAR</a></li><li><a href="#">Takaful Program</a></li><li><a href="#">Careers</a></li></ul></div>
+            <div class="f-col"><h4>Make Money</h4><ul><li><a href="#">Sell on GOSUB</a></li><li><a href="#">Affiliate Program</a></li><li><a href="#">Host a Hub</a></li></ul></div>
+            <div class="f-col"><h4>Payment</h4><ul><li><a href="#">Cash on Delivery</a></li><li><a href="#">Shop with Points</a></li><li><a href="#">Gift Cards</a></li></ul></div>
+            <div class="f-col"><h4>Let Us Help</h4><ul><li><a href="#">Your Account</a></li><li><a href="#">Shipping Rates</a></li><li><a href="#">Help Center</a></li></ul></div>
+        </div>
+        <div class="f-bottom">
+            <div class="f-grid">
+                <div class="f-item"><b>GOSUB Music</b>Stream 54M<br>songs</div>
+                <div class="f-item"><b>GOSUB Ads</b>Reach customers<br>everywhere</div>
+                <div class="f-item"><b>Veeqo</b>Shipping<br>Software</div>
+                <div class="f-item"><b>IMDb</b>Movies, TV<br>& Celebs</div>
+                <div class="f-item"><b>Zappos</b>Shoes &<br>Clothing</div>
+                <div class="f-item"><b>Woot!</b>Daily<br>Deals</div>
+                <div class="f-item"><b>Ring</b>Smart Home<br>Security</div>
+            </div>
+            <p style="font-size:12px; color:#999;">© 2026 GOSUBWEAR.com | Conditions of Use | Privacy Notice</p>
+        </div>
     </footer>
 
     <script>
-        const products = Array.from({length: 23}, (_, i) => ({
-            id: i + 1,
-            name: i % 2 === 0 ? `Sublimated Tech Jersey v${i+1}` : `Elite Tradition Kurta v${i+1}`,
-            price: 1500 + (i * 350),
-            img: i % 2 === 0 ? "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400" : "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?w=400"
-        }));
+        const categories = ["Sublimation", "Tradition", "Sports", "Accessories", "Kids", "Sale"];
+        const products = [];
+        
+        // Generate 54 Products Category-wise
+        for(let i=1; i<=54; i++) {
+            let cat = categories[i % categories.length];
+            products.push({
+                id: i,
+                category: cat,
+                name: `${cat} Premium Item v.${i}`,
+                price: 1200 + (i * 150),
+                img: i % 2 === 0 ? "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400" : "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?w=400"
+            });
+        }
 
         let cart = [];
 
-        function renderProducts() {
-            const container = document.getElementById('productContainer');
-            container.innerHTML = products.map(p => `
-                <div class="a-card">
-                    <div class="img-box"><img src="${p.img}"></div>
-                    <h3>${p.name}</h3>
-                    <div style="color:#ffa41c; font-size:0.8rem;">★★★★★ <span style="color:#007185;">(1,240)</span></div>
-                    <div class="price">Rs. ${p.price}</div>
-                    <button class="buy-btn" onclick="addToCart(${p.id})">Add to Cart</button>
+        function render(items) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = items.map(p => `
+                <div class="p-card">
+                    <div class="p-img"><img src="${p.img}"></div>
+                    <div class="p-title">${p.name}</div>
+                    <div style="color:#ffa41c; font-size:12px;">★★★★★ <span style="color:#007185;">${100+p.id}</span></div>
+                    <div class="p-price">Rs. ${p.price}</div>
+                    <button class="add-btn" onclick="addToCart(${p.id})">Add to Cart</button>
                 </div>
             `).join('');
+        }
+
+        function filter(cat) {
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            if(cat === 'All') return render(products);
+            render(products.filter(p => p.category === cat));
         }
 
         function addToCart(id) {
@@ -198,7 +222,7 @@
             const items = document.getElementById('cartItems');
             const form = document.getElementById('checkoutForm');
             if(cart.length === 0) {
-                items.innerHTML = "Bag is empty.";
+                items.innerHTML = "No items yet.";
                 form.style.display = 'none';
             } else {
                 let total = cart.reduce((s, i) => s + i.price, 0);
@@ -207,22 +231,22 @@
             }
         }
 
-        function showSection(id) {
-            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+        function showPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             window.scrollTo(0,0);
         }
 
-        function whatsappOrder() {
-            const name = document.getElementById('custName').value;
-            const addr = document.getElementById('custAddr').value;
-            if(!name || !addr) return alert("Fill shipping info");
-            let msg = `*GOSUBWEAR ORDER confirmation*%0A*Name:* ${name}%0A*Address:* ${addr}%0A%0A*Items:*%0A`;
+        function sendOrder() {
+            const n = document.getElementById('custName').value;
+            const a = document.getElementById('custAddr').value;
+            if(!n || !a) return alert("Fill shipping details");
+            let msg = `*GOSUBWEAR ORDER confirmation*%0A*Name:* ${n}%0A*Address:* ${a}%0A%0A*Items:*%0A`;
             cart.forEach(i => msg += `- ${i.name}%0A`);
             window.open(`https://wa.me/+923270616136?text=${msg}`);
         }
 
-        renderProducts();
+        render(products);
     </script>
 </body>
 </html>
