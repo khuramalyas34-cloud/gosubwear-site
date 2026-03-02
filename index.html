@@ -11,79 +11,59 @@
     <style>
         :root {
             --amazon-dark: #131921;
+            --amazon-light: #232f3e;
             --gosub-orange: #FF6600;
             --action-yellow: #febd69;
             --bg-canvas: #eaeded;
             --text-link: #007185;
             --price-alert: #B12704;
             --white: #ffffff;
-            --border-grey: #ddd;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--bg-canvas); color: #111; }
 
-        /* MAIN TOP HEADER */
         header { background: var(--amazon-dark); color: var(--white); position: sticky; top: 0; z-index: 2000; }
         .nav-main { display: flex; align-items: center; padding: 5px 20px; height: 60px; gap: 15px; }
         
         .logo-box { font-family: 'Orbitron'; font-size: 1.5rem; font-weight: 900; cursor: pointer; padding: 5px; border: 1px solid transparent; }
+        .logo-box:hover { border: 1px solid var(--white); }
         .logo-box span { color: var(--gosub-orange); }
 
-        .nav-search { flex-grow: 1; display: flex; height: 40px; border-radius: 4px; overflow: hidden; border: 2px solid transparent; }
-        .nav-search:focus-within { border-color: var(--gosub-orange); }
+        .nav-search { flex-grow: 1; display: flex; height: 40px; border-radius: 4px; overflow: hidden; }
         .search-cat { background: #f3f3f3; border: none; padding: 0 15px; font-size: 12px; border-right: 1px solid #ccc; cursor: pointer; }
         .search-input { flex-grow: 1; border: none; padding: 0 15px; outline: none; font-size: 14px; }
         .search-btn { background: var(--action-yellow); width: 45px; border: none; cursor: pointer; font-size: 1.2rem; color: #333; }
 
-        /* --- NEW WHITE SUB-MENU DESIGN --- */
-        .nav-sub { 
-            background: var(--white); /* Changed from dark to white */
-            color: #333; 
-            padding: 0 20px; 
-            display: flex; 
-            gap: 5px; 
-            font-size: 14px; 
-            align-items: center;
-            border-bottom: 1px solid var(--border-grey);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
+        .nav-item { font-size: 12px; padding: 8px; border: 1px solid transparent; cursor: pointer; line-height: 1.2; }
+        .nav-item:hover { border: 1px solid var(--white); }
+        .nav-item b { display: block; font-size: 14px; }
 
-        .nav-sub a { 
-            padding: 12px 15px; 
-            cursor: pointer; 
-            color: #333; 
-            text-decoration: none;
-            display: inline-block;
-            border-bottom: 3px solid transparent; /* Hidden border for click effect */
-            transition: all 0.2s ease;
-        }
+        .nav-sub { background: var(--amazon-light); color: var(--white); padding: 8px 20px; display: flex; gap: 20px; font-size: 14px; align-items: center; }
+        .nav-sub a { cursor: pointer; color: white; text-decoration: none; }
+        .nav-sub a:hover { border: 1px solid white; padding: 2px 5px; margin: -3px -6px; }
 
-        .nav-sub a:hover { 
-            background: #f0f2f2;
-            color: var(--text-link);
-        }
-
-        /* ACTIVE BOX EFFECT: When clicked */
-        .nav-sub a.active { 
-            background: var(--white);
-            border-bottom: 3px solid var(--text-link); /* Blue bottom border like high-end sites */
-            font-weight: 600;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.1); /* Subtle inner box shadow */
-            color: var(--text-link);
-        }
-
-        /* PRODUCT GRID */
         .container { max-width: 1500px; margin: 20px auto; padding: 0 20px; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
-        .p-card { background: var(--white); padding: 20px; border-radius: 4px; border: 1px solid #eee; transition: 0.3s ease; }
-        .p-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .category-header { margin-bottom: 20px; font-size: 1.2rem; font-weight: 600; color: #555; }
         
-        .p-img-area { height: 180px; background: #f9f9f9; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
-        .p-price { color: var(--price-alert); font-size: 1.5rem; font-weight: bold; margin-top: 10px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
+        .p-card { background: var(--white); padding: 20px; border-radius: 4px; transition: 0.3s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
+        .p-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
+        
+        .p-img-area { height: 180px; background: #f9f9f9; display: flex; align-items: center; justify-content: center; border-radius: 4px; margin-bottom: 10px; }
+        .p-title { color: var(--text-link); font-size: 14px; font-weight: 500; margin: 10px 0; height: 40px; overflow: hidden; }
+        .p-price { color: var(--price-alert); font-size: 1.5rem; font-weight: bold; margin-top: auto; }
+        
         .buy-btn { background: var(--action-yellow); border: 1px solid #a88734; width: 100%; padding: 8px; border-radius: 20px; margin-top: 15px; font-weight: 600; cursor: pointer; }
+        .buy-btn:hover { background: #f7ca00; }
 
-        footer { background: var(--amazon-dark); color: #ddd; padding: 40px 20px; text-align: center; margin-top: 50px; }
+        footer { background: var(--amazon-light); color: #ddd; margin-top: 50px; }
+        .f-top-links { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); padding: 40px 0; }
+        .f-col h4 { color: var(--white); margin-bottom: 15px; }
+        .f-col ul { list-style: none; }
+        .f-col li { font-size: 13px; margin-bottom: 8px; cursor: pointer; }
+        .f-col li:hover { text-decoration: underline; }
+        .f-bottom { background: var(--amazon-dark); padding: 30px; text-align: center; font-size: 12px; }
     </style>
 </head>
 <body>
@@ -91,6 +71,8 @@
     <header>
         <div class="nav-main">
             <div class="logo-box" onclick="filterCategory('All')">GOSUB<span>WEAR</span></div>
+            <div class="nav-item"><i class="fas fa-map-marker-alt"></i> Deliver to <b>Pakistan</b></div>
+            
             <div class="nav-search">
                 <select class="search-cat" id="searchCat" onchange="filterCategory(this.value)">
                     <option value="All">All Categories</option>
@@ -98,28 +80,44 @@
                     <option value="Kids Clothes">Kids Clothes</option>
                     <option value="Elite Gear">Elite Gear</option>
                 </select>
-                <input type="text" class="search-input" placeholder="Search across 105 products...">
+                <input type="text" class="search-input" placeholder="Search GOSUBWEAR 105+ products...">
                 <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
-            <div style="font-size: 12px; padding: 10px;">Cart: <b id="cartCount">0</b></div>
-        </div>
 
-        <div class="nav-sub" id="mainMenu">
-            <a onclick="menuSelect(this, 'All')" class="active"><i class="fas fa-bars"></i> All</a>
-            <a onclick="menuSelect(this, 'T-Shirts')">T-Shirts</a>
-            <a onclick="menuSelect(this, 'Kids Clothes')">Kids Clothes</a>
-            <a onclick="menuSelect(this, 'Elite Gear')">Elite Gear</a>
-            <a onclick="menuSelect(this, 'Deals')">Today's Deals</a>
+            <div class="nav-item">Hello, Sign in <b>Account & Lists</b></div>
+            <div class="nav-item">Returns <b>& Orders</b></div>
+            <div class="nav-item" style="display:flex; align-items:center;">
+                <i class="fas fa-shopping-cart" style="font-size:1.8rem;"></i>
+                <b style="margin-left:5px;">Cart (<span id="cartCount">0</span>)</b>
+            </div>
+        </div>
+        <div class="nav-sub">
+            <a onclick="filterCategory('All')"><i class="fas fa-bars"></i> All</a>
+            <a onclick="filterCategory('T-Shirts')">T-Shirts</a>
+            <a onclick="filterCategory('Kids Clothes')">Kids Clothes</a>
+            <a onclick="filterCategory('Elite Gear')">Elite Performance Gear</a>
+            <a>Today's Deals</a>
+            <a>Customer Service</a>
         </div>
     </header>
 
     <div class="container">
-        <h2 id="catLabel" style="margin-bottom: 20px; font-weight: 400;">All Products</h2>
-        <div class="product-grid" id="productGrid"></div>
+        <div class="category-header" id="catLabel">Showing: All Products (105)</div>
+        <div class="product-grid" id="productGrid">
+            </div>
     </div>
 
     <footer>
-        © 2026 GOSUBWEAR - Premium Sublimation Marketplace
+        <div class="f-top-links">
+            <div class="f-col"><h4>Get to Know Us</h4><ul><li>About GOSUBWEAR</li><li>Takaful Program</li><li>Sustainability</li></ul></div>
+            <div class="f-col"><h4>Make Money</h4><ul><li>Sell on GOSUB</li><li>Affiliate Program</li><li>Advertise</li></ul></div>
+            <div class="f-col"><h4>Payment</h4><ul><li>GOSUB Business Card</li><li>Shop with Points</li><li>Reload Balance</li></ul></div>
+            <div class="f-col"><h4>Let Us Help</h4><ul><li>Your Account</li><li>Shipping Rates</li><li>Help Center</li></ul></div>
+        </div>
+        <div class="f-bottom">
+            <p>Conditions of Use | Privacy Notice | Your Ads Privacy Choices</p>
+            <p style="margin-top:10px;">© 2026, GOSUBWEAR Enterprise - High Performance Sublimation</p>
+        </div>
     </footer>
 
     <script>
@@ -128,53 +126,65 @@
 
         // Generate 105 Products
         for (let i = 1; i <= 105; i++) {
-            const cat = categories[i % categories.length];
+            const category = categories[i % categories.length];
+            let namePrefix = "";
+            let icon = "fa-tshirt";
+
+            if (category === "T-Shirts") {
+                namePrefix = "Cotton Comfort Tee";
+                icon = "fa-tshirt";
+            } else if (category === "Kids Clothes") {
+                namePrefix = "Junior Active Wear";
+                icon = "fa-baby-carriage";
+            } else {
+                namePrefix = "Elite Sublimation Pro";
+                icon = "fa-vest";
+            }
+
             allProducts.push({
                 id: i,
-                name: `${cat} Premium Series - Item ${i}`,
-                category: cat,
-                price: 1500 + (i * 10),
-                icon: cat === "Kids Clothes" ? "fa-child" : "fa-tshirt"
+                name: `${namePrefix} - Series ${i}`,
+                category: category,
+                price: 1200 + (i * 15),
+                rating: (Math.random() * (5 - 3.8) + 3.8).toFixed(1),
+                reviews: Math.floor(Math.random() * 5000),
+                icon: icon
             });
-        }
-
-        // Function to handle the "CLICK BOX" effect on menu
-        function menuSelect(element, cat) {
-            // Remove 'active' class from all links
-            document.querySelectorAll('#mainMenu a').forEach(link => {
-                link.classList.remove('active');
-            });
-            // Add 'active' class to clicked link
-            element.classList.add('active');
-            
-            filterCategory(cat);
-        }
-
-        function filterCategory(cat) {
-            const filtered = cat === 'All' || cat === 'Deals' ? allProducts : allProducts.filter(p => p.category === cat);
-            document.getElementById('catLabel').innerText = `${cat} (${filtered.length})`;
-            displayProducts(filtered);
         }
 
         function displayProducts(products) {
             const grid = document.getElementById('productGrid');
             grid.innerHTML = products.map(p => `
                 <div class="p-card">
-                    <div class="p-img-area"><i class="fas ${p.icon}" style="font-size:3rem; color:#ddd;"></i></div>
-                    <div style="margin:10px 0; font-size:14px; color:var(--text-link);">${p.name}</div>
-                    <div class="p-price">Rs. ${p.price}</div>
-                    <button class="buy-btn" onclick="addOne()">Add to Cart</button>
+                    <div class="p-img-area">
+                        <i class="fas ${p.icon}" style="font-size:4rem; color:#eee;"></i>
+                    </div>
+                    <div class="p-title">${p.name}</div>
+                    <div style="color:#ffa41c; font-size:12px;">
+                        ${'★'.repeat(Math.floor(p.rating))}${'☆'.repeat(5-Math.floor(p.rating))} 
+                        <span style="color:var(--text-link);">${p.reviews.toLocaleString()}</span>
+                    </div>
+                    <div class="p-price">Rs. ${p.price.toLocaleString()}</div>
+                    <button class="buy-btn" onclick="addToCart()">Add to Cart</button>
                 </div>
             `).join('');
         }
 
-        let cart = 0;
-        function addOne() {
-            cart++;
-            document.getElementById('cartCount').innerText = cart;
+        function filterCategory(cat) {
+            const filtered = cat === 'All' ? allProducts : allProducts.filter(p => p.category === cat);
+            document.getElementById('catLabel').innerText = `Showing: ${cat} (${filtered.length} products)`;
+            displayProducts(filtered);
+            // Sync search dropdown
+            document.getElementById('searchCat').value = cat;
         }
 
-        // Load initially
+        let count = 0;
+        function addToCart() {
+            count++;
+            document.getElementById('cartCount').innerText = count;
+        }
+
+        // Initial Load
         displayProducts(allProducts);
     </script>
 </body>
