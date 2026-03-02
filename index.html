@@ -24,7 +24,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Arial', sans-serif; background-color: var(--bg-canvas); color: #111; }
 
-        /* --- HEADER (MATCHING IMAGE) --- */
+        /* HEADER SECTION */
         header { background: var(--amazon-dark); color: white; position: sticky; top: 0; z-index: 2000; }
         .nav-main { display: flex; align-items: center; padding: 5px 15px; height: 60px; gap: 10px; }
         
@@ -32,135 +32,85 @@
         .logo-box:hover { border: 1px solid white; }
         .logo-box span { color: var(--gosub-orange); }
 
-        .nav-loc { border: 1px solid transparent; padding: 5px 8px; font-size: 12px; cursor: pointer; }
-        .nav-loc:hover { border: 1px solid white; }
-        .nav-loc i { font-size: 16px; margin-right: 3px; }
-        .nav-loc b { display: block; font-size: 14px; margin-top: 2px; }
-
         .nav-search { flex-grow: 1; display: flex; height: 40px; margin: 0 10px; border-radius: 4px; overflow: hidden; }
-        .search-cat { background: #f3f3f3; color: #555; border: none; padding: 0 10px; border-right: 1px solid #ccc; font-size: 12px; cursor: pointer; }
         .search-input { flex-grow: 1; border: none; padding: 0 10px; outline: none; }
         .search-btn { background: #febd69; width: 45px; border: none; cursor: pointer; color: #333; font-size: 1.2rem; }
-        .search-btn:hover { background: #f3a847; }
-
-        .nav-right { display: flex; align-items: center; gap: 5px; }
-        .nav-item { border: 1px solid transparent; padding: 5px 8px; font-size: 12px; cursor: pointer; line-height: 1.2; text-decoration: none; color: white; }
-        .nav-item:hover { border: 1px solid white; }
-        .nav-item b { display: block; font-size: 14px; }
 
         .cart-box { position: relative; display: flex; align-items: center; padding: 5px 10px; border: 1px solid transparent; cursor: pointer; text-decoration: none; color: white; }
-        .cart-box:hover { border: 1px solid white; }
         .cart-count { position: absolute; top: 2px; left: 22px; color: #f08804; font-weight: bold; font-size: 16px; }
 
-        /* --- WHITE MENU SECTION --- */
-        .nav-sub { background: white; color: #333; display: flex; padding: 0 15px; border-bottom: 1px solid #ddd; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        /* WHITE MENU SECTION */
+        .nav-sub { background: white; color: #333; display: flex; padding: 0 15px; border-bottom: 1px solid #ddd; }
         .nav-sub a { padding: 12px 15px; cursor: pointer; color: #333; text-decoration: none; font-size: 14px; border-bottom: 3px solid transparent; }
-        .nav-sub a:hover { background: #f0f2f2; }
         .nav-sub a.active { border-bottom: 3px solid var(--text-link); font-weight: 600; color: var(--text-link); }
 
-        /* --- PRODUCT GRID --- */
+        /* PRODUCT GRID */
         .container { max-width: 1500px; margin: 20px auto; padding: 0 20px; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
         .p-card { background: white; padding: 20px; border-radius: 4px; border: 1px solid #eee; transition: 0.3s; }
-        .p-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .p-img { height: 180px; background: #f9f9f9; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 3rem; color: #ddd; }
         
-        .buy-btn { background: var(--amazon-yellow); border: 1px solid #FCD200; width: 100%; padding: 8px; border-radius: 20px; margin-top: 15px; font-weight: 500; cursor: pointer; box-shadow: 0 2px 5px rgba(213,217,217,.5); }
+        /* YELLOW BUTTON */
+        .buy-btn { background: var(--amazon-yellow); border: 1px solid #FCD200; width: 100%; padding: 10px; border-radius: 20px; margin-top: 15px; font-weight: 600; cursor: pointer; }
         .buy-btn:hover { background: var(--amazon-yellow-hover); }
 
-        /* --- CHECKOUT PAGE --- */
-        #checkoutPage { display: none; padding: 40px; background: white; min-height: 80vh; }
-        .checkout-container { max-width: 1000px; margin: 0 auto; }
-        .checkout-header { border-bottom: 1px solid #ddd; padding-bottom: 20px; margin-bottom: 20px; }
-        .checkout-item { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #eee; }
-
-        /* --- FOOTER (MATCHING IMAGE) --- */
-        .back-top { background: #37475a; color: white; text-align: center; padding: 15px; font-size: 13px; cursor: pointer; margin-top: 40px; }
-        .back-top:hover { background: #485769; }
-        footer { background: var(--amazon-light); color: #DDD; }
-        .f-cols { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); padding: 40px 20px; gap: 20px; }
-        .f-col h4 { color: white; margin-bottom: 15px; font-size: 16px; }
-        .f-col a { display: block; color: #DDD; text-decoration: none; font-size: 13px; margin-bottom: 8px; }
-        .f-col a:hover { text-decoration: underline; }
-        .f-bottom { background: var(--amazon-dark); padding: 40px 20px; text-align: center; font-size: 12px; }
+        /* FOOTER */
+        footer { background: var(--amazon-light); color: #DDD; padding: 40px 20px; text-align: center; margin-top: 50px; }
     </style>
 </head>
 <body>
 
+    <audio id="addSound" src="https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3" preload="auto"></audio>
+
     <header>
         <div class="nav-main">
-            <div class="logo-box" onclick="showPage('home')">GOSUB<span>WEAR</span></div>
-            <div class="nav-loc"><i class="fas fa-map-marker-alt"></i> Deliver to <b>Pakistan</b></div>
+            <div class="logo-box" onclick="location.reload()">GOSUB<span>WEAR</span></div>
             <div class="nav-search">
-                <button class="search-cat">All <i class="fas fa-caret-down"></i></button>
                 <input type="text" class="search-input" placeholder="Search GOSUBWEAR">
                 <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
-            <div class="nav-right">
-                <a href="#" class="nav-item">Hello, Sign in <b>Account & Lists <i class="fas fa-caret-down"></i></b></a>
-                <a href="#" class="nav-item">Returns <b>& Orders</b></a>
-                <a href="#" class="cart-box" onclick="showPage('checkout')">
-                    <span class="cart-count" id="cartCount">0</span>
-                    <i class="fas fa-shopping-cart" style="font-size: 1.8rem;"></i>
-                    <b style="align-self: flex-end; margin-left: 5px;">Cart</b>
-                </a>
+            <div class="cart-box">
+                <span class="cart-count" id="cartCount">0</span>
+                <i class="fas fa-shopping-cart" style="font-size: 1.8rem;"></i>
             </div>
         </div>
         <div class="nav-sub" id="mainMenu">
-            <a onclick="menuSelect(this, 'All')" class="active"><i class="fas fa-bars"></i> All</a>
+            <a onclick="menuSelect(this, 'All')" class="active">All Products</a>
             <a onclick="menuSelect(this, 'T-Shirts')">T-Shirts</a>
             <a onclick="menuSelect(this, 'Kids Clothes')">Kids Clothes</a>
             <a onclick="menuSelect(this, 'Elite Gear')">Elite Gear</a>
         </div>
     </header>
 
-    <main id="homePage" class="container">
+    <main class="container">
         <h2 id="catLabel" style="margin-bottom: 20px;">All Products (105)</h2>
         <div class="product-grid" id="productGrid"></div>
     </main>
 
-    <div id="checkoutPage" class="container">
-        <div class="checkout-container">
-            <div class="checkout-header">
-                <h1>Review Your Order</h1>
-                <p style="color: green;">✔ Your order qualifies for Shariah-Compliant Takaful protection.</p>
-            </div>
-            <div id="cartItems"></div>
-            <div style="margin-top: 30px; border-top: 2px solid #000; padding-top: 20px; text-align: right;">
-                <h2>Total: Rs. <span id="totalPrice">0</span></h2>
-                <button class="buy-btn" style="width: 250px; font-size: 1.1rem;" onclick="alert('Order Processed Successfully!')">Place Your Order</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="back-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">Back to top</div>
-
     <footer>
-        <div class="f-cols">
-            <div class="f-col"><h4>Get to Know Us</h4><a href="#">Careers</a><a href="#">Blog</a><a href="#">About GOSUBWEAR</a><a href="#">Sustainability</a></div>
-            <div class="f-col"><h4>Make Money with Us</h4><a href="#">Sell on GOSUB</a><a href="#">Become an Affiliate</a><a href="#">Advertise Your Products</a></div>
-            <div class="f-col"><h4>GOSUB Payment</h4><a href="#">Business Card</a><a href="#">Shop with Points</a><a href="#">Reload Balance</a></div>
-            <div class="f-col"><h4>Let Us Help You</h4><a href="#">Your Account</a><a href="#">Your Orders</a><a href="#">Takaful Program</a><a href="#">Help Center</a></div>
-        </div>
-        <div class="f-bottom">
-            <p>Conditions of Use | Privacy Notice | Your Ads Privacy Choices</p>
-            <p style="margin-top:10px;">© 2026, GOSUBWEAR.com, Inc. or its affiliates. High-Performance Sublimation Gear.</p>
-        </div>
+        <p>© 2026 GOSUBWEAR - Takaful Program Protected</p>
     </footer>
 
     <script>
         const categories = ["T-Shirts", "Kids Clothes", "Elite Gear"];
         const products = [];
-        let cart = [];
+        let cartCount = 0;
+
+        // Sound Function
+        function playAddSound() {
+            const sound = document.getElementById('addSound');
+            sound.currentTime = 0; // Reset to start
+            sound.play().catch(e => console.log("Audio needs user interaction first."));
+        }
 
         // Generate 105 products
         for(let i=1; i<=105; i++) {
             const cat = categories[i % categories.length];
             products.push({
                 id: i,
-                name: `${cat} Premium Sublimation v.${i}`,
+                name: `${cat} Series v.${i}`,
                 category: cat,
-                price: 2450 + (i * 10),
+                price: 2500 + (i * 5),
                 icon: cat === "Kids Clothes" ? "fa-child" : "fa-tshirt"
             });
         }
@@ -170,51 +120,26 @@
             grid.innerHTML = list.map(p => `
                 <div class="p-card">
                     <div class="p-img"><i class="fas ${p.icon}"></i></div>
-                    <div style="color:var(--text-link); font-size:14px; margin:10px 0; height:40px; overflow:hidden;">${p.name}</div>
-                    <div style="color:var(--price-red); font-size:1.4rem; font-weight:bold;">Rs. ${p.price}</div>
-                    <button class="buy-btn" onclick="addToBag(${p.id})">Add to Bag</button>
+                    <div style="font-size:14px; margin:10px 0;">${p.name}</div>
+                    <div style="color:var(--price-red); font-weight:bold;">Rs. ${p.price}</div>
+                    <button class="buy-btn" onclick="addToBag()">Add to Bag</button>
                 </div>
             `).join('');
         }
 
-        function addToBag(id) {
-            const p = products.find(x => x.id === id);
-            cart.push(p);
-            document.getElementById('cartCount').innerText = cart.length;
+        function addToBag() {
+            cartCount++;
+            document.getElementById('cartCount').innerText = cartCount;
+            playAddSound(); // Play the voice/sound
             
-            // Subtle feedback on button
-            event.target.innerText = "✓ Added";
-            event.target.style.background = "#e7e9ec";
+            // Visual feedback
+            const btn = event.target;
+            btn.innerText = "✓ Added";
+            btn.style.background = "#e7e9ec";
             setTimeout(() => {
-                event.target.innerText = "Add to Bag";
-                event.target.style.background = "var(--amazon-yellow)";
-            }, 700);
-        }
-
-        function showPage(page) {
-            if(page === 'checkout') {
-                document.getElementById('homePage').style.display = 'none';
-                document.getElementById('checkoutPage').style.display = 'block';
-                renderCheckout();
-            } else {
-                document.getElementById('homePage').style.display = 'block';
-                document.getElementById('checkoutPage').style.display = 'none';
-            }
-            window.scrollTo(0,0);
-        }
-
-        function renderCheckout() {
-            const container = document.getElementById('cartItems');
-            let total = 0;
-            if(cart.length === 0) {
-                container.innerHTML = "<h3>Your bag is empty.</h3>";
-            } else {
-                container.innerHTML = cart.map(item => {
-                    total += item.price;
-                    return `<div class="checkout-item"><span>${item.name}</span><b>Rs. ${item.price}</b></div>`;
-                }).join('');
-            }
-            document.getElementById('totalPrice').innerText = total;
+                btn.innerText = "Add to Bag";
+                btn.style.background = "var(--amazon-yellow)";
+            }, 600);
         }
 
         function menuSelect(el, cat) {
@@ -223,7 +148,6 @@
             const filtered = cat === 'All' ? products : products.filter(p => p.category === cat);
             document.getElementById('catLabel').innerText = `${cat} (${filtered.length})`;
             renderProducts(filtered);
-            showPage('home');
         }
 
         renderProducts(products);
