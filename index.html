@@ -10,34 +10,77 @@
 
     <style>
         :root {
-            --nav-dark: #1a1d23; /* Unique Titanium Gray */
-            --nav-light: #2c313c; 
+            --nav-dark: #131921; /* Amazon Dark */
+            --nav-light: #232f3e; /* Amazon Sub-nav */
             --brand-orange: #FF6600; 
             --brand-yellow: #FFB800;
-            --bg-gray: #f0f2f2;
+            --bg-gray: #eaeded;
             --text-main: #111;
             --price-red: #B12704;
+            --footer-bottom: #131a22;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--bg-gray); color: var(--text-main); }
         a { text-decoration: none; color: inherit; cursor: pointer; }
 
-        /* HEADER & NAVIGATION (AMAZON STYLE) */
+        /* HEADER CLONE */
         header { background: var(--nav-dark); color: white; position: sticky; top: 0; z-index: 2000; }
         .nav-main { display: flex; align-items: center; padding: 5px 15px; height: 60px; gap: 10px; }
-        .logo-box { font-family: 'Orbitron'; font-size: 1.4rem; font-weight: 900; border: 1px solid transparent; padding: 5px; }
-        .logo-box span { color: var(--brand-orange); }
         
+        .logo-box { font-family: 'Orbitron'; font-size: 1.4rem; font-weight: 900; border: 1px solid transparent; padding: 5px; }
+        .logo-box:hover { border: 1px solid white; }
+        .logo-box span { color: var(--brand-orange); }
+
+        .nav-loc { border: 1px solid transparent; padding: 5px 8px; font-size: 12px; line-height: 1; }
+        .nav-loc:hover { border: 1px solid white; }
+        .nav-loc i { font-size: 16px; margin-right: 3px; }
+        .nav-loc span { display: block; font-weight: bold; font-size: 14px; margin-top: 3px; }
+
         .nav-search { flex-grow: 1; display: flex; height: 40px; margin: 0 10px; }
-        .search-input { flex-grow: 1; border: none; padding: 0 10px; border-radius: 4px 0 0 4px; outline: none; }
-        .search-btn { background: var(--brand-orange); width: 45px; border: none; border-radius: 0 4px 4px 0; cursor: pointer; color: black; }
+        .search-cat { background: #f3f3f3; color: #555; border: none; padding: 0 10px; border-radius: 4px 0 0 4px; border-right: 1px solid #ccc; font-size: 12px; }
+        .search-input { flex-grow: 1; border: none; padding: 0 10px; outline: none; }
+        .search-btn { background: #febd69; width: 45px; border: none; border-radius: 0 4px 4px 0; cursor: pointer; color: #333; font-size: 1.2rem; }
+        .search-btn:hover { background: #f3a847; }
 
-        .cart-box { position: relative; display: flex; align-items: center; padding: 5px 10px; cursor: pointer; }
-        .cart-count { position: absolute; top: 2px; left: 22px; color: var(--brand-orange); font-weight: bold; }
+        .nav-right { display: flex; align-items: center; }
+        .nav-item { border: 1px solid transparent; padding: 5px 8px; font-size: 12px; line-height: 1; cursor: pointer; }
+        .nav-item:hover { border: 1px solid white; }
+        .nav-item span { display: block; font-weight: bold; font-size: 14px; margin-top: 3px; }
 
-        /* PRODUCT GRID */
-        .container { max-width: 1400px; margin: 20px auto; padding: 0 20px; }
+        .cart-box { position: relative; display: flex; align-items: center; padding: 5px 10px; border: 1px solid transparent; }
+        .cart-box:hover { border: 1px solid white; }
+        .cart-count { position: absolute; top: 2px; left: 22px; color: #f08804; font-weight: bold; font-size: 16px; }
+
+        /* SUB-NAV */
+        .nav-sub { background: var(--nav-light); color: white; display: flex; padding: 5px 15px; gap: 15px; font-size: 14px; align-items: center; }
+        .nav-sub a { border: 1px solid transparent; padding: 5px; }
+        .nav-sub a:hover { border: 1px solid white; }
+
+        /* FOOTER CLONE */
+        .back-top { background: #37475a; color: white; text-align: center; padding: 15px; font-size: 13px; cursor: pointer; margin-top: 40px; }
+        .back-top:hover { background: #485769; }
+        
+        footer { background: var(--nav-light); color: white; padding-top: 40px; }
+        .f-top { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding-bottom: 40px; }
+        .f-col h4 { font-size: 16px; margin-bottom: 15px; }
+        .f-col ul { list-style: none; }
+        .f-col ul li { font-size: 13px; margin-bottom: 8px; color: #DDD; cursor: pointer; }
+        .f-col ul li:hover { text-decoration: underline; }
+
+        .f-mid { border-top: 1px solid #3a4553; padding: 30px 0; display: flex; justify-content: center; align-items: center; gap: 40px; }
+        .f-mid-btn { border: 1px solid #848688; padding: 6px 15px; border-radius: 3px; font-size: 13px; color: #CCC; }
+
+        .f-bottom { background: var(--footer-bottom); padding: 40px 20px; }
+        .f-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(7, 1fr); gap: 15px; }
+        .f-item { font-size: 11px; line-height: 1.2; color: #999; cursor: pointer; }
+        .f-item b { color: #DDD; display: block; font-size: 12px; }
+        .f-item:hover b { text-decoration: underline; }
+
+        .copyright { text-align: center; padding: 20px; font-size: 12px; color: #999; }
+
+        /* CORE CONTAINER */
+        .container { max-width: 1400px; margin: 20px auto; padding: 0 20px; min-height: 600px; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
         .p-card { background: white; padding: 15px; border-radius: 4px; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; }
         .p-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
@@ -46,22 +89,17 @@
         .p-title { font-size: 0.9rem; font-weight: 500; height: 40px; overflow: hidden; color: #007185; }
         .p-price { font-size: 1.2rem; font-weight: bold; color: var(--price-red); margin: 5px 0; }
 
-        /* PRODUCT DETAILS PAGE (PDP) */
-        .page-pdp { display: none; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        /* PAGES */
+        .page-pdp { display: none; background: white; padding: 40px; border-radius: 8px; }
         .pdp-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .pdp-img { text-align: center; border: 1px solid #eee; border-radius: 4px; padding: 20px; }
         .pdp-img img { max-width: 100%; height: 450px; object-fit: contain; }
         .pdp-info h1 { font-size: 1.8rem; margin-bottom: 10px; }
         .pdp-price { font-size: 2rem; color: var(--price-red); font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; }
         .pdp-desc { line-height: 1.6; color: #555; margin-bottom: 25px; }
-        .add-to-bag-pdp { background: #ffd814; border: 1px solid #fcd200; padding: 15px 40px; border-radius: 30px; font-weight: 600; cursor: pointer; width: 100%; }
+        .add-to-bag-pdp { background: #ffd814; border: 1px solid #fcd200; padding: 15px 40px; border-radius: 30px; font-weight: 600; cursor: pointer; width: 100%; transition: 0.2s; }
+        .add-to-bag-pdp:hover { background: #f7ca00; }
 
-        /* FOOTER */
-        footer { background: var(--nav-dark); color: #999; padding: 60px 20px; text-align: center; margin-top: 50px; }
-        .footer-links { margin-bottom: 20px; }
-        .footer-links a { color: #ccc; margin: 0 10px; font-size: 0.85rem; }
-
-        /* VISIBILITY UTILITIES */
         .active { display: block !important; }
         .hidden { display: none !important; }
     </style>
@@ -71,16 +109,38 @@
     <header>
         <div class="nav-main">
             <div class="logo-box" onclick="showSection('home')">GOSUB<span>WEAR</span></div>
+            
+            <div class="nav-loc">
+                <i class="fas fa-map-marker-alt"></i> Deliver to<span>Pakistan</span>
+            </div>
+
             <div class="nav-search">
-                <input type="text" class="search-input" placeholder="Search across 54 products...">
+                <button class="search-cat">All <i class="fas fa-caret-down"></i></button>
+                <input type="text" class="search-input" placeholder="Search GOSUBWEAR Innovation...">
                 <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
+
             <div class="nav-right">
+                <div class="nav-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" width="18" style="vertical-align: middle;"> EN <i class="fas fa-caret-down" style="font-size: 10px;"></i>
+                </div>
+                <div class="nav-item">Hello, Sign in<span>Account & Lists <i class="fas fa-caret-down" style="font-size: 10px;"></i></span></div>
+                <div class="nav-item">Returns<span>& Orders</span></div>
                 <div class="cart-box" onclick="showSection('cart')">
                     <span class="cart-count" id="cartCount">0</span>
                     <i class="fas fa-shopping-cart" style="font-size: 1.8rem;"></i>
+                    <span style="align-self: flex-end; font-weight: bold; margin-bottom: 5px; margin-left: 5px;">Cart</span>
                 </div>
             </div>
+        </div>
+
+        <div class="nav-sub">
+            <a href="#"><i class="fas fa-bars"></i> All</a>
+            <a href="#">Today's Deals</a>
+            <a href="#">Customer Service</a>
+            <a href="#">Registry</a>
+            <a href="#">Gift Cards</a>
+            <a href="#">Sell</a>
         </div>
     </header>
 
@@ -93,8 +153,7 @@
             <a onclick="showSection('home')" style="color: #007185; display: inline-block; margin-bottom: 20px;">
                 <i class="fas fa-chevron-left"></i> Back to results
             </a>
-            <div class="pdp-layout" id="pdpContent">
-                </div>
+            <div class="pdp-layout" id="pdpContent"></div>
         </section>
 
         <section id="cart" class="page-section hidden">
@@ -110,18 +169,84 @@
         </section>
     </main>
 
+    <div class="back-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to top</div>
+
     <footer>
-        <div class="footer-links">
-            <a href="#">Conditions of Use</a> | <a href="#">Privacy Notice</a> | <a href="#">Takaful Program</a>
+        <div class="f-top">
+            <div class="f-col">
+                <h4>Get to Know Us</h4>
+                <ul>
+                    <li>Careers</li>
+                    <li>Blog</li>
+                    <li>About GOSUBWEAR</li>
+                    <li>Investor Relations</li>
+                </ul>
+            </div>
+            <div class="f-col">
+                <h4>Make Money with Us</h4>
+                <ul>
+                    <li>Sell products on GOSUB</li>
+                    <li>Become an Affiliate</li>
+                    <li>Advertise Your Products</li>
+                    <li>Self-Publish with Us</li>
+                </ul>
+            </div>
+            <div class="f-col">
+                <h4>Payment Products</h4>
+                <ul>
+                    <li>GOSUB Business Card</li>
+                    <li>Shop with Points</li>
+                    <li>Reload Your Balance</li>
+                    <li>Currency Converter</li>
+                </ul>
+            </div>
+            <div class="f-col">
+                <h4>Let Us Help You</h4>
+                <ul>
+                    <li>Your Account</li>
+                    <li>Your Orders</li>
+                    <li>Shipping Rates & Policies</li>
+                    <li>Help Center</li>
+                </ul>
+            </div>
         </div>
-        <p>© 2026 GOSUBWEAR. Crafted with Performance. Worn with Pride.</p>
+
+        <div class="f-mid">
+            <div class="logo-box">GOSUB<span>WEAR</span></div>
+            <div class="f-mid-btn"><i class="fas fa-globe"></i> English</div>
+            <div class="f-mid-btn">PKR Pakistani Rupee</div>
+            <div class="f-mid-btn">Pakistan</div>
+        </div>
+
+        <div class="f-bottom">
+            <div class="f-grid">
+                <div class="f-item"><b>GOSUB Music</b>Stream millions<br>of songs</div>
+                <div class="f-item"><b>GOSUB Ads</b>Reach customers<br>everywhere</div>
+                <div class="f-item"><b>6pm</b>Score deals<br>on fashion brands</div>
+                <div class="f-item"><b>AbeBooks</b>Books, art<br>& collectibles</div>
+                <div class="f-item"><b>ACX</b>Audiobook<br>Publishing</div>
+                <div class="f-item"><b>Sell on GOSUB</b>Start a Selling<br>Account</div>
+                <div class="f-item"><b>Veeqo</b>Shipping<br>Software</div>
+                
+                <div class="f-item"><b>GOSUB Business</b>Everything For<br>Your Business</div>
+                <div class="f-item"><b>GOSUB Global</b>Ship Orders<br>Internationally</div>
+                <div class="f-item"><b>Web Services</b>Scalable Cloud<br>Computing</div>
+                <div class="f-item"><b>Audible</b>Listen to Books &<br>Original Audio</div>
+                <div class="f-item"><b>Box Office Mojo</b>Find Movie<br>Box Office Data</div>
+                <div class="f-item"><b>Goodreads</b>Book reviews<br>& recommendations</div>
+                <div class="f-item"><b>IMDb</b>Movies, TV<br>& Celebrities</div>
+            </div>
+            <div class="copyright">
+                Conditions of Use | Privacy Notice | Takaful Program<br>
+                © 2026, GOSUBWEAR.com, Inc. or its affiliates
+            </div>
+        </div>
     </footer>
 
     <script>
         const categories = ["Sublimation", "Tradition", "Sports", "Accessories"];
         const products = [];
 
-        // Generate 54 Products
         for(let i=1; i<=54; i++) {
             let cat = categories[i % categories.length];
             products.push({
@@ -143,7 +268,7 @@
                     <div class="p-title">${p.name}</div>
                     <div style="color:#ffa41c; font-size:0.75rem;">★★★★★ (120)</div>
                     <div class="p-price">Rs. ${p.price}</div>
-                    <button class="add-to-bag-pdp" style="padding:5px; font-size:0.7rem;" onclick="event.stopPropagation(); addToCart(${p.id})">Quick Add</button>
+                    <button class="add-to-bag-pdp" style="padding:8px; font-size:0.7rem; margin-top:10px;" onclick="event.stopPropagation(); addToCart(${p.id})">Quick Add</button>
                 </div>
             `).join('');
         }
@@ -176,10 +301,13 @@
         }
 
         function showSection(id) {
-            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
-            document.getElementById(id).classList.add('active');
-            document.getElementById(id).classList.remove('hidden');
+            document.querySelectorAll('section').forEach(s => {
+                s.classList.remove('active');
+                s.classList.add('hidden');
+            });
+            const target = document.getElementById(id);
+            target.classList.add('active');
+            target.classList.remove('hidden');
             window.scrollTo(0,0);
             if(id === 'cart') updateCartUI();
         }
