@@ -3,285 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOSUBWEAR.com | Shop Innovation & Style</title>
+    <title>GOSUBWEAR | 2026 Collection</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@300;400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@300;400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
             --amazon-blue: #131921;
             --amazon-light: #232f3e;
-            --amazon-orange: #febd69;
             --gosub-orange: #FF6600;
             --bg-gray: #eaeded;
             --white: #ffffff;
-            --text: #111111;
+            --price-red: #B12704;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-gray); color: var(--text); }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-gray); color: #111; overflow-x: hidden; }
 
-        /* AMAZON STYLE HEADER */
-        header { background-color: var(--amazon-blue); color: white; padding: 10px 0; position: sticky; top: 0; z-index: 1000; }
-        .nav-main { display: flex; align-items: center; gap: 20px; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
-        
-        .logo { font-family: 'Orbitron'; font-size: 1.5rem; font-weight: 900; cursor: pointer; min-width: 150px; }
+        /* HEADER */
+        header { background: var(--amazon-blue); color: white; position: sticky; top: 0; z-index: 1000; }
+        .nav-top { display: flex; align-items: center; padding: 10px 20px; gap: 15px; max-width: 1500px; margin: 0 auto; }
+        .logo { font-family: 'Orbitron'; font-size: 1.4rem; font-weight: 900; cursor: pointer; color: white; }
         .logo span { color: var(--gosub-orange); }
+        .search-bar { flex-grow: 1; display: flex; }
+        .search-bar input { width: 100%; padding: 10px; border: none; border-radius: 4px 0 0 4px; }
+        .search-btn { background: var(--gosub-orange); border: none; padding: 10px 15px; border-radius: 0 4px 4px 0; color: white; cursor: pointer; }
 
-        .search-container { flex-grow: 1; display: flex; }
-        .search-container input { width: 100%; padding: 10px; border: none; border-radius: 4px 0 0 4px; outline: none; }
-        .search-btn { background: var(--gosub-orange); border: none; padding: 10px 15px; border-radius: 0 4px 4px 0; cursor: pointer; color: white; }
+        .cart-trigger { position: relative; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+        .cart-count { background: var(--gosub-orange); position: absolute; top: -10px; right: 25px; padding: 2px 6px; border-radius: 50%; font-size: 0.7rem; }
 
-        .nav-tools { display: flex; gap: 20px; font-size: 0.85rem; }
-        .nav-item { cursor: pointer; line-height: 1.2; }
-        .nav-item span { display: block; font-weight: bold; font-size: 0.95rem; }
+        /* PRODUCT GRID */
+        .container { max-width: 1500px; margin: 20px auto; padding: 0 20px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; }
+        .a-card { background: white; padding: 15px; border-radius: 4px; display: flex; flex-direction: column; transition: 0.2s; }
+        .a-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .img-wrap { height: 200px; margin-bottom: 10px; text-align: center; }
+        .img-wrap img { height: 100%; max-width: 100%; object-fit: contain; }
+        .p-title { font-size: 0.9rem; font-weight: 500; height: 40px; overflow: hidden; margin-bottom: 5px; }
+        .stars { color: #ffa41c; font-size: 0.8rem; }
+        .price { color: var(--price-red); font-weight: bold; font-size: 1.1rem; margin: 5px 0; }
+        .add-btn { background: #ffd814; border: 1px solid #fcd200; border-radius: 20px; padding: 6px; cursor: pointer; font-size: 0.8rem; }
+        .add-btn:hover { background: #f7ca00; }
 
-        /* SECONDARY NAV */
-        .nav-sub { background-color: var(--amazon-light); color: white; padding: 8px 20px; display: flex; gap: 20px; font-size: 0.9rem; }
-        .nav-sub a { cursor: pointer; transition: 0.2s; }
-        .nav-sub a:hover { border: 1px solid white; padding: 0 5px; margin: 0 -6px; }
-
-        /* HERO SLIDER */
-        .hero-amazon { height: 400px; background: linear-gradient(to bottom, transparent, var(--bg-gray)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1500'); background-size: cover; background-position: center; }
-
-        /* PRODUCT GRID (AMAZON CARD STYLE) */
-        .main-container { max-width: 1400px; margin: -100px auto 50px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .a-card { background: white; padding: 20px; display: flex; flex-direction: column; }
-        .a-card h2 { font-size: 1.3rem; margin-bottom: 15px; font-family: 'Outfit'; }
-        .a-card .img-box { height: 250px; background: #f8f8f8; margin-bottom: 15px; text-align: center; }
-        .a-card img { height: 100%; max-width: 100%; object-fit: contain; mix-blend-mode: multiply; }
-        .a-card .price { font-size: 1.4rem; font-weight: bold; color: #B12704; }
-        .a-card .rating { color: #ffa41c; margin: 5px 0; font-size: 0.9rem; }
-        .buy-btn { background: #ffd814; border: 1px solid #fcd200; border-radius: 20px; padding: 8px; font-size: 0.8rem; cursor: pointer; margin-top: 10px; transition: 0.2s; }
-        .buy-btn:hover { background: #f7ca00; }
+        /* SUCCESS TOAST (Replaces Pop-up) */
+        #toast { visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 4px; padding: 16px; position: fixed; z-index: 2000; bottom: 30px; left: 50%; transform: translateX(-50%); }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
 
         /* PAGE SECTIONS */
-        .page-section { display: none; min-height: 80vh; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+        .page-section { display: none; padding: 40px 0; animation: fadeIn 0.4s; }
         .page-section.active { display: block; }
-        .active-grid { display: grid; }
 
-        /* FOOTER */
-        .back-to-top { background: #37475a; color: white; text-align: center; padding: 15px; cursor: pointer; font-size: 0.8rem; }
-        footer { background: var(--amazon-blue); color: #ddd; padding: 40px 20px; }
-        .footer-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
-        .footer-links h4 { color: white; margin-bottom: 15px; }
-        .footer-links a { display: block; margin-bottom: 8px; font-size: 0.85rem; cursor: pointer; }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+
+        footer { background: var(--amazon-blue); color: #ccc; padding: 40px 0; margin-top: 50px; text-align: center; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="nav-main">
+        <div class="nav-top">
             <div class="logo" onclick="showPage('home')">GOSUB<span>WEAR</span></div>
-            <div class="search-container">
-                <input type="text" placeholder="Search GOSUBWEAR Categories...">
+            <div class="search-bar">
+                <input type="text" placeholder="Search 23+ Premium Products...">
                 <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
-            <div class="nav-tools">
-                <div class="nav-item">Hello, Sign in<span>Account & Lists</span></div>
-                <div class="nav-item">Returns<span>& Orders</span></div>
-                <div class="nav-item" onclick="showPage('cart')" style="position:relative;">
-                    <i class="fas fa-shopping-cart" style="font-size:1.5rem;"></i>
-                    <span id="cartCount" style="position:absolute; top:-10px; right:-10px; background:var(--gosub-orange); padding:2px 6px; border-radius:50%; font-size:0.7rem;">0</span>
-                    <span style="display:inline; margin-left:5px;">Cart</span>
-                </div>
+            <div class="cart-trigger" onclick="showPage('cart')">
+                <span class="cart-count" id="cartCount">0</span>
+                <i class="fas fa-shopping-cart" style="font-size:1.4rem;"></i>
+                <span>Cart</span>
             </div>
-        </div>
-        <div class="nav-sub">
-            <a onclick="showPage('home')"><i class="fas fa-bars"></i> All</a>
-            <a onclick="showPage('shop')">Catalog</a>
-            <a onclick="showPage('about')">Our Mission</a>
-            <a onclick="showPage('faq')">Customer Service</a>
-            <a onclick="showPage('privacy')">Privacy</a>
         </div>
     </header>
 
-    <main>
+    <main class="container">
         <section id="home" class="page-section active">
-            <div class="hero-amazon"></div>
-            <div class="main-container">
-                <div class="a-card">
-                    <h2>Sublimation Lab</h2>
-                    <div class="img-box"><img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400"></div>
-                    <a onclick="showPage('shop')" style="color:#007185; cursor:pointer; font-size:0.9rem;">See more</a>
-                </div>
-                <div class="a-card">
-                    <h2>Gents Tradition</h2>
-                    <div class="img-box"><img src="https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?q=80&w=400"></div>
-                    <a onclick="showPage('shop')" style="color:#007185; cursor:pointer; font-size:0.9rem;">Shop heritage</a>
-                </div>
-                <div class="a-card">
-                    <h2>7-Day Returns</h2>
-                    <div class="img-box"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=400"></div>
-                    <p style="font-size:0.8rem;">GOSUBWEAR Promise: Secure shopping with easy returns and exchanges.</p>
-                </div>
-                <div class="a-card">
-                    <h2>Best Sellers</h2>
-                    <div class="img-box"><img src="https://images.unsplash.com/photo-1617114919297-3c8ddb01f599?q=80&w=400"></div>
-                    <a onclick="showPage('shop')" style="color:#007185; cursor:pointer; font-size:0.9rem;">View all</a>
-                </div>
-            </div>
+            <h2 style="margin-bottom:20px;">Featured <span>Collection</span></h2>
+            <div class="product-grid" id="mainGrid"></div>
         </section>
 
-        <section id="shop" class="page-section">
-            <h1 style="margin-bottom:30px;">Results for <span style="color:#c45500;">"Premium Apparel"</span></h1>
-            <div class="main-container" id="productGrid" style="margin-top:0;">
-                </div>
-        </section>
-
-        <section id="about" class="page-section">
-            <div style="background:white; padding:40px;">
-                <h1>🚀 Our Mission – GOSUBWEAR</h1>
-                <p style="margin:20px 0; font-size:1.1rem; border-left: 4px solid var(--gosub-orange); padding-left:15px;">Empowering Confidence Through Innovation</p>
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:30px; margin-top:30px;">
-                    <div>
-                        <h3>Innovation in Textile</h3>
-                        <p style="color:#555;">Through advanced sublimation methods and premium fabrics, we ensure durability and vibrant color retention.</p>
-                    </div>
-                    <div>
-                        <h3>Commitment to Quality</h3>
-                        <p style="color:#555;">Precision stitching, low fade rates, and strict quality control are our foundations.</p>
-                    </div>
+        <section id="cart" class="page-section">
+            <div style="background:white; padding:30px; border-radius:4px;">
+                <h1>Shopping Cart</h1>
+                <hr style="margin:20px 0; border:0; border-top:1px solid #ddd;">
+                <div id="cartItems">Your bag is empty.</div>
+                <div id="checkoutArea" style="display:none; margin-top:30px; max-width: 500px;">
+                    <h3>Delivery Details</h3>
+                    <input type="text" id="cName" placeholder="Full Name" style="width:100%; padding:12px; margin:10px 0;">
+                    <textarea id="cAddr" placeholder="Complete Address" style="width:100%; padding:12px; margin:10px 0;"></textarea>
+                    <button class="add-btn" style="width:100%; padding:15px; font-weight:bold;" onclick="placeOrder()">CONFIRM VIA WHATSAPP</button>
                 </div>
             </div>
         </section>
 
         <section id="privacy" class="page-section">
             <div style="background:white; padding:40px;">
-                <h1>Privacy Notice</h1>
-                <p style="margin-top:20px;">We know that you care how information about you is used and shared. GOSUBWEAR uses your shipping details solely for order fulfillment via WhatsApp and COD services.</p>
-                <h3 style="margin-top:20px;">Security</h3>
-                <p>We work to protect the security of your personal information during transmission by using encryption protocols.</p>
-            </div>
-        </section>
-
-        <section id="faq" class="page-section">
-            <div style="background:white; padding:40px;">
-                <h1>Help & Customer Service</h1>
-                <div style="margin-top:30px;">
-                    <h4 style="color:var(--gosub-orange);">How do I track my order?</h4>
-                    <p style="margin-bottom:15px;">After confirmation on WhatsApp, our team provides a tracking ID for your courier.</p>
-                    <h4 style="color:var(--gosub-orange);">What are the shipping charges?</h4>
-                    <p style="margin-bottom:15px;">We offer standard shipping rates across Pakistan. Free shipping on orders over Rs. 10,000.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="cart" class="page-section">
-            <div style="background:white; padding:40px;">
-                <h2>Shopping Cart</h2>
-                <hr style="margin:20px 0;">
-                <div id="cartItems">Your cart is empty.</div>
-                <div id="checkoutForm" style="display:none; margin-top:30px;">
-                    <h3>Proceed to Checkout</h3>
-                    <input type="text" id="custName" placeholder="Full Name" style="width:100%; padding:12px; margin:10px 0; border:1px solid #ddd;">
-                    <textarea id="custAddress" placeholder="Full Shipping Address" style="width:100%; padding:12px; margin:10px 0; border:1px solid #ddd;"></textarea>
-                    <button class="buy-btn" style="width:100%; font-weight:bold;" onclick="placeOrder()">Place Order (WhatsApp)</button>
-                </div>
+                <h1>Privacy Policy</h1>
+                <p>We respect your privacy. GOSUBWEAR collects name and address only for WhatsApp order fulfillment. We use Shariah-compliant (Takaful) principles in our operations.</p>
             </div>
         </section>
     </main>
 
-    <div class="back-to-top" onclick="window.scrollTo(0,0)">Back to top</div>
+    <div id="toast">Item added to your bag!</div>
 
     <footer>
-        <div class="footer-links">
-            <div>
-                <h4>Get to Know Us</h4>
-                <a onclick="showPage('about')">About GOSUBWEAR</a>
-                <a onclick="showPage('about')">Sustainability</a>
-                <a onclick="showPage('about')">Press Center</a>
-            </div>
-            <div>
-                <h4>Make Money with Us</h4>
-                <a>Sell on GOSUBWEAR</a>
-                <a>Affiliate Program</a>
-                <a>Host a Hub</a>
-            </div>
-            <div>
-                <h4>Let Us Help You</h4>
-                <a onclick="showPage('faq')">Shipping Rates</a>
-                <a onclick="showPage('privacy')">Returns & Replacements</a>
-                <a onclick="showPage('faq')">Help Center</a>
-            </div>
+        <div style="margin-bottom:20px;">
+            <a onclick="showPage('home')" style="cursor:pointer; margin:0 10px;">Home</a> | 
+            <a onclick="showPage('privacy')" style="cursor:pointer; margin:0 10px;">Privacy Policy</a> |
+            <a href="https://wa.me/+923270616136" style="margin:0 10px;">Contact Support</a>
         </div>
-        <div style="text-align:center; margin-top:50px; border-top:1px solid #3a4553; padding-top:20px; font-size:0.8rem;">
-            © 2026, GOSUBWEAR.com, Inc. or its affiliates
-        </div>
+        &copy; 2026 GOSUBWEAR. NO FADE. NO LIMITS.
     </footer>
 
     <script>
+        // Array of 23+ Products
         const products = [
-            { id: 1, name: "Sultan Elite Kurta - Deep Navy", price: 8500, stars: 5, reviews: 124, img: "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?q=80&w=400" },
-            { id: 2, name: "Molecular Sub-Tee (Tech Edition)", price: 2800, stars: 4, reviews: 89, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400" },
-            { id: 3, name: "Glitch-Mode Jersey (Breathable)", price: 3200, stars: 5, reviews: 56, img: "https://images.unsplash.com/photo-1598033129183-c4f50c7176c8?q=80&w=400" },
-            { id: 4, name: "Signature Waistcoat - Royal Gold", price: 6500, stars: 4, reviews: 210, img: "https://images.unsplash.com/photo-1617114919297-3c8ddb01f599?q=80&w=400" }
+            {id: 1, name: "Sultan Elite Kurta - Navy", price: 8500, img: "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?w=400"},
+            {id: 2, name: "Molecular Sub-Tee", price: 2800, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400"},
+            {id: 3, name: "Glitch-Mode Jersey", price: 3200, img: "https://images.unsplash.com/photo-1598033129183-c4f50c7176c8?w=400"},
+            {id: 4, name: "Signature Waistcoat", price: 6500, img: "https://images.unsplash.com/photo-1617114919297-3c8ddb01f599?w=400"},
+            {id: 5, name: "Pro-Fit Gym Tee", price: 1950, img: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=400"},
+            {id: 6, name: "Traditional Latha White", price: 7200, img: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?w=400"},
+            {id: 7, name: "Stealth Black Polo", price: 2400, img: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=400"},
+            {id: 8, name: "Sublimated Gaming Hood", price: 4500, img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400"},
+            {id: 9, name: "Urban Cargo Joggers", price: 3800, img: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=400"},
+            {id: 10, name: "Premium Cufflinks Set", price: 1500, img: "https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?w=400"},
+            {id: 11, name: "Cotton Blend Shalwar", price: 2200, img: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400"},
+            {id: 12, name: "Aero-Mesh Vest", price: 1200, img: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400"},
+            {id: 13, name: "Luxe Pashmina Shawl", price: 12500, img: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=400"},
+            {id: 14, name: "Tech-Dry Socks (3pk)", price: 950, img: "https://images.unsplash.com/photo-1582966232435-95e52a46664d?w=400"},
+            {id: 15, name: "Royal Sherwani - Custom", price: 25000, img: "https://images.unsplash.com/photo-1598411037711-082b6030c4a1?w=400"},
+            {id: 16, name: "Performance Base Layer", price: 2100, img: "https://images.unsplash.com/photo-1516726817505-f5ed825624d8?w=400"},
+            {id: 17, name: "Sublimated Cap", price: 1200, img: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400"},
+            {id: 18, name: "Daily Cotton Kurta", price: 4500, img: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400"},
+            {id: 19, name: "Sport Windbreaker", price: 5800, img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400"},
+            {id: 20, name: "Indigo Denim Shirt", price: 3400, img: "https://images.unsplash.com/photo-1588484628445-ee539463bd4a?w=400"},
+            {id: 21, name: "Classic Leather Belt", price: 2900, img: "https://images.unsplash.com/photo-1624222247344-550fb80ee03a?w=400"},
+            {id: 22, name: "V-Neck Inner Wear", price: 850, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400"},
+            {id: 23, name: "Designer Pocket Square", price: 750, img: "https://images.unsplash.com/photo-1514327605112-b887c0e61c0a?w=400"}
         ];
 
         let cart = [];
 
-        function showPage(id) {
-            document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            window.scrollTo(0,0);
-        }
-
-        function renderShop() {
-            const grid = document.getElementById('productGrid');
+        function renderProducts() {
+            const grid = document.getElementById('mainGrid');
             grid.innerHTML = products.map(p => `
                 <div class="a-card">
-                    <div class="img-box"><img src="${p.img}"></div>
-                    <h3 style="font-size:1rem; font-weight:500;">${p.name}</h3>
-                    <div class="rating">
-                        ${'★'.repeat(p.stars)}${'☆'.repeat(5-p.stars)} 
-                        <span style="color:#007185;">${p.reviews}</span>
-                    </div>
-                    <p class="price">Rs. ${p.price}</p>
-                    <p style="font-size:0.8rem; color:#565959;">Get it by <b>Friday, Oct 31</b></p>
-                    <button class="buy-btn" onclick="addToCart(${p.id})">Add to Cart</button>
+                    <div class="img-wrap"><img src="${p.img}" alt="${p.name}"></div>
+                    <div class="p-title">${p.name}</div>
+                    <div class="stars">★★★★★ <span style="color:#007185; font-size:0.7rem;">(42)</span></div>
+                    <div class="price">Rs. ${p.price}</div>
+                    <button class="add-btn" onclick="addToCart(${p.id})">Add to Bag</button>
                 </div>
             `).join('');
         }
 
         function addToCart(id) {
-            const item = products.find(p => p.id === id);
-            cart.push(item);
-            updateCartUI();
+            const p = products.find(x => x.id === id);
+            cart.push(p);
+            updateCart();
+            showToast();
         }
 
-        function updateCartUI() {
+        function updateCart() {
             document.getElementById('cartCount').innerText = cart.length;
-            const cartDiv = document.getElementById('cartItems');
-            const form = document.getElementById('checkoutForm');
+            const list = document.getElementById('cartItems');
+            const area = document.getElementById('checkoutArea');
             
             if(cart.length === 0) {
-                cartDiv.innerHTML = "Your cart is empty.";
-                form.style.display = 'none';
+                list.innerHTML = "Your bag is empty.";
+                area.style.display = 'none';
             } else {
-                let total = cart.reduce((sum, item) => sum + item.price, 0);
-                cartDiv.innerHTML = cart.map(item => `
-                    <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee;">
-                        <span><b>${item.name}</b></span>
-                        <span style="color:#B12704;">Rs. ${item.price}</span>
+                let total = cart.reduce((s, i) => s + i.price, 0);
+                list.innerHTML = cart.map(i => `
+                    <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #f0f0f0;">
+                        <span>${i.name}</span>
+                        <b>Rs. ${i.price}</b>
                     </div>
-                `).join('') + `<div style="text-align:right; padding:15px 0; font-size:1.2rem;">Subtotal (${cart.length} items): <b>Rs. ${total}</b></div>`;
-                form.style.display = 'block';
+                `).join('') + `<h2 style="text-align:right; margin-top:10px;">Total: Rs. ${total}</h2>`;
+                area.style.display = 'block';
             }
         }
 
-        function placeOrder() {
-            const name = document.getElementById('custName').value;
-            const address = document.getElementById('custAddress').value;
-            if(!name || !address) return alert("Please fill shipping details");
-
-            let message = `*GOSUBWEAR AMAZON ORDER*%0A%0A*Name:* ${name}%0A*Address:* ${address}%0A%0A*Items:*%0A`;
-            cart.forEach(i => message += `- ${i.name}%0A`);
-            window.open(`https://wa.me/+923270616136?text=${message}`);
+        function showToast() {
+            const x = document.getElementById("toast");
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
         }
 
-        renderShop();
+        function showPage(id) {
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        function placeOrder() {
+            const n = document.getElementById('cName').value;
+            const a = document.getElementById('cAddr').value;
+            if(!n || !a) return alert("Please fill shipping details");
+            
+            let msg = `*NEW ORDER GOSUBWEAR*%0A*Customer:* ${n}%0A*Address:* ${a}%0A%0A*Items:*%0A`;
+            cart.forEach(i => msg += `- ${i.name}%0A`);
+            window.open(`https://wa.me/+923270616136?text=${msg}`);
+        }
+
+        renderProducts();
     </script>
 </body>
 </html>
