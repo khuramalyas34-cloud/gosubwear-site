@@ -3,82 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOSUBWEAR | The Future of Textile</title>
+    <title>GOSUBWEAR | Elite Textile Innovation</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Outfit:wght@300;400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Outfit:wght@300;600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
             --orange: #FF6600;
-            --yellow: #FFD700;
             --black: #000000;
             --white: #FFFFFF;
-            --gray: #F9F9F9;
-            --border: #EEEEEE;
-            --text-dark: #111111;
-            --text-light: #666666;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --gray: #1a1a1a;
+            --light-gray: #f4f4f4;
+            --text-dim: #a0a0a0;
             --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--white); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
-        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 700; }
-        a { text-decoration: none; color: inherit; cursor: pointer; }
-        ul { list-style: none; }
-        button { cursor: pointer; font-family: inherit; border: none; outline: none; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .text-center { text-align: center; }
-        .mb-2 { margin-bottom: 2rem; }
+        body { font-family: 'Poppins', sans-serif; background: var(--white); color: var(--black); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
+        
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 25px; }
+        .btn { padding: 12px 30px; font-family: 'Orbitron'; font-size: 0.8rem; font-weight: 700; cursor: pointer; border: none; transition: var(--transition); display: inline-block; text-decoration: none; }
+        .btn-primary { background: var(--orange); color: white; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(255,102,0,0.2); }
 
         /* NAVIGATION */
-        header {
-            background-color: var(--black);
-            color: var(--white);
-            position: sticky; top: 0; z-index: 1000;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
+        header { background: var(--black); color: white; position: sticky; top: 0; z-index: 2000; padding: 15px 0; border-bottom: 1px solid #333; }
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; font-weight: 900; letter-spacing: -1px; cursor: pointer; }
+        .logo { font-size: 1.6rem; font-weight: 900; cursor: pointer; }
         .logo span { color: var(--orange); }
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { font-weight: 500; font-size: 0.85rem; transition: var(--transition); text-transform: uppercase; letter-spacing: 1px; font-family: 'Orbitron'; }
-        .nav-links a:hover { color: var(--orange); }
-        .nav-icons { display: flex; gap: 1.5rem; align-items: center; }
-        .cart-icon-wrap { position: pointer; position: relative; font-size: 1.2rem; cursor: pointer; }
-        .cart-count {
-            position: absolute; top: -8px; right: -12px;
-            background: var(--orange); color: white;
-            font-size: 0.65rem; width: 18px; height: 18px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-weight: bold;
-        }
+        .nav-menu { display: flex; gap: 25px; }
+        .nav-menu a { font-family: 'Outfit'; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; cursor: pointer; transition: 0.3s; color: #ccc; }
+        .nav-menu a:hover { color: var(--orange); }
+
+        /* HERO SECTION */
+        .hero { height: 85vh; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=1600'); background-size: cover; background-position: center; display: flex; align-items: center; color: white; }
+        .hero-content { max-width: 700px; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 15px; }
+        .hero span { color: var(--orange); }
 
         /* PAGE ENGINE */
-        .page-section { display: none; min-height: 80vh; animation: fadeIn 0.5s ease forwards; }
+        .page-section { display: none; min-height: 70vh; animation: fadeIn 0.6s ease; }
         .page-section.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* GRID SYSTEM */
-        .section-padding { padding: 80px 0; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        
-        /* POLICY & CONTENT STYLES */
-        .content-card { background: var(--gray); padding: 30px; border-radius: 8px; margin-bottom: 20px; }
-        .policy-text h3 { color: var(--orange); margin: 20px 0 10px; font-family: 'Orbitron'; font-size: 1.1rem; }
-        .policy-text p { margin-bottom: 15px; font-size: 0.95rem; color: var(--text-light); }
+        /* CATEGORY CARDS */
+        .cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 40px; }
+        .cat-card { height: 400px; position: relative; overflow: hidden; border-radius: 4px; cursor: pointer; }
+        .cat-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .cat-card:hover img { transform: scale(1.1); }
+        .cat-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px; background: linear-gradient(transparent, rgba(0,0,0,0.9)); color: white; }
 
-        footer { background: #000; color: #777; padding: 40px 0; margin-top: 50px; border-top: 2px solid var(--orange); }
-        .footer-links a { margin: 0 10px; font-size: 0.8rem; text-transform: uppercase; }
+        /* PRODUCT GRID */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+        .p-card { border: 1px solid #eee; padding: 15px; transition: 0.3s; }
+        .p-card:hover { border-color: var(--orange); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .p-card img { width: 100%; height: 320px; object-fit: cover; margin-bottom: 15px; }
 
-        /* HERO STYLES (Kept from previous) */
-        .hero { height: 60vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1500'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; color: white; }
-        .btn { padding: 12px 35px; font-weight: 700; text-transform: uppercase; border-radius: 4px; transition: 0.3s; display: inline-block; font-family: 'Orbitron'; font-size: 0.8rem; background: var(--orange); color: white; }
+        /* LEGAL PAGES CONTENT */
+        .legal-content { max-width: 900px; margin: 50px auto; padding: 40px; background: var(--light-gray); border-radius: 8px; }
+        .legal-content h2 { color: var(--orange); margin: 25px 0 10px; }
+        .legal-content p { margin-bottom: 15px; color: #444; }
+
+        /* FOOTER */
+        footer { background: var(--black); color: white; padding: 80px 0 30px; border-top: 4px solid var(--orange); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px; }
+        .footer-col h4 { font-family: 'Orbitron'; color: var(--orange); margin-bottom: 20px; font-size: 0.9rem; }
+        .footer-col ul li { margin-bottom: 10px; list-style: none; }
+        .footer-col ul li a { color: #888; font-size: 0.85rem; cursor: pointer; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--orange); padding-left: 5px; }
+
+        /* CART FLOATER */
+        .cart-icon { position: relative; font-size: 1.4rem; cursor: pointer; }
+        .badge { position: absolute; top: -10px; right: -12px; background: var(--orange); font-size: 0.7rem; padding: 2px 6px; border-radius: 50%; }
     </style>
 </head>
 <body>
@@ -86,16 +86,15 @@
     <header>
         <div class="container nav-wrapper">
             <div class="logo" onclick="showPage('home')">GOSUB<span>WEAR</span></div>
-            <ul class="nav-links">
-                <li><a onclick="showPage('home')">Home</a></li>
-                <li><a onclick="showPage('shop')">Shop</a></li>
-                <li><a onclick="showPage('about')">Our Mission</a></li>
-            </ul>
-            <div class="nav-icons">
-                <div class="cart-icon-wrap" onclick="showPage('cart')">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-count" id="cartCount">0</span>
-                </div>
+            <nav class="nav-menu">
+                <a onclick="showPage('home')">Home</a>
+                <a onclick="showPage('shop')">Catalog</a>
+                <a onclick="showPage('about')">Mission</a>
+                <a onclick="showPage('faq')">Help</a>
+            </nav>
+            <div class="cart-icon" onclick="showPage('cart')">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="badge" id="cartCount">0</span>
             </div>
         </div>
     </header>
@@ -104,120 +103,163 @@
         <section id="home" class="page-section active">
             <div class="hero">
                 <div class="container">
-                    <h1 style="font-family:'Orbitron'; font-size: 3rem;">GOSUB<span>WEAR</span></h1>
-                    <p>The Future of Wear Starts Here.</p>
-                    <button class="btn" style="margin-top:20px;" onclick="showPage('shop')">Enter Shop</button>
+                    <div class="hero-content">
+                        <h1>ENGINEERED <span>CONFIDENCE</span></h1>
+                        <p style="font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9;">Redefining modern apparel through lab-grade textiles and bold Pakistani excellence.</p>
+                        <button class="btn btn-primary" onclick="showPage('shop')">Shop Collection</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="padding: 80px 0;">
+                <h2 class="text-center">Browse <span>Categories</span></h2>
+                <div class="cat-grid">
+                    <div class="cat-card" onclick="showPage('shop')">
+                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=600" alt="Sublimation">
+                        <div class="cat-overlay">
+                            <h3>Sublimation Lab</h3>
+                            <p>High-Performance Vibrant Techwear</p>
+                        </div>
+                    </div>
+                    <div class="cat-card" onclick="showPage('shop')">
+                        <img src="https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&q=80&w=600" alt="Traditional">
+                        <div class="cat-overlay">
+                            <h3>Elite Tradition</h3>
+                            <p>Premium Stitched Heritage Wear</p>
+                        </div>
+                    </div>
+                    <div class="cat-card" onclick="showPage('shop')">
+                        <img src="https://images.unsplash.com/photo-1617114919297-3c8ddb01f599?auto=format&fit=crop&q=80&w=600" alt="Accessories">
+                        <div class="cat-overlay">
+                            <h3>Signature Gear</h3>
+                            <p>Waistcoats & Essential Add-ons</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="shop" class="page-section">
-            <div class="container section-padding">
-                <h2 class="text-center mb-2" style="font-family: 'Orbitron';">ELITE CATALOG</h2>
-                <div class="grid" id="productGrid"></div>
+            <div class="container" style="padding: 60px 0;">
+                <h2 style="margin-bottom: 40px;">Available <span>Inventory</span></h2>
+                <div class="product-grid" id="productGrid"></div>
             </div>
         </section>
 
         <section id="about" class="page-section">
-            <div class="container section-padding">
-                <div class="text-center mb-2">
-                    <h1 style="font-family:'Orbitron'; font-size: 2.5rem; letter-spacing: 2px;">🚀 OUR <span style="color:var(--orange);">MISSION</span></h1>
-                    <p style="color:var(--text-light); font-weight: 600; margin-top: 10px;">Empowering Confidence Through Innovation</p>
+            <div class="container" style="padding: 80px 0;">
+                <div style="text-align: center; margin-bottom: 50px;">
+                    <h1>Our <span>Mission</span></h1>
+                    <p>Building the Future of Wearable Innovation</p>
                 </div>
-
-                <div class="content-card text-center">
-                    <p style="font-size: 1.1rem; line-height: 1.8;">
-                        At <strong>GOSUBWEAR</strong>, our mission is simple yet powerful: To redefine modern apparel by combining innovation, quality, and bold design. We believe clothing is more than fashion — it is identity, confidence, and personal expression. Every piece we create is designed to inspire strength, ambition, and individuality.
-                    </p>
-                </div>
-
-                <div class="grid">
-                    <div class="content-card">
-                        <h3>🧵 Innovation in Textile</h3>
-                        <p>We are committed to pushing the boundaries of textile technology. Through advanced sublimation methods and carefully selected premium fabrics, we ensure durability, vibrant color retention, and long-lasting performance.</p>
-                    </div>
-                    <div class="content-card">
-                        <h3>🎯 Commitment to Quality</h3>
-                        <ul style="font-size: 0.9rem; color: var(--text-light); line-height: 2;">
-                            <li>• Premium fabric selection</li>
-                            <li>• Low fade rate materials</li>
-                            <li>• Precision stitching & Strict QC</li>
-                            <li>• Comfort + durability balance</li>
-                        </ul>
-                    </div>
-                    <div class="content-card">
-                        <h3>🌍 Customer-Centered</h3>
-                        <p>Our customers are at the heart of everything we do. We provide fast delivery, 7-day return assurance, and 24/7 support to define our success through your satisfaction.</p>
-                    </div>
-                </div>
-
-                <div style="background: var(--black); color: white; padding: 40px; border-radius: 10px; text-align: center; margin-top: 30px;">
-                    <h2 style="font-family:'Orbitron';">🔥 BUILDING A GLOBAL BRAND</h2>
-                    <p style="margin: 15px 0; opacity: 0.8;">GOSUBWEAR is not just a brand — It is a movement toward the future of wear representing Modern Pakistani Excellence.</p>
-                    <div style="font-weight: 900; color: var(--orange); letter-spacing: 3px;">STRENGTH | INNOVATION | RELIABILITY</div>
+                <div class="legal-content">
+                    <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?auto=format&fit=crop&q=80&w=900" style="width:100%; border-radius:8px; margin-bottom:30px;">
+                    <p>At GOSUBWEAR, we believe clothing is identity. We redefine apparel by combining <strong>Innovation, Quality, and Bold Design</strong>. Our goal is to lead the future of wearable tech through advanced sublimation and premium textile precision.</p>
+                    <h3>Quality Promise</h3>
+                    <p>Every piece represents our promise of excellence: Low fade rates, precision stitching, and a perfect balance of comfort and durability.</p>
                 </div>
             </div>
         </section>
 
         <section id="privacy" class="page-section">
-            <div class="container section-padding">
-                <h1 style="font-family:'Orbitron'; margin-bottom: 30px;">PRIVACY <span style="color:var(--orange);">POLICY</span></h1>
-                <div class="policy-text">
-                    <p>Last Updated: 2026</p>
-                    <p>At GOSUBWEAR, we respect your privacy and are committed to protecting your personal data. This policy explains how we handle your information when you shop with us.</p>
-                    
-                    <h3>1. Information We Collect</h3>
-                    <p>When you place an order via WhatsApp or our platform, we collect your name, phone number, and shipping address to fulfill your delivery.</p>
-                    
-                    <h3>2. How We Use Your Data</h3>
-                    <p>Your data is used strictly for order processing, delivery, and customer support. We do not sell your personal information to third parties.</p>
-                    
-                    <h3>3. Security</h3>
-                    <p>We implement secure protocols to ensure your data is protected during the transaction process. Our Cash on Delivery (COD) model ensures no financial data (like credit cards) is stored on our servers.</p>
-                    
-                    <h3>4. Returns & Refunds</h3>
-                    <p>We offer a 7-day return assurance for manufacturing defects. Please contact our 24/7 support for assistance with returns.</p>
+            <div class="container" style="padding: 60px 0;">
+                <div class="legal-content">
+                    <h1>Privacy <span>Policy</span></h1>
+                    <h2>1. Data Collection</h2>
+                    <p>We collect your Name, WhatsApp Number, and Shipping Address solely to process your orders. We do not use cookies for tracking.</p>
+                    <h2>2. Information Security</h2>
+                    <p>Your data is stored securely and never sold to third-party marketers. Transactions are finalized via WhatsApp for end-to-end encryption.</p>
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800" style="width:100%; margin-top:20px; opacity:0.7;">
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="page-section">
+            <div class="container" style="padding: 60px 0;">
+                <h1 class="text-center">Frequently Asked <span>Questions</span></h1>
+                <div class="legal-content">
+                    <h3>How do I place an order?</h3>
+                    <p>Simply add items to your bag and click "Place Order." You will be redirected to our WhatsApp where our team will confirm your details.</p>
+                    <h3>What is your return policy?</h3>
+                    <p>We offer a 7-day return assurance for any manufacturing defects or sizing issues.</p>
+                    <h3>Where do you deliver?</h3>
+                    <p>We offer nationwide delivery across Pakistan with Cash on Delivery (COD) options.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="terms" class="page-section">
+            <div class="container" style="padding: 60px 0;">
+                <div class="legal-content">
+                    <h1>Terms of <span>Service</span></h1>
+                    <p>By using GOSUBWEAR, you agree to provide accurate shipping information. We reserve the right to cancel orders if the provided contact details are unreachable.</p>
+                    <h2>Ordering via WhatsApp</h2>
+                    <p>All orders are confirmed only after a manual check by our team on WhatsApp. Price changes may occur based on custom requirements.</p>
                 </div>
             </div>
         </section>
 
         <section id="cart" class="page-section">
-            <div class="container section-padding">
-                <h2 style="font-family:'Orbitron';">YOUR BAG</h2>
-                <div id="cartItems" style="margin: 20px 0;"></div>
-                <button class="btn" onclick="showPage('checkout')">Proceed to Checkout</button>
-            </div>
-        </section>
-        
-        <section id="checkout" class="page-section">
-            <div class="container section-padding">
-                <h2 style="font-family:'Orbitron';">CHECKOUT</h2>
-                <div style="max-width: 500px; margin-top: 20px;">
-                    <input type="text" id="custName" placeholder="Full Name" style="width:100%; padding:10px; margin-bottom:10px;">
-                    <input type="text" id="custPhone" placeholder="WhatsApp Number" style="width:100%; padding:10px; margin-bottom:10px;">
-                    <textarea id="custAddress" placeholder="Shipping Address" style="width:100%; padding:10px; margin-bottom:10px;"></textarea>
-                    <button class="btn" onclick="placeOrder()">Place Order (WhatsApp)</button>
+            <div class="container" style="padding: 80px 0;">
+                <h2>Your <span>Shopping Bag</span></h2>
+                <div id="cartItems" style="margin: 30px 0; border-top: 1px solid #eee;"></div>
+                <div id="checkoutForm" style="display:none; max-width: 500px; background: #f9f9f9; padding: 30px; border-radius: 8px;">
+                    <h3>Delivery Details</h3>
+                    <input type="text" id="custName" placeholder="Full Name" style="width:100%; padding:12px; margin:10px 0;">
+                    <input type="text" id="custPhone" placeholder="WhatsApp Number" style="width:100%; padding:12px; margin:10px 0;">
+                    <textarea id="custAddress" placeholder="Full Address (House, Street, City)" style="width:100%; padding:12px; margin:10px 0; height:100px;"></textarea>
+                    <button class="btn btn-primary" onclick="placeOrder()">Confirm via WhatsApp</button>
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer>
-        <div class="container text-center">
-            <div class="logo" style="color:white; margin-bottom:15px;">GOSUB<span>WEAR</span></div>
-            <div class="footer-links">
-                <a onclick="showPage('home')">Home</a>
-                <a onclick="showPage('about')">Mission</a>
-                <a onclick="showPage('privacy')">Privacy Policy</a>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">GOSUB<span>WEAR</span></div>
+                    <p style="color: #666; font-size: 0.8rem; margin-top: 15px;">Pakistan's premier lab-grade textile brand. Redefining style through technology.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>SHOPPING</h4>
+                    <ul>
+                        <li><a onclick="showPage('shop')">New Arrivals</a></li>
+                        <li><a onclick="showPage('shop')">Sublimation Lab</a></li>
+                        <li><a onclick="showPage('shop')">Traditional Wear</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>COMPANY</h4>
+                    <ul>
+                        <li><a onclick="showPage('about')">Our Mission</a></li>
+                        <li><a onclick="showPage('faq')">Help & FAQs</a></li>
+                        <li><a onclick="showPage('privacy')">Privacy Policy</a></li>
+                        <li><a onclick="showPage('terms')">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>CONTACT</h4>
+                    <ul>
+                        <li><a href="tel:+923270616136"><i class="fas fa-phone"></i> +92 327 0616136</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp Support</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> support@gosubwear.com</a></li>
+                    </ul>
+                </div>
             </div>
-            <p style="font-size: 0.7rem; margin-top: 20px; opacity: 0.5;">&copy; 2026 GOSUBWEAR. NO FADE. NO LIMITS.</p>
+            <div style="text-align: center; padding-top: 30px; border-top: 1px solid #222; font-size: 0.7rem; color: #444;">
+                &copy; 2026 GOSUBWEAR OMNI-RETAIL. DESIGNED IN LAB. WORN WORLDWIDE.
+            </div>
         </div>
     </footer>
 
     <script>
         const products = [
-            { id: 1, name: "Sultan Elite Kurta", price: 8500, img: "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?q=80&w=400" },
-            { id: 2, name: "Molecular Sub-Tee", price: 2800, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400" }
+            { id: 1, name: "Sultan Elite Kurta", price: 8500, img: "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&q=80&w=400" },
+            { id: 2, name: "Molecular Sub-Tee", price: 2800, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=400" },
+            { id: 3, name: "Glitch-Mode Jersey", price: 3200, img: "https://images.unsplash.com/photo-1598033129183-c4f50c7176c8?auto=format&fit=crop&q=80&w=400" },
+            { id: 4, name: "Signature Waistcoat", price: 6500, img: "https://images.unsplash.com/photo-1617114919297-3c8ddb01f599?auto=format&fit=crop&q=80&w=400" }
         ];
 
         let cart = [];
@@ -231,11 +273,11 @@
         function renderShop() {
             const grid = document.getElementById('productGrid');
             grid.innerHTML = products.map(p => `
-                <div style="border:1px solid #eee; padding:15px;">
-                    <img src="${p.img}" style="width:100%;">
-                    <h4 style="margin-top:10px;">${p.name}</h4>
-                    <p style="color:var(--orange);">Rs. ${p.price}</p>
-                    <button class="btn" style="width:100%; margin-top:10px;" onclick="addToCart(${p.id})">Add to Bag</button>
+                <div class="p-card">
+                    <img src="${p.img}" alt="${p.name}">
+                    <h4 style="font-size:0.9rem;">${p.name}</h4>
+                    <p style="color:var(--orange); font-weight:800; margin:10px 0;">Rs. ${p.price}</p>
+                    <button class="btn btn-primary" onclick="addToCart(${p.id})" style="width:100%;">Add to Bag</button>
                 </div>
             `).join('');
         }
@@ -243,21 +285,46 @@
         function addToCart(id) {
             const item = products.find(p => p.id === id);
             cart.push(item);
-            document.getElementById('cartCount').innerText = cart.length;
+            updateCartUI();
             alert("Added to bag!");
+        }
+
+        function updateCartUI() {
+            document.getElementById('cartCount').innerText = cart.length;
+            const cartDiv = document.getElementById('cartItems');
+            const form = document.getElementById('checkoutForm');
+            
+            if(cart.length === 0) {
+                cartDiv.innerHTML = "<p>Your bag is currently empty.</p>";
+                form.style.display = 'none';
+            } else {
+                let total = cart.reduce((sum, item) => sum + item.price, 0);
+                cartDiv.innerHTML = cart.map((item, index) => `
+                    <div style="display:flex; justify-content:space-between; padding:15px 0; border-bottom:1px solid #eee;">
+                        <span>${item.name}</span>
+                        <span>Rs. ${item.price}</span>
+                    </div>
+                `).join('') + `<div style="padding:20px 0; font-weight:900; font-size:1.2rem;">Total: Rs. ${total}</div>`;
+                form.style.display = 'block';
+            }
         }
 
         function placeOrder() {
             const name = document.getElementById('custName').value;
             const phone = document.getElementById('custPhone').value;
             const address = document.getElementById('custAddress').value;
-            if(!name || !phone || !address) return alert("Fill all fields");
 
-            let message = `Order for ${name}:%0A`;
+            if(!name || !phone || !address) return alert("Please fill all delivery details!");
+
+            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            let message = `*GOSUBWEAR ORDER*%0A%0A*Customer:* ${name}%0A*Phone:* ${phone}%0A*Address:* ${address}%0A%0A*Items:*%0A`;
             cart.forEach(i => message += `- ${i.name} (Rs. ${i.price})%0A`);
-            message += `%0AAddress: ${address}`;
+            message += `%0A*Grand Total:* Rs. ${total}`;
 
             window.open(`https://wa.me/+923270616136?text=${message}`);
+            cart = [];
+            updateCartUI();
+            showPage('home');
         }
 
         renderShop();
